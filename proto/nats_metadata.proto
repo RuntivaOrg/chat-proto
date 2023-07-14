@@ -8,5 +8,5 @@ package chat;
 
 message MetadataMap {
     string key = 1;
-    string value = 2;
+    repeated string value = 2;
 }
