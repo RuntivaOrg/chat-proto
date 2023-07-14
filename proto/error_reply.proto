@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package chat;
+
+message ErrorReply {
+  int32 code = 1;
+  string message = 2;
+  int32 status = 3;
+  repeated ErrorDetails details = 4;
+}
+
+message ErrorDetails {
+  string reason = 1;
+  string domain = 2;
+  repeated MetaData metadata = 3;
+}
+
+message MetaData {
+  string key = 1;
+  string value = 2;
+}

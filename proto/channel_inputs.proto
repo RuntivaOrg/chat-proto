@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package chat;
+import "channel.proto";
+//import "field_behavior.proto";
+//import "google/protobuf/timestamp.proto";
+
+// Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
+message ChannelAddRequest {
+    //string id = 1; // UUID
+    string title = 2;
+    string about = 3;
+    ChannelType channel_type = 4;
+
+    bool is_private = 6;
+
+    repeated string geo_countries = 8;
+    int32 ttl_period = 9;
+    string creator_id = 10; // Nanoid
+}
+
+message ChannelEditTitleRequest {
+    int64 id = 1;
+    string title = 2;
+}

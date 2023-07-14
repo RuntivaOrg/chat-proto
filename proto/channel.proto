@@ -1,0 +1,126 @@
+syntax = "proto3";
+
+package chat;
+//import "field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+
+message Channel {
+    int64 id = 1; 
+    string title = 2;
+    string about = 3;
+    string owner_username = 4;
+    string photo_url = 5; // TODO: ChatPhoto type
+    // Date when user join the channel -- or if user is not a member, channel creation date 
+    google.protobuf.Timestamp date = 6;
+    ChannelType channel_type = 7;
+    int64 pinned_msg_id = 8;
+    repeated string available_reactions = 9; // Todo: ChatReactions
+    
+    // List of members of this channel -- most recent ??
+    repeated string user_names = 10;
+    repeated string geo_countries = 11;
+    int32 ttl_period = 12;
+
+    // Invite Link
+    string invite_link = 13;    // TODO: ExportedChatInvite type
+
+    // Channel settings
+    //ChannelSettings settings = 14;
+
+    // Channel Permissions
+    //ChannelPermissions permissions = 15;
+
+    // Channel User Settings
+    //Channel_UserSettings user_settings = 16;
+
+    // Position up to which all incoming messages are read.
+    //int32 read_inbox_max_id = 17;
+    // Position up to which all outgoing messages are read.
+    //int32 read_outbox_max_id = 18;
+    // Count of unread messages
+    //int32 unread_count = 19;
+}
+
+
+enum ChannelType {
+    CHANNEL_TYPE_UNKNOWN = 0;
+    CHANNEL_TYPE_BROADCAST = 1;
+    CHANNEL_TYPE_DISCUSSIONGROUP = 2;
+    CHANNEL_TYPE_FORUM = 3;
+}
+
+message ChannelSettings {
+    // Flag indicating whether the channel has been verified
+    bool verified = 1;
+    // Flag indicating Whether this channel has a private join link
+    bool has_link = 2;
+    // Flag indicating whether this channel has a geoposition
+    bool has_geo = 3;
+    // Flag indicating whether the participant list is hidden
+    bool participants_hidden = 4;
+    // If set, channel was reported by many users as a fake or scam: be careful when interacting with it.
+    bool fake = 5;
+    // This channel has been flagged as a scam: be careful when interacting with it.
+    bool scam = 6;
+    // Time-To-Live period for messages in this channel. After this time has expired, messages are deleted
+    int32 ttl_period = 7;
+}
+
+message ChannelPermissions {
+    // Flag indicating whether this channel/group is protected -- not allowing forwarding of messages
+    bool noforwards = 1;
+    // Flag indicating whether a user needs to join the channel before they can send messages: 
+    // can be false only for discussion groups », toggle using Channels_SetJoinToSend
+    bool join_to_send = 2;
+    // Flag indicating whether a user's join request will have to be approved by a channel admin, toggle using Channels_SetJoinApprovalRequired
+    bool join_approval_req = 3;
+    
+    // Default chat rights 
+    // ChatBannedRights default_banned_rights = 4;
+    
+    // Flag indicating whether viewing/writing in this channel for a reason (see restriction_reason)
+    bool restricted = 5;
+    // Restriction reason
+    string restriction_reason = 6;
+}
+
+message Channel_UserSettings {
+    // Flag indicating whether the current user is the creator of this channel
+    bool is_creator = 1;
+    // Flag indicating whether the current user has left this channel
+    bool has_left = 2;
+    // Flag indicating whether the current user is an administrator of this channel
+    bool is_admin = 3;
+    // Admin rights of the user in this channel
+    // ChatAdminRights admin_rights = 4; 
+    // Banned rights of the user in this channel 
+    // ChatBannedRights banned_rights = 5;
+    // Flag indicating whether we can view the participants of this channel
+    bool can_view_participants = 6;
+    // Flag indicating whether we can delete this channel
+    bool can_delete_channel = 7;
+}
+
+message ChannelStats {
+    // Participant count
+    int32 participant_count = 1;
+    // Number of users currently online
+    int32 online_count = 2;
+    // Number of channel admins
+    int32 admins_count = 3;
+    // Number of users kicked from the channel
+    int32 kicked_count = 4;
+    // Number of users banned from the channel
+    int32 banned_count = 5;
+
+}
+
+
+
+
+message GeoPoint {
+    double lat = 1;
+    double long = 2;
+    double radius = 3;
+}
+

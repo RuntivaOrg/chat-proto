@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package chat;
+
+import "channel.proto";
+import "error_reply.proto";
+
+// NATS Specific messages that are used internally on the server-side to offboard request processing from the ChatServer to the backend services. 
+message NatsChannelReply {
+  oneof msg {
+    Channel data = 1;
+    ErrorReply error = 2;
+  }
+}
+

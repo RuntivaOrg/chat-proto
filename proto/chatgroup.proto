@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package chat;
+//import "field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+
+message ChatGroup {
+    int64 id = 1; 
+    int64 owner_id = 2;
+    optional string username = 3;
+    string title = 4;
+    optional string about = 5;
+    optional string photo_url = 6; // TODO: ChatPhoto type
+    // Date when user join the channel -- or if user is not a member, channel creation date 
+    google.protobuf.Timestamp date = 7;
+    optional int64 pinned_msg_id = 8;
+    repeated string available_reactions = 9; // Todo: ChatReactions
+    
+    int32 ttl_period = 10;
+
+    // Invite Link
+    string invite_link = 13;    // TODO: ExportedChatInvite type
+
+}

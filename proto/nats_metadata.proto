@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package chat;
+
+ message Metadata {
+     repeated MetadataMap headers = 1;
+ }
+
+message MetadataMap {
+    string key = 1;
+    string value = 2;
+}

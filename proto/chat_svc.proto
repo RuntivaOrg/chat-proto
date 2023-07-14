@@ -1,0 +1,160 @@
+syntax = "proto3";
+
+package chat;
+
+//import "google/api/annotations.proto";
+//import "google/api/field_behavior.proto";
+import "channel.proto";
+import "channel_inputs.proto";
+
+import "chatgroup.proto";
+import "chatgroup_inputs.proto";
+
+import "field_behavior.proto";
+import "google/protobuf/empty.proto";
+
+// Interface exported by the server.
+service ChatService {
+
+    // ***** Users ******* //
+    // Temporary function to register a user until proper integration 
+    // w/ user auth system and user lookup server in place.
+    rpc TempRegisterUser(RegisterUserRequest) returns (RegisterUserResponse) {}
+
+    // ***** Channels ******* //
+    // Creates a new top-level channel
+    // TODO: require permissions to be able to call this method.
+    rpc Channel_Create(ChannelAddRequest) returns (Channel) {}
+
+    // Disables a top-level channel
+    // TODO: require permissions to be able to call this method.
+    rpc DisableChannel(Channel) returns (google.protobuf.Empty) {}
+
+    // Enables a top-level channel
+    // TODO: require permissions to be able to call this method.
+    rpc EnableChannel(Channel) returns (google.protobuf.Empty) {}
+
+    // ***** ChatGroups ******* //
+    // Creates a topic within a channel
+    rpc CreateChatGroup(CreateChatGroupRequest) returns (ChatGroup) {}
+
+
+    // ***** Topics ******* //
+    // Creates a topic within a channel
+    rpc CreateTopic(Topic) returns (Topic) {}
+
+    // Delete a topic within a channel
+    rpc DeleteTopic(Topic) returns (google.protobuf.Empty) {}
+
+    // Joins a user to a topic by registering the user on the topic queue 
+    rpc JoinTopic(JoinTopicRequest) returns (stream TopicResponse) {}
+    rpc LeaveTopic(LeaveTopicRequest) returns (google.protobuf.Empty) {}
+
+    // ***** Comments ******* //
+    // Creates a comment within a topic
+    rpc AddComment(Comment) returns (google.protobuf.Empty) {}
+
+    // ***** Reactions ******* //
+    // React to a comment
+    rpc SendReaction(Reaction) returns (google.protobuf.Empty) {}
+
+    // ***** Typing Indicator ******* //
+    // Ephemeral Event to push out showing a user is typing 
+    rpc SendUserIsTyping(UserIsTyping) returns (google.protobuf.Empty) {}
+
+
+}
+
+message RegisterUserRequest {
+    string user_name = 2 [(google.api.field_behavior) = REQUIRED]; 
+}
+
+message RegisterUserResponse {
+    string user_id = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string user_name = 2 [(google.api.field_behavior) = REQUIRED]; 
+}
+
+
+message Topic {
+    string id = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string channel_id = 2 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string name = 3 [(google.api.field_behavior) = REQUIRED];
+    string desc = 4;
+    string tags = 5;
+    // TODO: Convert to Date
+    string created_date = 6; 
+    string owner_id = 7 [(google.api.field_behavior) = REQUIRED]; // UUID
+}
+
+message JoinTopicRequest {
+    string topic_id = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string user_id = 2 [(google.api.field_behavior) = REQUIRED]; // UUID
+}
+
+message TopicResponse {
+    string msg_id = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string topic_id = 2 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string user_id = 3 [(google.api.field_behavior) = REQUIRED]; // UUID
+    oneof msg {
+        // for returning existing Comments
+        CommentResponse comment = 5;
+        // for returning real-time updates
+        ReactionResponse reaction = 6;
+        // for returning real-time is_typing messages
+        UserIsTypingResponse user_is_typing = 7;
+
+    }
+}
+
+message LeaveTopicRequest {
+    string topic_id = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string user_id = 2 [(google.api.field_behavior) = REQUIRED]; // UUID
+}
+
+// **************************************************
+// Topic level messages that are sent in from clients
+message Comment {
+    string id = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string topic_id = 2 [(google.api.field_behavior) = REQUIRED]; // UUIDa
+    string user_id = 3 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string replyto_comment_id = 4; // UUID or Empty string
+    string comment = 5;
+}
+
+message Reaction {
+    string id = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string topic_id = 2 [(google.api.field_behavior) = REQUIRED]; // UUID // NOT REALLY NEEDED -- TO BE REMOVED
+    string user_id = 3 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string comment_id = 4 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string reaction = 5;
+}
+
+message UserIsTyping {
+    string user_id = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string topic_id = 2 [(google.api.field_behavior) = REQUIRED]; 
+}
+
+// *******************************************
+// Topic level messages that pushed to clients
+message CommentResponse {
+    string id = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string topic_id = 2 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string user_name = 3 [(google.api.field_behavior) = REQUIRED];
+    string replyto_comment_id = 4; // UUID or Empty string
+    string comment = 5;
+    bool this_users_comment = 6;
+}
+
+message ReactionResponse {
+    string id = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string topic_id = 2 [(google.api.field_behavior) = REQUIRED]; // UUID // NOT REALLY NEEDED -- TO BE REMOVED
+    string user_name = 3 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string comment_id = 4 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string reaction = 5;
+    bool this_users_reaction = 6;
+}
+
+message UserIsTypingResponse {
+    string user_name = 1 [(google.api.field_behavior) = REQUIRED]; // UUID
+    string topic_id = 2 [(google.api.field_behavior) = REQUIRED]; 
+}

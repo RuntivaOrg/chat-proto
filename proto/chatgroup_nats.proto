@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package chat;
+
+import "chatgroup_inputs.proto";
+import "chatgroup.proto";
+
+import "error_reply.proto";
+import "nats_metadata.proto";
+
+// NATS Specific messages that are used internally on the server-side to offboard request processing from the ChatServer to the backend services. 
+// CreateChatGroup: Create a new chat group
+
+message NatsCreateChatGroupRequest {
+  repeated MetadataMap headers = 1;
+  CreateChatGroupRequest data = 2;
+}
+
+message NatsCreateChatGroupResponse {
+  oneof msg {
+    ChatGroup data = 1;
+    ErrorReply error = 2;
+  }
+}
