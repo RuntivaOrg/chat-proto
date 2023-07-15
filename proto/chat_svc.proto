@@ -27,10 +27,10 @@ service ChatService {
     rpc ChatGroup_UpdateAbout(ChatGroupStrFieldUpdateRequest) returns (google.protobuf.Empty) {}
 
     // Adds a user to a chat group
-    rpc ChatGroup_AddUser(ChatGroupUserIdChangeRequest) returns (google.protobuf.Empty) {}
+    rpc ChatGroup_AddUser(ChatGroupAddUserRequest) returns (google.protobuf.Empty) {}
 
     // Removes a user to a chat group
-    rpc ChatGroup_RemoveUser(ChatGroupUserIdChangeRequest) returns (google.protobuf.Empty) {}
+    rpc ChatGroup_RemoveUser(ChatGroupRemoveUserRequest) returns (google.protobuf.Empty) {}
 
 
 

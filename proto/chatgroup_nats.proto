@@ -35,9 +35,16 @@ message NatsChatGroupStrFieldUpdateRequest {
 
 // ********** ChatGroup_AddUser ********** //
 // ********** ChatGroup_RemoveUser ********** //
-// Backend NATS messaging for `ChatGroup_AddUser` and `ChatGroup_RemoveUser`: Requests to add or remove a user from a chat group
-message NatsChatGroupUserIdChangeRequest {
+// Backend NATS messaging for `ChatGroup_AddUser`: Request to add a user from a chat group
+message NatsChatGroupAddUserRequest {
   repeated MetadataMap headers = 1;
-  ChatGroupUserIdChangeRequest data = 2;
+  ChatGroupAddUserRequest data = 2;
+}
+
+// ********** ChatGroup_RemoveUser ********** //
+// Backend NATS messaging for `ChatGroup_RemoveUser`: Request to remove a user from a chat group
+message NatsChatGroupRemoveUserRequest {
+  repeated MetadataMap headers = 1;
+  ChatGroupRemoveUserRequest data = 2;
 }
 
