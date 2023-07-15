@@ -11,14 +11,33 @@ import "nats_metadata.proto";
 // NATS Specific messages that are used internally on the server-side to offboard request processing from the ChatServer to the backend services. 
 // CreateChatGroup: Create a new chat group
 
-message NatsCreateChatGroupRequest {
+// ********** ChatGroup_Create ********** //
+// Backend NATS messaging for `ChatGroup_Create`: Request to create a new chat group
+message NatsChatGroupCreateRequest {
   repeated MetadataMap headers = 1;
-  CreateChatGroupRequest data = 2;
+  ChatGroupCreateRequest data = 2;
 }
 
-message NatsCreateChatGroupResponse {
+message NatsChatGroupCreateResponse {
   oneof msg {
     ChatGroup data = 1;
     ErrorReply error = 2;
   }
 }
+
+// ********** ChatGroup_UpdateTitle ********** //
+// ********** ChatGroup_UpdateAbout ********** //
+// Backend NATS messaging for `ChatGroup_UpdateTitle` and `ChatGroup_UpdateAbout`: Requests to update the title or about of a chat group
+message NatsChatGroupStrFieldUpdateRequest {
+  repeated MetadataMap headers = 1;
+  ChatGroupStrFieldUpdateRequest data = 2;
+}
+
+// ********** ChatGroup_AddUser ********** //
+// ********** ChatGroup_RemoveUser ********** //
+// Backend NATS messaging for `ChatGroup_AddUser` and `ChatGroup_RemoveUser`: Requests to add or remove a user from a chat group
+message NatsChatGroupUserIdChangeRequest {
+  repeated MetadataMap headers = 1;
+  ChatGroupUserIdChangeRequest data = 2;
+}
+

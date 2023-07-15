@@ -16,6 +16,25 @@ import "google/protobuf/empty.proto";
 // Interface exported by the server.
 service ChatService {
 
+    // ***** ChatGroups ******* //
+    // Creates a new chat group
+    rpc ChatGroup_Create(ChatGroupCreateRequest) returns (ChatGroup) {}
+
+    // Updates the title of a given chat group
+    rpc ChatGroup_UpdateTitle(ChatGroupStrFieldUpdateRequest) returns (google.protobuf.Empty) {}
+
+    // Updates the About of a given chat group
+    rpc ChatGroup_UpdateAbout(ChatGroupStrFieldUpdateRequest) returns (google.protobuf.Empty) {}
+
+    // Adds a user to a chat group
+    rpc ChatGroup_AddUser(ChatGroupUserIdChangeRequest) returns (google.protobuf.Empty) {}
+
+    // Removes a user to a chat group
+    rpc ChatGroup_RemoveUser(ChatGroupUserIdChangeRequest) returns (google.protobuf.Empty) {}
+
+
+
+
     // ***** Users ******* //
     // Temporary function to register a user until proper integration 
     // w/ user auth system and user lookup server in place.
@@ -33,10 +52,6 @@ service ChatService {
     // Enables a top-level channel
     // TODO: require permissions to be able to call this method.
     rpc EnableChannel(Channel) returns (google.protobuf.Empty) {}
-
-    // ***** ChatGroups ******* //
-    // Creates a topic within a channel
-    rpc CreateChatGroup(CreateChatGroupRequest) returns (ChatGroup) {}
 
 
     // ***** Topics ******* //

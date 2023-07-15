@@ -1,18 +1,26 @@
 syntax = "proto3";
 
 package chat;
-//import "channel.proto";
 //import "google/protobuf/timestamp.proto";
 
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
-message CreateChatGroupRequest {
+// Request Message for `ChatGroup_Create` RPC.
+message ChatGroupCreateRequest {
     int64 owner_id = 1;
     string title = 2;
     int32 ttl_period = 3;
     repeated int64 user_ids = 4;
 }
 
-message ChannelEditAboutRequest {
+// Request Message for `ChatGroup_UpdateTitle` and `ChatGroup_UpdateAbout` RPCs. 
+message ChatGroupStrFieldUpdateRequest {
     int64 id = 1;
-    string about = 2;
+    string value = 2;
+}
+
+
+// Request Message for `ChatGroup_AddUser` and `ChatGroup_RemoveUser` RPCs. 
+message ChatGroupUserIdChangeRequest {
+    int64 id = 1;
+    int64 user_id = 2;
 }
