@@ -12,6 +12,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/chatgroup.proto",
         "proto/chatgroup_inputs.proto",
         "proto/chatgroup_nats.proto",
+        "proto/nats_emptyresponse.proto",
     ];
     let dirs = &["proto"];
 

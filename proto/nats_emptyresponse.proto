@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package chat;
+
+import "error_reply.proto";
+import "nats_metadata.proto";
+
+message NatsEmptyResponse {
+  oneof msg {
+    bool success = 1;
+    ErrorReply error = 2;
+  }
+}
