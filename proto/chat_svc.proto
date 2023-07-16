@@ -32,6 +32,8 @@ service ChatService {
     // Removes a user to a chat group
     rpc ChatGroup_RemoveUser(ChatGroupRemoveUserRequest) returns (google.protobuf.Empty) {}
 
+    // Sets/unsets user as admin for a chat group
+    rpc ChatGroup_EditAdmin(ChatGroupEditAdminRequest) returns (google.protobuf.Empty) {}
 
 
 

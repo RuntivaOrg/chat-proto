@@ -31,3 +31,15 @@ message ChatGroupRemoveUserRequest {
     int64 id = 1;
     int64 user_id = 2;
 }
+
+// Request Message for `ChatGroup_EditAdmin` RPC. 
+message ChatGroupEditAdminRequest {
+    int64 id = 1;
+    int64 user_id = 2;
+    bool is_admin = 3;
+}
+
+// Request Message for `ChatGroup_Delete` RPC. 
+message ChatGroupDeleteRequest {
+    int64 id = 1;
+}

@@ -48,3 +48,16 @@ message NatsChatGroupRemoveUserRequest {
   ChatGroupRemoveUserRequest data = 2;
 }
 
+// ********** ChatGroup_EditAdmin ********** //
+// Backend NATS messaging for `ChatGroup_EditAdmin`: Request to set/unset a chat participant as admin
+message NatsChatGroupEditAdminRequest {
+  repeated MetadataMap headers = 1;
+  ChatGroupEditAdminRequest data = 2;
+}
+
+// ********** ChatGroup_Delete ********** //
+// Backend NATS messaging for `ChatGroup_Delete`: Deletes a chat group
+message NatsChatGroupDeleteRequest {
+  repeated MetadataMap headers = 1;
+  ChatGroupDeleteRequest data = 2;
+}
