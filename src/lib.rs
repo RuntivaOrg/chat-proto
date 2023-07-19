@@ -2,6 +2,8 @@
 #![deny(clippy::all)]
 // #![warn(clippy::pedantic)]
 
+pub mod rich_error;
+
 pub use self::proto::*;
 
 #[allow(unused_qualifications)]
