@@ -12,8 +12,14 @@ message ChatGroupCreateRequest {
     repeated int64 user_ids = 4;
 }
 
-// Request Message for `ChatGroup_UpdateTitle` and `ChatGroup_UpdateAbout` RPCs. 
-message ChatGroupStrFieldUpdateRequest {
+// Request Message for `ChatGroup_UpdateTitle` RPC. 
+message ChatGroupUpdateTitleRequest {
+    int64 id = 1;
+    string value = 2;
+}
+
+// Request Message for `ChatGroup_UpdateAbout` RPC. 
+message ChatGroupUpdateAboutRequest {
     int64 id = 1;
     string value = 2;
 }

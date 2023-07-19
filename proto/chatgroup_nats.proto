@@ -26,15 +26,20 @@ message NatsChatGroupCreateResponse {
 }
 
 // ********** ChatGroup_UpdateTitle ********** //
+// Backend NATS messaging for `ChatGroup_UpdateTitle` and `ChatGroup_UpdateAbout`: Requests to update the title or about of a chat group
+message NatsChatGroupUpdateTitleRequest {
+  repeated MetadataMap headers = 1;
+  ChatGroupUpdateTitleRequest data = 2;
+}
+
 // ********** ChatGroup_UpdateAbout ********** //
 // Backend NATS messaging for `ChatGroup_UpdateTitle` and `ChatGroup_UpdateAbout`: Requests to update the title or about of a chat group
-message NatsChatGroupStrFieldUpdateRequest {
+message NatsChatGroupUpdateAboutRequest {
   repeated MetadataMap headers = 1;
-  ChatGroupStrFieldUpdateRequest data = 2;
+  ChatGroupUpdateAboutRequest data = 2;
 }
 
 // ********** ChatGroup_AddUser ********** //
-// ********** ChatGroup_RemoveUser ********** //
 // Backend NATS messaging for `ChatGroup_AddUser`: Request to add a user from a chat group
 message NatsChatGroupAddUserRequest {
   repeated MetadataMap headers = 1;
