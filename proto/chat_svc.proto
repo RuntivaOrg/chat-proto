@@ -59,7 +59,11 @@ service ChatService {
 
     // Disables a top-level channel
     // TODO: require permissions to be able to call this method.
-    rpc DisableChannel(ChannelDeleteRequest) returns (google.protobuf.Empty) {}
+    //rpc DisableChannel(ChannelDeleteRequest) returns (google.protobuf.Empty) {}
+
+    // Disables a top-level channel
+    // TODO: require permissions to be able to call this method.
+    rpc DeleteChannel(ChannelDeleteRequest) returns (google.protobuf.Empty) {}
 
 
     // ***** Topics ******* //
