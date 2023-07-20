@@ -47,15 +47,19 @@ service ChatService {
     // ***** Channels ******* //
     // Creates a new top-level channel
     // TODO: require permissions to be able to call this method.
-    rpc Channel_Create(ChannelAddRequest) returns (Channel) {}
+    rpc Channel_Create(ChannelCreateRequest) returns (Channel) {}
+
+    // // Disables a top-level channel
+    // // TODO: require permissions to be able to call this method.
+    // rpc DisableChannel(Channel) returns (google.protobuf.Empty) {}
+
+    // // Enables a top-level channel
+    // // TODO: require permissions to be able to call this method.
+    // rpc EnableChannel(Channel) returns (google.protobuf.Empty) {}
 
     // Disables a top-level channel
     // TODO: require permissions to be able to call this method.
-    rpc DisableChannel(Channel) returns (google.protobuf.Empty) {}
-
-    // Enables a top-level channel
-    // TODO: require permissions to be able to call this method.
-    rpc EnableChannel(Channel) returns (google.protobuf.Empty) {}
+    rpc DisableChannel(ChannelDeleteRequest) returns (google.protobuf.Empty) {}
 
 
     // ***** Topics ******* //

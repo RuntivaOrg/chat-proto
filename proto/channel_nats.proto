@@ -2,14 +2,35 @@ syntax = "proto3";
 
 package chat;
 
+import "channel_inputs.proto";
 import "channel.proto";
-import "error_reply.proto";
 
-// NATS Specific messages that are used internally on the server-side to offboard request processing from the ChatServer to the backend services. 
-message NatsChannelReply {
+import "error_reply.proto";
+import "nats_metadata.proto";
+
+// NATS Specific messages that are used internally on the server-side to offboard request processing 
+// from the ChatServer to the backend services. 
+
+// ********** Channel_Create ********** //
+// Backend NATS messaging for `Channel_Create`: Request to create a new chat group
+message NatsChannelCreateRequest {
+  repeated MetadataMap headers = 1;
+  ChannelCreateRequest data = 2;
+}
+
+message NatsChannelCreateResponse {
   oneof msg {
     Channel data = 1;
     ErrorReply error = 2;
   }
 }
+
+
+// ********** Channel_Delete ********** //
+// Backend NATS messaging for `Channel_Delete`: Deletes a chat group
+message NatsChannelDeleteRequest {
+  repeated MetadataMap headers = 1;
+  ChannelDeleteRequest data = 2;
+}
+
 

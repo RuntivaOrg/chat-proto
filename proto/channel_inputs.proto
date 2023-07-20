@@ -6,7 +6,8 @@ import "channel.proto";
 //import "google/protobuf/timestamp.proto";
 
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
-message ChannelAddRequest {
+// Request Message for `Channel_Create` RPC.
+message ChannelCreateRequest {
     //string id = 1; // UUID
     string title = 2;
     string about = 3;
@@ -22,4 +23,9 @@ message ChannelAddRequest {
 message ChannelEditTitleRequest {
     int64 id = 1;
     string title = 2;
+}
+
+// Request Message for `Channel_Delete` RPC. 
+message ChannelDeleteRequest {
+    int64 id = 1;
 }
