@@ -2,7 +2,8 @@
 #![deny(clippy::all)]
 // #![warn(clippy::pedantic)]
 
-pub mod rich_error;
+// Excluding rich_error from the build for now.
+//pub mod rich_error;
 
 pub use self::proto::*;
 

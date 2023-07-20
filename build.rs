@@ -14,8 +14,8 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/chatgroup_nats.proto",
         "proto/nats_emptyresponse.proto",
         // rich error messages
-        "proto/status.proto",
-        "proto/error_details.proto",
+        //"proto/status.proto",
+        //"proto/error_details.proto",
     ];
     let dirs = &["proto"];
 
