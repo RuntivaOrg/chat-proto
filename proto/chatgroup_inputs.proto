@@ -6,10 +6,11 @@ package chat;
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
 // Request Message for `ChatGroup_Create` RPC.
 message ChatGroupCreateRequest {
-    int64 owner_id = 1;
-    string title = 2;
-    int32 ttl_period = 3;
-    repeated int64 user_ids = 4;
+    string unique_id = 1
+    int64 owner_id = 2;
+    string title = 3;
+    int32 ttl_period = 4;
+    repeated int64 user_ids = 5;
 }
 
 // Request Message for `ChatGroup_UpdateTitle` RPC. 
