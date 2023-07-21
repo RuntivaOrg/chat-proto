@@ -1,12 +1,12 @@
 use crate::chat as proto;
 
-use crate::proto_ext::proto::{DataGetter, HeaderGetter};
+use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // Delete Request Data message
 impl DataGetter<proto::ChatGroupDeleteRequest> for proto::NatsChatGroupDeleteRequest {
-    fn data(&self) -> &Option<proto::ChatGroupDeleteRequest> {
-        &self.data
+    fn data(&self) -> Option<&proto::ChatGroupDeleteRequest> {
+        self.data.as_ref()
     }
 }
 
@@ -16,6 +16,25 @@ impl HeaderGetter for proto::NatsChatGroupDeleteRequest {
         &self.headers
     }
 }
+
+// ********************************** NATS Request Setter **********************************
+impl NatsRequestSetter<proto::ChatGroupDeleteRequest, proto::NatsChatGroupDeleteRequest>
+    for proto::NatsChatGroupDeleteRequest
+{
+    fn from_headers_and_message(
+        headers: impl Into<Vec<proto::MetadataMap>>,
+        data: impl Into<proto::ChatGroupDeleteRequest>,
+    ) -> Self {
+        proto::NatsChatGroupDeleteRequest {
+            headers: headers.into(),
+            data: Some(data.into()),
+        }
+    }
+}
+
+// ***********************************  Response Getters ***********************************
+//
+// *** Uses the generic implementations from chat-proto\src\proto_ext\empty_response_ext.rs
 
 // ***********************************  Response Setters ***********************************
 //
