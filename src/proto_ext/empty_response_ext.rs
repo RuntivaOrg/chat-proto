@@ -1,6 +1,6 @@
 use crate::chat as proto;
 
-use super::{DataGetter, DataSetter, ErrorSetter};
+use super::{DataGetter, DataSetter, ErrorGetter, ErrorSetter};
 
 // Shared/common response for empty NATS responses
 //
@@ -10,6 +10,16 @@ impl DataGetter<()> for proto::NatsEmptyResponse {
     fn data(&self) -> Option<&()> {
         match self.msg {
             Some(proto::nats_empty_response::Msg::Success(_)) => Some(&()),
+            _ => None,
+        }
+    }
+}
+
+// Create Response Error setter
+impl ErrorGetter for proto::NatsEmptyResponse {
+    fn error(&self) -> Option<&proto::ErrorReply> {
+        match &self.msg {
+            Some(proto::nats_empty_response::Msg::Error(e)) => Some(e),
             _ => None,
         }
     }

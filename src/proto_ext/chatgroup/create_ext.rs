@@ -1,6 +1,8 @@
 use crate::chat as proto;
 
-use crate::proto_ext::{DataGetter, DataSetter, ErrorSetter, HeaderGetter, NatsRequestSetter};
+use crate::proto_ext::{
+    DataGetter, DataSetter, ErrorGetter, ErrorSetter, HeaderGetter, NatsRequestSetter,
+};
 
 // ***********************************  Request Getters ***********************************
 // Create Request Data message
@@ -38,6 +40,16 @@ impl DataGetter<proto::ChatGroup> for proto::NatsChatGroupCreateResponse {
     fn data(&self) -> Option<&proto::ChatGroup> {
         match self.msg {
             Some(proto::nats_chat_group_create_response::Msg::Data(ref data)) => Some(data),
+            _ => None,
+        }
+    }
+}
+
+// Create Response Error setter
+impl ErrorGetter for proto::NatsChatGroupCreateResponse {
+    fn error(&self) -> Option<&proto::ErrorReply> {
+        match &self.msg {
+            Some(proto::nats_chat_group_create_response::Msg::Error(e)) => Some(e),
             _ => None,
         }
     }

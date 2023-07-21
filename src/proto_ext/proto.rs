@@ -46,3 +46,8 @@ where
 {
     fn set_error(data: impl Into<M>) -> N;
 }
+
+/// Trait for generically getting the error component of a NATS **Response** message
+pub trait ErrorGetter {
+    fn error(&self) -> Option<&proto::ErrorReply>;
+}
