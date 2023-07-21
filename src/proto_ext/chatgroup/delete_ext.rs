@@ -5,8 +5,8 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 // ***********************************  Request Getters ***********************************
 // Delete Request Data message
 impl DataGetter<proto::ChatGroupDeleteRequest> for proto::NatsChatGroupDeleteRequest {
-    fn data(&self) -> Option<&proto::ChatGroupDeleteRequest> {
-        self.data.as_ref()
+    fn to_data(self) -> Option<proto::ChatGroupDeleteRequest> {
+        self.data
     }
 }
 

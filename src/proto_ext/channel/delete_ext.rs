@@ -5,8 +5,8 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 // ***********************************  Request Getters ***********************************
 // RemoveUser Request Data message
 impl DataGetter<proto::ChannelDeleteRequest> for proto::NatsChannelDeleteRequest {
-    fn data(&self) -> Option<&proto::ChannelDeleteRequest> {
-        self.data.as_ref()
+    fn to_data(self) -> Option<proto::ChannelDeleteRequest> {
+        self.data
     }
 }
 

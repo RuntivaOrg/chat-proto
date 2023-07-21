@@ -7,8 +7,8 @@ use crate::proto_ext::{
 // ***********************************  Request Getters ***********************************
 // Create Request Data message
 impl DataGetter<proto::ChannelCreateRequest> for proto::NatsChannelCreateRequest {
-    fn data(&self) -> Option<&proto::ChannelCreateRequest> {
-        self.data.as_ref()
+    fn to_data(self) -> Option<proto::ChannelCreateRequest> {
+        self.data
     }
 }
 
@@ -37,9 +37,9 @@ impl NatsRequestSetter<proto::ChannelCreateRequest, proto::NatsChannelCreateRequ
 // ***********************************  Response Getters ***********************************
 // Create Response Data setter
 impl DataGetter<proto::Channel> for proto::NatsChannelCreateResponse {
-    fn data(&self) -> Option<&proto::Channel> {
+    fn to_data(self) -> Option<proto::Channel> {
         match self.msg {
-            Some(proto::nats_channel_create_response::Msg::Data(ref data)) => Some(data),
+            Some(proto::nats_channel_create_response::Msg::Data(data)) => Some(data),
             _ => None,
         }
     }

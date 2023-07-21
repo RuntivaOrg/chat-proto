@@ -5,8 +5,8 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 // ***********************************  Request Getters ***********************************
 // EditAdmin Request Data message
 impl DataGetter<proto::ChatGroupEditAdminRequest> for proto::NatsChatGroupEditAdminRequest {
-    fn data(&self) -> Option<&proto::ChatGroupEditAdminRequest> {
-        self.data.as_ref()
+    fn to_data(self) -> Option<proto::ChatGroupEditAdminRequest> {
+        self.data
     }
 }
 

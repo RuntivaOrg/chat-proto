@@ -5,8 +5,8 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 // ***********************************  Request Getters ***********************************
 // AddUser Request Data message
 impl DataGetter<proto::ChatGroupAddUserRequest> for proto::NatsChatGroupAddUserRequest {
-    fn data(&self) -> Option<&proto::ChatGroupAddUserRequest> {
-        self.data.as_ref()
+    fn to_data(self) -> Option<proto::ChatGroupAddUserRequest> {
+        self.data
     }
 }
 

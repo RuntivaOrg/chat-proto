@@ -9,7 +9,7 @@ pub trait DataGetter<T>
 where
     T: prost::Message,
 {
-    fn data(&self) -> Option<&T>;
+    fn to_data(self) -> Option<T>;
 }
 
 /// Trait for generically retrieving the header component of a NATS **Request** message

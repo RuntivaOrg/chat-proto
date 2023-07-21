@@ -7,9 +7,9 @@ use super::{DataGetter, DataSetter, ErrorGetter, ErrorSetter};
 // ***********************************  Response Getters ***********************************
 // Create Response Data setter
 impl DataGetter<()> for proto::NatsEmptyResponse {
-    fn data(&self) -> Option<&()> {
+    fn to_data(self) -> Option<()> {
         match self.msg {
-            Some(proto::nats_empty_response::Msg::Success(_)) => Some(&()),
+            Some(proto::nats_empty_response::Msg::Success(_)) => Some(()),
             _ => None,
         }
     }

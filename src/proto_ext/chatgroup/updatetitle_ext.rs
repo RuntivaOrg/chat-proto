@@ -5,8 +5,8 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 // ***********************************  Request Getters ***********************************
 // UpdateTitle Request Data message
 impl DataGetter<proto::ChatGroupUpdateTitleRequest> for proto::NatsChatGroupUpdateTitleRequest {
-    fn data(&self) -> Option<&proto::ChatGroupUpdateTitleRequest> {
-        self.data.as_ref()
+    fn to_data(self) -> Option<proto::ChatGroupUpdateTitleRequest> {
+        self.data
     }
 }
 
