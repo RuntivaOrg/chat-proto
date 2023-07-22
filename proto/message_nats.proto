@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package chat;
 
-import "chatgroup_inputs.proto";
-import "chatgroup.proto";
+import "message_inputs.proto";
+import "message.proto";
 
 import "error_reply.proto";
 import "nats_metadata.proto";
