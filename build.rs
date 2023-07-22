@@ -13,6 +13,8 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/chatgroup_inputs.proto",
         "proto/chatgroup_nats.proto",
         "proto/nats_emptyresponse.proto",
+        "proto/common_peer.proto",
+        "proto/common_entities.proto",
         // rich error messages
         //"proto/status.proto",
         //"proto/error_details.proto",

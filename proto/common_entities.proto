@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package chat;
+
+
+// The `MessageEntity` type defines styling, tagging, and mentioning in messages.
+message MessageEntity {
+    oneof entity {
+        BoldEntity bold = 1;
+    }
+}
+
+message BoldEntity {
+  int32 start = 1;
+  int32 end = 2;
+}
+

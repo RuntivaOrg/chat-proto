@@ -4,8 +4,7 @@ package chat;
 //import "field_behavior.proto";
 import "google/protobuf/timestamp.proto";
 
-// Schema optiongs for ChatGroup
-
+// Schema for ChatGroup
 message ChatGroup {
     int64 id = 1; 
     int64 owner_id = 2;

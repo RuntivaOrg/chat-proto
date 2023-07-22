@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package chat;
+
+import "common_peer.proto";
+import "common_entities.proto";
+
+// Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
+// Request Message for `Message_Send` RPC.
+message MessageSendRequest {
+    // Unique client message ID required to prevent message resending.
+    // Every messsage should be sent with a new unique ID.
+    // format should be a Nanoid string 12-16 characters in length.
+    string unique_id = 1;
+
+    // ID of the user sending the message. TODO: Convert the source of this to the JWT token.
+    int64 owner_id = 2;
+
+    PeerInput input_peer = 3;
+
+    int64 reply_to_msg_id = 4;
+    int64 top_msg_id = 5;
+
+    string Message = 6;
+    repeated MessageEntity entities = 7;
+
+    PeerInput send_as_peer = 8;
+}
+

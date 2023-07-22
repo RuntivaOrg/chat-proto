@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package chat;
+
+
+// The `Peer` type defines an entity in the chat system. It can be
+// a user, chatgroup, topic, forum? or channel
+message PeerInput {
+    oneof peer {
+        PeerUser user = 1;
+        PeerChatGroup chatgroup = 2;
+        PeerTopic topic = 3;
+        PeerForum forum = 4;
+        PeerChannel channel = 5;
+    }
+}
+
+message PeerUser {
+  int64 user_id = 1;
+}
+
+message PeerChatGroup {
+  int64 ChatGroup_id = 1;
+}
+
+message PeerTopic {
+  int64 topic_id = 1;
+}
+
+message PeerForum {
+  int64 forum_id = 1;
+}
+
+message PeerChannel {
+  int64 channel_id = 1;
+}
