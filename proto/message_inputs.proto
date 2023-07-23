@@ -18,12 +18,14 @@ message MessageSendRequest {
 
     PeerInput input_peer = 3;
 
-    int64 reply_to_msg_id = 4;
-    int64 top_msg_id = 5;
-
     string Message = 6;
+
+    optional int64 reply_to_msg_id = 4;
+
+    optional int64 top_msg_id = 5;
+
     repeated MessageEntity entities = 7;
 
-    PeerInput send_as_peer = 8;
+    optional PeerInput send_as = 8;
 }
 
