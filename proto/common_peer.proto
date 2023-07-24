@@ -8,7 +8,7 @@ package chat;
 message PeerInput {
     oneof peer {
         PeerUser user = 1;
-        PeerChatGroup chatgroup = 2;
+        PeerChatGroup chat_group = 2;
         PeerTopic topic = 3;
         PeerForum forum = 4;
         PeerChannel channel = 5;
