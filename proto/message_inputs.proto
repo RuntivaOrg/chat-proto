@@ -16,16 +16,26 @@ message MessageSendRequest {
     // ID of the user sending the message. TODO: Convert the source of this to the JWT token.
     int64 owner_id = 2;
 
+    // owning container of the message -- channel, topic or chat_group
     PeerInput input_peer = 3;
 
-    string Message = 6;
+    // The actual message
+    string Message = 4;
 
-    optional int64 reply_to_msg_id = 4;
+    // ID of the message being replied to
+    optional int64 reply_to_msg_id = 5;
 
-    optional int64 top_msg_id = 5;
+    // top_msg_id - not currently used
+    //optional int64 top_msg_id = 6;
 
     repeated MessageEntity entities = 7;
 
+    //Send this message as the specified peer
+
+    // flag indicating the sender of the message is a channel
     optional PeerInput send_as = 8;
+
+    // Send this message silently (no notifications for the receivers)
+    bool silent = 9;
 }
 
