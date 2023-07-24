@@ -6,12 +6,49 @@ package chat;
 // The `MessageEntity` type defines styling, tagging, and mentioning in messages.
 message MessageEntity {
     oneof entity {
-        BoldEntity bold = 1;
+        // Styling entities
+        Entity bold = 1;
+        Entity italic = 2;
+        Entity bold_italic = 3;
+        Entity underline = 4;
+        Entity strike = 5;
+        Entity block_quote = 6;
+        EmojiEntity custom_emoji = 7;
+
+        // Tagging entities
+        UserEntity self_mention = 8;
+        UserEntity mention = 9;
+        Entity hashtag = 10;
+
+        // Linking entities
+        StringEntity text_url = 11;
+        Entity url = 12;
+        Entity email = 13;
+        Entity cashtag = 14;
+        Entity phone = 15;
     }
 }
 
-message BoldEntity {
+message Entity {
   int32 start = 1;
   int32 end = 2;
 }
 
+message StringEntity {
+  int32 start = 1;
+  int32 end = 2;
+  string text = 3;
+
+}
+
+message UserEntity {
+  int32 start = 1;
+  int32 end = 2;
+  int64 user_id = 3;
+}
+
+message EmojiEntity {
+  int32 start = 1;
+  int32 end = 2;
+  int64 document_id = 3;
+}
