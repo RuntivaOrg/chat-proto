@@ -10,8 +10,7 @@ message PeerInput {
         PeerUser user = 1;
         PeerChatGroup chat_group = 2;
         PeerTopic topic = 3;
-        PeerForum forum = 4;
-        PeerChannel channel = 5;
+        PeerChannel channel = 4;
     }
 }
 
@@ -25,10 +24,6 @@ message PeerChatGroup {
 
 message PeerTopic {
   int64 topic_id = 1;
-}
-
-message PeerForum {
-  int64 forum_id = 1;
 }
 
 message PeerChannel {
