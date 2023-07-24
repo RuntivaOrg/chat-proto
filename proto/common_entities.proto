@@ -30,25 +30,25 @@ message MessageEntity {
 }
 
 message Entity {
-  int32 start = 1;
-  int32 end = 2;
+  int32 offset = 1;
+  int32 length = 2;
 }
 
 message StringEntity {
-  int32 start = 1;
-  int32 end = 2;
+  int32 offset = 1;
+  int32 length = 2;
   string text = 3;
 
 }
 
 message UserEntity {
-  int32 start = 1;
-  int32 end = 2;
+  int32 offset = 1;
+  int32 length = 2;
   int64 user_id = 3;
 }
 
 message EmojiEntity {
-  int32 start = 1;
-  int32 end = 2;
+  int32 offset = 1;
+  int32 length = 2;
   int64 document_id = 3;
 }
