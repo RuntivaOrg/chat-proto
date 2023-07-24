@@ -32,8 +32,6 @@ message MessageSendRequest {
 
     repeated MessageEntity entities = 7;
 
-    //Send this message as the specified peer
-
     // flag indicating the sender of the message is a channel
     optional PeerInput send_as = 8;
 
