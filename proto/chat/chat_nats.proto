@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package chat;
+
+import "chat/chat_inputs.proto";
+import "chat/chat.proto";
+
+import "error_reply.proto";
+import "nats_metadata.proto";
+
+// NATS Specific messages that are used internally on the server-side to offboard request processing 
+// from the ChatServer to the backend services. 
+
+// ********** Chat_Create ********** //
+// Backend NATS messaging for `Chat_Create`: Request to create a new chat 
+message NatsChatCreateRequest {
+  repeated MetadataMap headers = 1;
+  ChatCreateRequest data = 2;
+}
+
+message NatsChatCreateResponse {
+  oneof msg {
+    Chat data = 1;
+    ErrorReply error = 2;
+  }
+}
+
+// ********** Chat_Delete ********** //
+// Backend NATS messaging for `Chat_Delete`: Deletes a chat 
+message NatsChatDeleteRequest {
+  repeated MetadataMap headers = 1;
+  ChatDeleteRequest data = 2;
+}

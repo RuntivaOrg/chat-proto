@@ -7,6 +7,10 @@ package chat;
 import "channel.proto";
 import "channel_inputs.proto";
 
+import "chat/chat.proto";
+import "chat/chat_inputs.proto";
+
+
 import "chatgroup.proto";
 import "chatgroup_inputs.proto";
 
@@ -18,6 +22,14 @@ import "google/protobuf/empty.proto";
 
 // Interface exported by the server.
 service ChatService {
+
+    // ****************************** Chats ******************************
+    // Creates a new chat 
+    rpc Chat_Create(ChatCreateRequest) returns (Chat) {}
+
+    // Deletes a chat 
+    rpc Chat_Delete(ChatDeleteRequest) returns (google.protobuf.Empty) {}
+
 
     // ****************************** ChatGroups ******************************
     // Creates a new chat group
@@ -38,7 +50,7 @@ service ChatService {
     // Sets/unsets user as admin for a chat group
     rpc ChatGroup_EditAdmin(ChatGroupEditAdminRequest) returns (google.protobuf.Empty) {}
 
-    // Sets/unsets user as admin for a chat group
+    // Deletes a chat group
     rpc ChatGroup_Delete(ChatGroupDeleteRequest) returns (google.protobuf.Empty) {}
 
     // ******************************* Messages *******************************

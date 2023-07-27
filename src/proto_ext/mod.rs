@@ -1,7 +1,9 @@
 pub mod channel;
+pub mod chat;
 pub mod chatgroup;
-mod empty_response_ext;
 pub mod message;
+
+mod empty_response_ext;
 
 mod proto;
 pub use proto::*;

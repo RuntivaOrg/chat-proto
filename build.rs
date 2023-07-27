@@ -10,6 +10,8 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/channel_inputs.proto",
         "proto/channel_nats.proto",
         "proto/chat/chat.proto",
+        "proto/chat/chat_inputs.proto",
+        "proto/chat/chat_nats.proto",
         "proto/chatgroup.proto",
         "proto/chatgroup_inputs.proto",
         "proto/chatgroup_nats.proto",

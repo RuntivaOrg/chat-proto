@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package chat;
+
+// Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
+// Request Message for `Chat_Create` RPC.
+message ChatCreateRequest {
+    string unique_id = 1;
+    int64 user_id = 2;
+    int32 ttl_period = 4;
+}
+
+// Request Message for `Chat_Delete` RPC. 
+message ChatDeleteRequest {
+    int64 id = 1;
+}
