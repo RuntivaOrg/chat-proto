@@ -8,14 +8,19 @@ package chat;
 message PeerInput {
     oneof peer {
         PeerUser user = 1;
-        PeerChatGroup chat_group = 2;
-        PeerTopic topic = 3;
-        PeerChannel channel = 4;
+        PeerChat chat = 2;
+        PeerChatGroup chat_group = 3;
+        PeerTopic topic = 4;
+        PeerChannel channel = 5;
     }
 }
 
 message PeerUser {
   int64 user_id = 1;
+}
+
+message PeerChat {
+  int64 Chat_id = 1;
 }
 
 message PeerChatGroup {
