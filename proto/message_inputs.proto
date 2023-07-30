@@ -22,20 +22,23 @@ message MessageSendRequest {
     // The actual message
     string Message = 4;
 
+    // ID of the message being forwarded
+    optional int64 fwd_from_msg_id = 5;
+
     // ID of the message being replied to
-    optional int64 reply_to_msg_id = 5;
+    optional int64 reply_to_msg_id = 6;
 
     // This field is required for channel posts. The top_msg_id is the 
     // channel post message id that owns the message thread for replies
     // For topics and chat groups, this field is not applicable
-    optional int64 top_msg_id = 6;
+    optional int64 top_msg_id = 7;
 
-    repeated MessageEntity entities = 7;
+    repeated MessageEntity entities = 8;
 
     // flag indicating the sender of the message is a channel
-    optional PeerInput send_as = 8;
+    optional PeerInput send_as = 9;
 
     // Send this message silently (no notifications for the receivers)
-    bool silent = 9;
+    bool silent = 10;
 }
 
