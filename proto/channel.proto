@@ -13,7 +13,7 @@ message Channel {
     // Date when user join the channel -- or if user is not a member, channel creation date 
     google.protobuf.Timestamp date = 6;
     ChannelType channel_type = 7;
-    int64 pinned_msg_id = 8;
+    optional int64 pinned_msg_id = 8;
     repeated string available_reactions = 9; // Todo: ChatReactions
     
     // List of members of this channel -- most recent ??
