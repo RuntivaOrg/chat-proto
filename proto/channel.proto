@@ -12,11 +12,11 @@ message Channel {
     // The description of the channel
     string about = 3;
     // Optional photo assigned to the channel
-    optional int32 photo_id = 4;
+    optional int64 photo_id = 4;
     // channel owner. Initial creator until changed/reassigned to another user
     int64 owner_id = 5;
     // Date channel was created
-     google.protobuf.Timestamp created_date = 6;
+    google.protobuf.Timestamp created_date = 6;
     // Channel type - Broadcast or Discussion Group or Forum
     ChannelType channel_type = 7;
 
