@@ -30,5 +30,5 @@ message ChannelParticipantRights {
 	bool send_media = 4;
 	bool embed_links = 5;
 	bool invite_users = 6;
-	bool until_date = 7;
+	//bool until_date = 7;
 }

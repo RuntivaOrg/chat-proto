@@ -16,8 +16,9 @@ message ChannelCreateRequest {
 // Request Message for `Channel_EditAdmin` RPC.
 message ChannelEditAdminRequest {
     int64 channel_id = 1;
-    bool is_admin = 2;
-    ChannelAdminRights admin_rights = 3;
+    int64 user_id = 2;
+    bool is_admin = 3;
+    ChannelAdminRights admin_rights = 4;
 }
 
 // Request Message for `Channel_EditOwner` RPC. 
