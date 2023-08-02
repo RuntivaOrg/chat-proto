@@ -26,6 +26,47 @@ message NatsChannelCreateResponse {
   }
 }
 
+// ********** Channel_EditAdmin ********** //
+// Backend NATS messaging for `Channel_EditAdmin`: Edits admin rights of the channel
+message NatsChannelEditAdminRequest {
+  repeated MetadataMap headers = 1;
+  ChannelEditAdminRequest data = 2;
+}
+
+// ********** Channel_EditOwner ********** //
+// Backend NATS messaging for `Channel_EditOwner`: Assigns channel ownership to another user
+message NatsChannelEditOwnerRequest {
+  repeated MetadataMap headers = 1;
+  ChannelEditOwnerRequest data = 2;
+}
+
+// ********** Channel_EditParticipant ********** //
+// Backend NATS messaging for `Channel_EditParticipant`: Edits participant rights of the channel
+message NatsChannelEditParticipantRequest {
+  repeated MetadataMap headers = 1;
+  ChannelEditParticipantRequest data = 2;
+}
+
+// ********** Channel_EditPhoto ********** //
+// Backend NATS messaging for `Channel_EditPhoto`: Edits the photo of the channel
+message NatsChannelEditPhotoRequest {
+  repeated MetadataMap headers = 1;
+  ChannelEditPhotoRequest data = 2;
+}
+
+// ********** Channel_EditTitle ********** //
+// Backend NATS messaging for `Channel_EditTitle`: Edits the title of the channel
+message NatsChannelEditTitleRequest {
+  repeated MetadataMap headers = 1;
+  ChannelEditTitleRequest data = 2;
+}
+
+// ********** Channel_EditAbout ********** //
+// Backend NATS messaging for `Channel_EditAbout`: Edits the about of the channel
+message NatsChannelEditAboutRequest {
+  repeated MetadataMap headers = 1;
+  ChannelEditAboutRequest data = 2;
+}
 
 // ********** Channel_Delete ********** //
 // Backend NATS messaging for `Channel_Delete`: Deletes a chat group

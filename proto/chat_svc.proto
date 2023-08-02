@@ -68,7 +68,7 @@ service ChatService {
     rpc Channel_Create(ChannelCreateRequest) returns (Channel) {}
 
     // Update the admin rights for a specific user on a channel
-    rpc Channel_EditAdmin(ChannelEditAboutRequest) returns (google.protobuf.Empty) {}
+    rpc Channel_EditAdmin(ChannelEditAdminRequest) returns (google.protobuf.Empty) {}
 
     // Assigns this channel to a new owner
     rpc Channel_EditOwner(ChannelEditOwnerRequest) returns (google.protobuf.Empty) {}
