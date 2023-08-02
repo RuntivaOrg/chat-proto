@@ -31,7 +31,8 @@ message ChannelEditOwnerRequest {
 // Request Message for `Channel_EditParticipant` RPC. 
 message ChannelEditParticipantRequest {
     int64 channel_id = 1;
-    ChannelParticipantRights participant_rights = 2;
+    int64 user_id = 2;
+    ChannelParticipantRights participant_rights = 3;
 }
 
 // Request Message for `Channel_EditPhoto` RPC. 
