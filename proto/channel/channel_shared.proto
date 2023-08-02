@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package chat;
+
+enum ChannelType {
+    CHANNEL_TYPE_UNKNOWN = 0;
+    CHANNEL_TYPE_BROADCAST = 1;
+    CHANNEL_TYPE_DISCUSSIONGROUP = 2;
+    CHANNEL_TYPE_FORUM = 3;
+}
+
+message ChannelAdminRights {
+    bool is_anonymous = 1;
+	bool change_info = 2;
+	bool post_messages = 3;
+	bool edit_messages = 4;
+	bool delete_messages = 5;
+	bool ban_users = 6;
+	bool invite_users = 7;
+	bool pin_messages = 8;
+	bool add_admins = 9;
+	bool view_statistics = 10;
+	bool view_participants = 11;
+}
+
+message ChannelParticipantRights {
+    bool is_banned = 1;
+	bool view_messages = 2;
+	bool send_messages = 3;
+	bool send_media = 4;
+	bool embed_links = 5;
+	bool invite_users = 6;
+	bool until_date = 7;
+}

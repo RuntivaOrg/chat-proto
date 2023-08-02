@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package chat;
+import "channel/channel_shared.proto";
+
+// Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
+// Request Message for `Channel_Create` RPC.
+message ChannelCreateRequest {
+    string unique_id = 1; // Nanoid
+    string title = 2;
+    string about = 3;
+    ChannelType channel_type = 4;
+    int32 ttl_period = 9;
+}
+
+// Request Message for `Channel_EditAdmin` RPC.
+message ChannelEditAdminRequest {
+    int64 channel_id = 1;
+    bool is_admin = 2;
+    ChannelAdminRights admin_rights = 3;
+}
+
+// Request Message for `Channel_EditOwner` RPC. 
+message ChannelEditOwnerRequest {
+    int64 channel_id = 1;
+    int64 user_id = 2;
+    string needs_2fa_reconfirmation_TBD = 3;
+}
+
+// Request Message for `Channel_EditParticipant` RPC. 
+message ChannelEditParticipantRequest {
+    int64 channel_id = 1;
+    ChannelParticipantRights participant_rights = 2;
+}
+
+// Request Message for `Channel_EditPhoto` RPC. 
+message ChannelEditPhotoRequest {
+    int64 channel_id = 1;
+    oneof photo {
+        int64 photo64 = 2;
+        string input_file_TBD = 3;
+    }
+}
+
+// Request Message for `Channel_EditTitle` RPC. 
+message ChannelEditTitleRequest {
+    int64 channel_id = 1;
+    string title = 2;
+}
+
+// Request Message for `Channel_EditAbout` RPC. 
+message ChannelEditAboutRequest {
+    int64 channel_id = 1;
+    string about = 2;
+} 
+
+// Request Message for `Channel_Delete` RPC. 
+message ChannelDeleteRequest {
+    int64 channel_id = 1;
+}
+

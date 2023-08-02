@@ -1,8 +1,9 @@
 syntax = "proto3";
 
 package chat;
-//import "field_behavior.proto";
+
 import "google/protobuf/timestamp.proto";
+import "channel/channel_shared.proto";
 
 message Channel {
     // ID of the channel
@@ -44,13 +45,6 @@ message Channel {
 
 }
 
-
-enum ChannelType {
-    CHANNEL_TYPE_UNKNOWN = 0;
-    CHANNEL_TYPE_BROADCAST = 1;
-    CHANNEL_TYPE_DISCUSSIONGROUP = 2;
-    CHANNEL_TYPE_FORUM = 3;
-}
 
 message ChannelSettings {
     // Flag indicating whether the channel has been verified

@@ -11,7 +11,7 @@ import "nats_metadata.proto";
 // NATS Specific messages that are used internally on the server-side to offboard request processing 
 // from the ChatServer to the backend services. 
 
-// ********** ChatGroup_Create ********** //
+// ********** Message_Send ********** //
 // Backend NATS messaging for `Message_Send`: Request to send a new message is a specified chat
 message NatsMessageSendRequest {
   repeated MetadataMap headers = 1;

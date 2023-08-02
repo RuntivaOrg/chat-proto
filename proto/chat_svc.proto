@@ -4,8 +4,8 @@ package chat;
 
 //import "google/api/annotations.proto";
 //import "google/api/field_behavior.proto";
-import "channel.proto";
-import "channel_inputs.proto";
+import "channel/channel.proto";
+import "channel/channel_inputs.proto";
 
 import "chat/chat.proto";
 import "chat/chat_inputs.proto";
@@ -63,26 +63,31 @@ service ChatService {
     // w/ user auth system and user lookup server in place.
     rpc TempRegisterUser(RegisterUserRequest) returns (RegisterUserResponse) {}
 
-    // ***** Channels ******* //
+    // ******************************** Channels *********************************
     // Creates a new top-level channel
-    // TODO: require permissions to be able to call this method.
     rpc Channel_Create(ChannelCreateRequest) returns (Channel) {}
 
-    // // Disables a top-level channel
-    // // TODO: require permissions to be able to call this method.
-    // rpc DisableChannel(Channel) returns (google.protobuf.Empty) {}
+    // Update the admin rights for a specific user on a channel
+    rpc Channel_EditAdmin(ChannelEditAboutRequest) returns (google.protobuf.Empty) {}
 
-    // // Enables a top-level channel
-    // // TODO: require permissions to be able to call this method.
-    // rpc EnableChannel(Channel) returns (google.protobuf.Empty) {}
+    // Assigns this channel to a new owner
+    rpc Channel_EditOwner(ChannelEditOwnerRequest) returns (google.protobuf.Empty) {}
+
+    // Updates a participants rights on a channel
+    rpc Channel_EditParticipant(ChannelEditParticipantRequest) returns (google.protobuf.Empty) {}
+
+    // Updates the photo for a channel
+    rpc Channel_EditPhoto(ChannelEditPhotoRequest) returns (google.protobuf.Empty) {}
+
+    // Updates the title for a channel
+    rpc Channel_EditTitle(ChannelEditTitleRequest) returns (google.protobuf.Empty) {}
+
+    // Updates the about for a channel
+    rpc Channel_EditAbout(ChannelEditAboutRequest) returns (google.protobuf.Empty) {}
 
     // Disables a top-level channel
     // TODO: require permissions to be able to call this method.
-    //rpc DisableChannel(ChannelDeleteRequest) returns (google.protobuf.Empty) {}
-
-    // Disables a top-level channel
-    // TODO: require permissions to be able to call this method.
-    rpc ChannelDelete(ChannelDeleteRequest) returns (google.protobuf.Empty) {}
+    rpc Channel_Delete(ChannelDeleteRequest) returns (google.protobuf.Empty) {}
 
 
     // ***** Topics ******* //
