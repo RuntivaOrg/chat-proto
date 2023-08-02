@@ -5,40 +5,43 @@ package chat;
 import "google/protobuf/timestamp.proto";
 
 message Channel {
+    // ID of the channel
     int64 id = 1; 
+    // The channel title that is searchable by users
     string title = 2;
+    // The description of the channel
     string about = 3;
-    string owner_username = 4;
-    string photo_url = 5; // TODO: ChatPhoto type
-    // Date when user join the channel -- or if user is not a member, channel creation date 
-    google.protobuf.Timestamp date = 6;
+    // Optional photo assigned to the channel
+    optional int32 photo_id = 4;
+    // channel owner. Initial creator until changed/reassigned to another user
+    int64 owner_id = 5;
+    // Date channel was created
+     google.protobuf.Timestamp created_date = 6;
+    // Channel type - Broadcast or Discussion Group or Forum
     ChannelType channel_type = 7;
-    optional int64 pinned_msg_id = 8;
-    repeated string available_reactions = 9; // Todo: ChatReactions
-    
-    // List of members of this channel -- most recent ??
-    repeated string user_names = 10;
-    repeated string geo_countries = 11;
-    int32 ttl_period = 12;
 
-    // Invite Link
-    string invite_link = 13;    // TODO: ExportedChatInvite type
+    // ** operational fields **
+    // Flag indicating whether or not this channel is verified by us
+    bool verified = 8;
+    // if permissions allow, this username can be used to join the channel.
+    optional string username = 9;
+    // Flag indicating whether the invite code can be used to join this channel
+    bool invite_code_enabled = 10;
+    // ID of the message pinned to the top of the channel
+    optional int64 pinned_msg_id = 11;
 
-    // Channel settings
-    //ChannelSettings settings = 14;
+    // ** Settings fields **
+    // Flag indicating whether this channel does not allow forwarding of messages
+    bool no_forwarding = 12;
+    // Flag indicating whether a user needs to join the channel before they can send messages
+    bool join_to_send = 13;
+    // Flag indicating whether a user needs to be approved by admin before they can join the channel
+    bool join_approval_req = 14;
+    // Flag indicating whether user participates are visible to other participants
+    bool participants_hidden = 15;
+    // Time to live of messages in this channel
+    optional int32 ttl_period = 16;
 
-    // Channel Permissions
-    //ChannelPermissions permissions = 15;
-
-    // Channel User Settings
-    //Channel_UserSettings user_settings = 16;
-
-    // Position up to which all incoming messages are read.
-    //int32 read_inbox_max_id = 17;
-    // Position up to which all outgoing messages are read.
-    //int32 read_outbox_max_id = 18;
-    // Count of unread messages
-    //int32 unread_count = 19;
 }
 
 
