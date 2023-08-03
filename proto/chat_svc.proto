@@ -105,7 +105,7 @@ service ChatService {
 
     // Channels :: Joining/Leaving Methods 
     // Join a channel
-    rpc Channel_Join(ChannelJoinRequest) returns (google.protobuf.Empty) {}
+    rpc Channel_Join(ChannelJoinRequest) returns (ChannelJoinResponse) {}
 
     // Leave a channel
     rpc Channel_Leave(ChannelLeaveRequest) returns (google.protobuf.Empty) {}

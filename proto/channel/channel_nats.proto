@@ -112,7 +112,7 @@ message NatsChannelJoinRequest {
 
 message NatsChannelJoinResponse {
   oneof msg {
-    ChannelJoinReponse status = 1;
+    ChannelJoinResponse data = 1;
     ErrorReply error = 2;
   }
 }

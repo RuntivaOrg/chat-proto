@@ -33,7 +33,7 @@ message ChannelParticipantRights {
 	//bool until_date = 7;
 }
 
-enum ChannelJoinReponse {
-    CHANNEL_JOIN_RESPONSE_APPROVED = 0;
-    CHANNEL_JOIN_RESPONSE_WAITING_APPROVAL = 1;
+enum JoinResponse {
+    JOIN_RESPONSE_APPROVED = 0;
+    JOIN_RESPONSE_WAITING_APPROVAL = 1;
 }
