@@ -90,6 +90,32 @@ service ChatService {
     rpc Channel_Delete(ChannelDeleteRequest) returns (google.protobuf.Empty) {}
 
 
+    // Channels ::  Settings Methods
+    // Enable Prehistor for new users/participants
+    rpc Channel_EnablePrehistory(ChannelEnablePrehistoryRequest) returns (google.protobuf.Empty) {}
+
+    // Enable Signatures for posts
+    rpc Channel_ShowSignatures(ChannelShowSignaturesRequest) returns (google.protobuf.Empty) {}
+
+    // Flag channel as must join to send messages
+    rpc Channel_SetJoinToSend(ChannelSetJoinToSendRequest) returns (google.protobuf.Empty) {}
+
+    // Flag channel as requiring approval to join
+    rpc Channel_SetJoinApprovalRequired(ChannelSetJoinApprovalRequiredRequest) returns (google.protobuf.Empty) {}
+
+    // Channels :: Joining/Leaving Methods 
+    // Join a channel
+    rpc Channel_Join(ChannelJoinRequest) returns (google.protobuf.Empty) {}
+
+    // Leave a channel
+    rpc Channel_Leave(ChannelLeaveRequest) returns (google.protobuf.Empty) {}
+
+    // Approve/Deny a user's request to join a channel
+    rpc Channel_ActionJoinRequest(ChannelActionJoinRequestRequest) returns (google.protobuf.Empty) {}
+
+    // Export an invite link for a channel
+    rpc Channel_ExportInvite(ChannelExportInviteRequest) returns (google.protobuf.Empty) {}
+
     // ***** Topics ******* //
     // Creates a topic within a channel
     rpc CreateTopic(Topic) returns (Topic) {}

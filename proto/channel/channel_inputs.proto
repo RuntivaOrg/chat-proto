@@ -61,3 +61,50 @@ message ChannelDeleteRequest {
     int64 channel_id = 1;
 }
 
+// ***************** Settings Methods ***************** //
+// Request Message for `Channel_EnablePrehistory` RPC.
+message ChannelEnablePrehistoryRequest {
+    int64 channel_id = 1;
+    bool enabled = 2;
+}
+
+// Request Message for `Channel_ShowSignatures` RPC.
+message ChannelShowSignaturesRequest {
+    int64 channel_id = 1;
+    bool enabled = 2;
+}
+
+// Request Message for `Channel_SetJoinToSend` RPC.
+message ChannelSetJoinToSendRequest {
+    int64 channel_id = 1;
+    bool enabled = 2;
+}
+
+// Request Message for `Channel_JoinApprovalRequired` RPC.
+message ChannelSetJoinApprovalRequiredRequest {
+    int64 channel_id = 1;
+    bool enabled = 2;
+}
+
+// ****************** Joining/Leaving Methods ****************** //
+// Request Message for `Channel_Join` RPC.
+message ChannelJoinRequest {
+    int64 channel_id = 1;
+    string access_hash = 2;
+}
+
+// Request Message for `Channel_Leave` RPC.
+message ChannelLeaveRequest {
+    int64 channel_id = 1;
+}
+
+// Request Message for `Channel_ActionJoinRequest` RPC.
+message ChannelActionJoinRequestRequest {
+    int64 channel_id = 1;
+    repeated int64 user_id = 2;
+}
+
+// Request Message for `Channel_ExportInvite` RPC.
+message ChannelExportInviteRequest {
+    int64 channel_id = 1;
+}

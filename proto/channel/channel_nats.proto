@@ -75,4 +75,65 @@ message NatsChannelDeleteRequest {
   ChannelDeleteRequest data = 2;
 }
 
+// ********** Channel_EnablePrehistory ********** //
+// Backend NATS messaging for `Channel_EnablePrehistory`: Enables prehistory for a channel
+message NatsChannelEnablePrehistoryRequest {
+  repeated MetadataMap headers = 1;
+  ChannelEnablePrehistoryRequest data = 2;
+}
 
+// ********** Channel_ShowSignatures ********** //
+// Backend NATS messaging for `Channel_ShowSignatures`: Shows signatures for a channel
+message NatsChannelShowSignaturesRequest {
+  repeated MetadataMap headers = 1;
+  ChannelShowSignaturesRequest data = 2;
+}
+
+// ********** Channel_SetJoinToSend ********** //
+// Backend NATS messaging for `Channel_SetJoinToSend`: Sets join to send for a channel
+message NatsChannelSetJoinToSendRequest {
+  repeated MetadataMap headers = 1;
+  ChannelSetJoinToSendRequest data = 2;
+}
+
+// ********** Channel_SetJoinToApprove ********** //
+// Backend NATS messaging for `Channel_SetJoinToApprove`: Sets join to approve for a channel
+message NatsChannelSetJoinApprovalRequiredRequest {
+  repeated MetadataMap headers = 1;
+  ChannelSetJoinApprovalRequiredRequest data = 2;
+}
+
+// ********** Channel_Join ********** //
+// Backend NATS messaging for `Channel_Join`: Joins a channel
+message NatsChannelJoinRequest {
+  repeated MetadataMap headers = 1;
+  ChannelJoinRequest data = 2;
+}
+
+message NatsChannelJoinResponse {
+  oneof msg {
+    ChannelJoinReponse status = 1;
+    ErrorReply error = 2;
+  }
+}
+
+// ********** Channel_Leave ********** //
+// Backend NATS messaging for `Channel_Leave`: Leaves a channel
+message NatsChannelLeaveRequest {
+  repeated MetadataMap headers = 1;
+  ChannelLeaveRequest data = 2;
+}
+
+// ********** Channel_ActionJoinRequest ********** //
+// Backend NATS messaging for `Channel_ActionJoinRequest`: Approves or rejects a join request
+message NatsChannelActionJoinRequestRequest {
+  repeated MetadataMap headers = 1;
+  ChannelActionJoinRequestRequest data = 2;
+}
+
+// ********** Channel_ExportInvite ********** //
+// Backend NATS messaging for `Channel_ExportInvite`: Exports an invite link for a channel
+message NatsChannelExportInviteRequest {
+  repeated MetadataMap headers = 1;
+  ChannelExportInviteRequest data = 2;
+}
