@@ -68,8 +68,6 @@ message ChannelEnablePrehistoryRequest {
     bool enabled = 2;
 }
 
-
-
 // Request Message for `Channel_ShowSignatures` RPC.
 message ChannelShowSignaturesRequest {
     int64 channel_id = 1;
@@ -92,7 +90,6 @@ message ChannelSetJoinApprovalRequiredRequest {
 // Request Message for `Channel_Join` RPC.
 message ChannelJoinRequest {
     int64 channel_id = 1;
-    string access_hash = 2;
 }
 
 // Response Message for `Channel_Join` RPC.
@@ -109,9 +106,10 @@ message ChannelLeaveRequest {
 message ChannelActionJoinRequestRequest {
     int64 channel_id = 1;
     repeated int64 user_id = 2;
+    bool approve = 3;
 }
 
-// Request Message for `Channel_ExportInvite` RPC.
-message ChannelExportInviteRequest {
-    int64 channel_id = 1;
-}
+// // Request Message for `Channel_ExportInvite` RPC.
+// message ChannelExportInviteRequest {
+//     int64 channel_id = 1;
+// }

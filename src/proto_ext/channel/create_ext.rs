@@ -35,7 +35,7 @@ impl NatsRequestSetter<proto::ChannelCreateRequest, proto::NatsChannelCreateRequ
 }
 
 // ***********************************  Response Getters ***********************************
-// Create Response Data setter
+// Create Response Data getter
 impl DataGetter<proto::Channel> for proto::NatsChannelCreateResponse {
     fn to_data(self) -> Option<proto::Channel> {
         match self.msg {
@@ -45,7 +45,7 @@ impl DataGetter<proto::Channel> for proto::NatsChannelCreateResponse {
     }
 }
 
-// Create Response Error setter
+// Create Response Error getter
 impl ErrorGetter for proto::NatsChannelCreateResponse {
     fn error(&self) -> Option<&proto::ErrorReply> {
         match &self.msg {

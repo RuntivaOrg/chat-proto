@@ -133,7 +133,7 @@ message NatsChannelActionJoinRequestRequest {
 
 // ********** Channel_ExportInvite ********** //
 // Backend NATS messaging for `Channel_ExportInvite`: Exports an invite link for a channel
-message NatsChannelExportInviteRequest {
-  repeated MetadataMap headers = 1;
-  ChannelExportInviteRequest data = 2;
-}
+// message NatsChannelExportInviteRequest {
+//   repeated MetadataMap headers = 1;
+//   ChannelExportInviteRequest data = 2;
+// }
