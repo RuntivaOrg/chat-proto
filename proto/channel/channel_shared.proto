@@ -32,7 +32,7 @@ message ChannelParticipantRights {
 	bool send_media = 4;
 	bool embed_links = 5;
 	bool invite_users = 6;
-	google.protobuf.Timestamp until_date = 7;
+	optional google.protobuf.Timestamp until_date = 7;
 }
 
 enum JoinResponse {
