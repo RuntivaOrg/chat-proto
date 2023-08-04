@@ -38,4 +38,5 @@ message ChannelParticipantRights {
 enum JoinResponse {
     JOIN_RESPONSE_APPROVED = 0;
     JOIN_RESPONSE_WAITING_APPROVAL = 1;
+    JOIN_RESPONSE_NO_PENDING_REQUEST = 2;
 }
