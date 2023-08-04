@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package chat;
 
+import "google/protobuf/timestamp.proto";
+
 enum ChannelType {
     CHANNEL_TYPE_UNKNOWN = 0;
     CHANNEL_TYPE_BROADCAST = 1;
@@ -30,7 +32,7 @@ message ChannelParticipantRights {
 	bool send_media = 4;
 	bool embed_links = 5;
 	bool invite_users = 6;
-	//bool until_date = 7;
+	google.protobuf.Timestamp until_date = 7;
 }
 
 enum JoinResponse {
