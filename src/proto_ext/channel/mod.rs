@@ -9,6 +9,7 @@ pub mod editphoto_ext;
 pub mod edittitle_ext;
 pub mod enableprehistory_ext;
 // pub mod exportinvite_ext; -- commented out until it's implemented in proto
+pub mod disable_ext;
 pub mod join_ext;
 pub mod leave_ext;
 pub mod setjoinapprovalrequired_ext;

@@ -61,6 +61,12 @@ message ChannelDeleteRequest {
     int64 channel_id = 1;
 }
 
+// Request Message for `Channel_Disable` RPC. 
+message ChannelDisableRequest {
+    int64 channel_id = 1;
+    bool disabled = 2;
+}
+
 // ***************** Settings Methods ***************** //
 // Request Message for `Channel_EnablePrehistory` RPC.
 message ChannelEnablePrehistoryRequest {

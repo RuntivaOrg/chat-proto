@@ -89,6 +89,8 @@ service ChatService {
     // TODO: require permissions to be able to call this method.
     rpc Channel_Delete(ChannelDeleteRequest) returns (google.protobuf.Empty) {}
 
+    // Disables a top-level channel
+    rpc Channel_Disable(ChannelDeleteRequest) returns (google.protobuf.Empty) {}
 
     // Channels ::  Settings Methods
     // Enable Prehistor for new users/participants

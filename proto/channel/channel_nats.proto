@@ -69,10 +69,17 @@ message NatsChannelEditAboutRequest {
 }
 
 // ********** Channel_Delete ********** //
-// Backend NATS messaging for `Channel_Delete`: Deletes a chat group
+// Backend NATS messaging for `Channel_Delete`: Deletes a channel
 message NatsChannelDeleteRequest {
   repeated MetadataMap headers = 1;
   ChannelDeleteRequest data = 2;
+}
+
+// ********** Channel_Disable ********** //
+// Backend NATS messaging for `Channel_Disable`: Disables/Enables a channel
+message NatsChannelDisableRequest {
+  repeated MetadataMap headers = 1;
+  ChannelDisableRequest data = 2;
 }
 
 // ********** Channel_EnablePrehistory ********** //
