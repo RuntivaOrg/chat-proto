@@ -64,7 +64,7 @@ message ChannelDeleteRequest {
 // Request Message for `Channel_Disable` RPC. 
 message ChannelDisableRequest {
     int64 channel_id = 1;
-    bool disabled = 2;
+    bool disable = 2;
 }
 
 // ***************** Settings Methods ***************** //
