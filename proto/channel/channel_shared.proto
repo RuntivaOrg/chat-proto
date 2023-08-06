@@ -23,6 +23,8 @@ message ChannelAdminRights {
 	bool add_admins = 9;
 	bool view_statistics = 10;
 	bool view_participants = 11;
+    bool disable_channel = 12;
+    bool delete_channel = 13;
 }
 
 message ChannelParticipantRights {
