@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package chat;
+
+import "userprofile/userprofile_inputs.proto";
+import "userprofile/userprofile.proto";
+
+import "error_reply.proto";
+import "nats_metadata.proto";
+
+// NATS Specific messages that are used internally on the server-side.
+
+// ********** Get UserProfilesMin ********** //
+// Backend NATS messaging for `Chat_Create`: Request to retrieve a list of user profiles. 
+message NatsGetUserProfilesMinRequest {
+  repeated MetadataMap headers = 1;
+  UserProfilesMinRequest data = 2;
+}
+
+message NatsGetUserProfilesMinResponse {
+  oneof msg {
+    UserProfileMinArray data = 1;
+    ErrorReply error = 2;
+  }
+}
+

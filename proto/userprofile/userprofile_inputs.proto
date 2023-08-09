@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package chat;
+
+import "google/protobuf/timestamp.proto";
+
+// Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
+message UserProfilesMinRequest {
+    repeated int64 user_ids = 1;
+}

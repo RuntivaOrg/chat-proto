@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package chat;
+import "google/protobuf/timestamp.proto";
+
+// Schema for UserProfileMin
+message UserProfileMinArray {
+    repeated UserProfileMin user_profiles = 1;
+}
+
+message UserProfileMin {
+    int64 id = 1; 
+    int64 access_hash = 2;
+    string username = 3;
+    optional string color = 4;
+    optional string photo_url = 5;
+    optional string emoji_status = 6;
+    google.protobuf.Timestamp last_seen_date = 7;
+    bool is_deleted = 8;
+    bool is_scam = 9;
+    bool is_fake = 10;
+    bool is_banned = 11;
+}
