@@ -25,6 +25,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/nats_emptyresponse.proto",
         "proto/common_peer.proto",
         "proto/common_entities.proto",
+        // UpdatesService
+        "proto/updates/updates_svc.proto",
+        "proto/updates/updates_inputs.proto",
         // rich error messages
         //"proto/status.proto",
         //"proto/error_details.proto",

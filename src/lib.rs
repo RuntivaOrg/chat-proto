@@ -15,6 +15,9 @@ mod proto {
         // proto package names here
         tonic::include_proto!("chat");
     }
+    pub mod updates_stream {
+        tonic::include_proto!("updates_stream");
+    }
     pub const FILE_DESCRIPTOR_SET: &[u8] = tonic::include_file_descriptor_set!("chatserver");
 }
 

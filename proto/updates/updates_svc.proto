@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package updates_stream;
+
+import "google/protobuf/empty.proto";
+
+import "updates/updates_inputs.proto";
+
+// Service reponsible for pushing all real-time chat-related updates to the client
+service UpdatesService {
+
+    rpc ConnectForUpdates(google.protobuf.Empty) returns (stream UpdatesResponse) {}
+
+    // `ActiveOnPeerList` is called when the user opens the chat screen containing the 
+    // list of their peers (e.g. chats, chatgroups)
+    rpc ActiveOnPeerList(ActiveOnPeerListRequest) returns (google.protobuf.Empty) {}
+
+    // `ActiveOnPeer` is called when the user opens a specific chat screen (e.g. chat, chatgroup, topic, channel) 
+    rpc ActiveOnPeer(ActiveOnPeerRequest) returns (google.protobuf.Empty) {}
+
+    // `LeavePeer` is called when the user leaves a specific chat screen (e.g. chat, chatgroup, topic, channel)
+    rpc LeavePeer(LeavingRequest) returns (google.protobuf.Empty) {}
+
+}
+

@@ -118,7 +118,9 @@ service ChatService {
     // Export an invite link for a channel
     //rpc Channel_ExportInvite(ChannelExportInviteRequest) returns (google.protobuf.Empty) {}
 
-    // ***** Topics ******* //
+
+    // ******************************** Topics *********************************
+    // TO BE deprecated -- re-written
     // Creates a topic within a channel
     rpc CreateTopic(Topic) returns (Topic) {}
 

@@ -4,7 +4,7 @@ package chat;
 
 import "channel/channel_inputs.proto";
 import "channel/channel.proto";
-import "channel/channel_shared.proto";
+//import "channel/channel_shared.proto";
 
 import "error_reply.proto";
 import "nats_metadata.proto";

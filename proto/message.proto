@@ -1,8 +1,6 @@
 syntax = "proto3";
 
 package chat;
-//import "field_behavior.proto";
-import "google/protobuf/timestamp.proto";
 
 // Schema for Message
 message Message {
