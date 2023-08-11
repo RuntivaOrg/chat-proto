@@ -1,2 +1,2 @@
-pub mod package_chat;
-pub mod package_updates_stream;
+pub mod chat;
+pub mod updates_stream;
