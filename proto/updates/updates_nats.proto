@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package updates_stream;
 
-import "chat/chat_inputs.proto";
-import "chat/chat.proto";
+//import "chat/chat_inputs.proto";
+//import "chat/chat.proto";
 
-import "error_reply.proto";
-import "nats_metadata.proto";
+//import "updates/error_reply.proto";
+import "updates/nats_metadata.proto";
 
 // NATS Specific messages that are used internally on the server-side to offboard request processing 
 // from the ChatServer to the backend services. 

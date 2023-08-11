@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package updates_stream;
+
+import "updates/error_reply.proto";
+
+message NatsEmptyResponse {
+  oneof msg {
+    bool success = 1;
+    ErrorReply error = 2;
+  }
+}
