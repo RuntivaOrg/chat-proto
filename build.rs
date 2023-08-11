@@ -26,8 +26,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/common_peer.proto",
         "proto/common_entities.proto",
         // UpdatesService
-        "proto/updates/updates_svc.proto",
+        "proto/updates_svc.proto",
         "proto/updates/updates_inputs.proto",
+        "proto/updates/updates_nats.proto",
         // rich error messages
         //"proto/status.proto",
         //"proto/error_details.proto",
