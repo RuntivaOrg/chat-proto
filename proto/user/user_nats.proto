@@ -11,7 +11,7 @@ import "nats_metadata.proto";
 
 // ********** User_Hearbeat ********** //
 // Backend NATS messaging for persisting user hearbeat 
-message NatsUserHearbeatRequest {
+message NatsUserHeartbeatRequest {
   repeated MetadataMap headers = 1;
   UserHeartbeatRequest data = 2;
 }
