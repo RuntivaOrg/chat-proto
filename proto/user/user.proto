@@ -1,5 +1,12 @@
 syntax = "proto3";
 
 package chat;
-//import "google/protobuf/timestamp.proto";
+import "google/protobuf/timestamp.proto";
+
+// Schema for User
+message User {
+    int64 id = 1; 
+    // Date when user was created 
+    google.protobuf.Timestamp date = 6;
+}
 

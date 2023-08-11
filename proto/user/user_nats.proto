@@ -4,7 +4,9 @@ package chat;
 
 
 import "user/user_inputs.proto";
+import "user/user.proto";
 
+import "error_reply.proto";
 import "nats_metadata.proto";
 
 // NATS Specific messages that are used internally on the server-side. 
@@ -16,6 +18,12 @@ message NatsUserHeartbeatRequest {
   UserHeartbeatRequest data = 2;
 }
 
+message NatsUserCreateResponse {
+  oneof msg {
+    User data = 1;
+    ErrorReply error = 2;
+  }
+}
 
 // ********** User_Create ********** //
 // Backend NATS messaging for `User_Create`: Request to create a new chat 
