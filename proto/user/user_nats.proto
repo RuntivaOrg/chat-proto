@@ -16,3 +16,18 @@ message NatsUserHeartbeatRequest {
   UserHeartbeatRequest data = 2;
 }
 
+
+// ********** User_Create ********** //
+// Backend NATS messaging for `User_Create`: Request to create a new chat 
+message NatsUserCreateRequest {
+  repeated MetadataMap headers = 1;
+  UserCreateRequest data = 2;
+}
+
+
+// ********** User_Delete ********** //
+// Backend NATS messaging for `User_Delete`: Deletes a chat 
+message NatsUserDeleteRequest {
+  repeated MetadataMap headers = 1;
+  UserDeleteRequest data = 2;
+}

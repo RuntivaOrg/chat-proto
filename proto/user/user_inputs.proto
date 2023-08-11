@@ -8,3 +8,13 @@ import "google/protobuf/timestamp.proto";
 message UserHeartbeatRequest {
     google.protobuf.Timestamp date = 1;
 }
+
+// Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
+// Request Message for `Chat_Create` RPC.
+message UserCreateRequest {
+}
+
+// Request Message for `Chat_Delete` RPC. 
+message UserDeleteRequest {
+    int64 id = 1;
+}
