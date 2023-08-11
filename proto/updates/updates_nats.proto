@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package chat;
+package updates_stream;
 
 import "chat/chat_inputs.proto";
 import "chat/chat.proto";
