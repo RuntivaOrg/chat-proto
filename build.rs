@@ -25,6 +25,10 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/nats_emptyresponse.proto",
         "proto/common_peer.proto",
         "proto/common_entities.proto",
+        // Users
+        "proto/user/user_inputs.proto",
+        "proto/user/user_nats.proto",
+        "proto/user/user.proto",
         // UpdatesService
         "proto/updates_svc.proto",
         "proto/updates/updates_inputs.proto",
