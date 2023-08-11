@@ -2,9 +2,8 @@ syntax = "proto3";
 
 package chat;
 
-import "google/protobuf/empty.proto";
 
-//import "user/user.proto";
+import "user/user_inputs.proto";
 
 import "nats_metadata.proto";
 
@@ -14,6 +13,6 @@ import "nats_metadata.proto";
 // Backend NATS messaging for persisting user hearbeat 
 message NatsUserHearbeatRequest {
   repeated MetadataMap headers = 1;
-  google.protobuf.Empty data = 2;
+  UserHeartbeatRequest data = 2;
 }
 
