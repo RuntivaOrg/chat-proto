@@ -6,7 +6,8 @@ import "google/protobuf/timestamp.proto";
 
 
 message UserHeartbeatRequest {
-    google.protobuf.Timestamp date = 1;
+    bool is_online = 1;
+    google.protobuf.Timestamp date = 2;
 }
 
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.

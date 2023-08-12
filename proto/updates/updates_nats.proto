@@ -20,6 +20,14 @@ message NatsRegisterUpdatesConnectionRequest {
   UpdatesConnection data = 2;
 }
 
+// ************ UnregisterUpdatesConnection ************ //
+// Backend NATS messaging to unregister an UpdatesConnection when it is disconnected
+// There is no cooresponding client method call for this message as it is triggered by the connection closing.
+message NatsUnregisterUpdatesConnectionRequest {
+  repeated MetadataMap headers = 1;
+  UpdatesConnection data = 2;
+}
+
 message UpdatesConnection {
   // user_id of the user who is connected for updates
   int64 user_id = 1;
