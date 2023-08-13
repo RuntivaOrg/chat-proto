@@ -2,8 +2,8 @@
 #![deny(clippy::all)]
 // #![warn(clippy::pedantic)]
 
-// Excluding rich_error from the build for now.
-//pub mod rich_error;
+mod error;
+pub use error::ChatProtoError;
 
 pub use self::proto::*;
 pub mod proto_ext;
