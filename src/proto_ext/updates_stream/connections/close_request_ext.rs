@@ -4,28 +4,28 @@ use crate::proto_ext::updates_stream::{DataGetter, HeaderGetter, NatsRequestSett
 
 // ***********************************  Request Getters ***********************************
 // EditAbout Request Data message
-impl DataGetter<proto::UpdatesConnection> for proto::NatsUnregisterUpdatesConnectionRequest {
+impl DataGetter<proto::UpdatesConnection> for proto::NatsUpdatesCloseRequest {
     fn to_data(self) -> Option<proto::UpdatesConnection> {
         self.data
     }
 }
 
 // EditAbout Request Headers
-impl HeaderGetter for proto::NatsUnregisterUpdatesConnectionRequest {
+impl HeaderGetter for proto::NatsUpdatesCloseRequest {
     fn headers(&self) -> &Vec<proto::MetadataMap> {
         &self.headers
     }
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::UpdatesConnection, proto::NatsUnregisterUpdatesConnectionRequest>
-    for proto::NatsUnregisterUpdatesConnectionRequest
+impl NatsRequestSetter<proto::UpdatesConnection, proto::NatsUpdatesCloseRequest>
+    for proto::NatsUpdatesCloseRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto::MetadataMap>>,
         data: impl Into<proto::UpdatesConnection>,
     ) -> Self {
-        proto::NatsUnregisterUpdatesConnectionRequest {
+        proto::NatsUpdatesCloseRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }

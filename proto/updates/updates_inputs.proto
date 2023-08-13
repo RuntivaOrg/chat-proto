@@ -6,25 +6,20 @@ package updates_stream;
 
 // Messages used in calls to track user's current view to provide appropriate IsTyping messages.
 // e.g. Only when a user is on the same peer as the user who is typing, the user will receive the IsTyping message. 
-message ActiveOnPeerListRequest {
+message ConnectRequest {
+    string app_id = 1;
 }
 
-message LeavingRequest {
-}
-
-message ActiveOnPeerRequest {
-    int64 peer_id = 1;
-}
-
-message DeactiveOnPeerRequest {
-    int64 peer_id = 1;
+message ConnectPeerRequest {
+    string app_id = 1;
+    int64 peer_id = 2;
 }
 
 
 
 // Messages used by the Updates service. This is the primary Response vehicle for real-time updates to
 // connected devices -- used by the `Connect` gRPC streaming response method.
-message UpdatesResponse {
+message UpdatesStream {
     oneof update {
         // for returning existing Comments
         CommentSent comment = 5;
