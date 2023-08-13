@@ -32,7 +32,7 @@ message UpdatesConnection {
   // user_id of the user who is connected for updates
   int64 user_id = 1;
   // unique client app name that recieves the updates 
-  string app = 2;
+  string app_id = 2;
   // host:port of the chat server that owns the connection
   string chat_server = 3;
   }
