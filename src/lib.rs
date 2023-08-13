@@ -7,6 +7,7 @@ pub use error::ChatProtoError;
 
 pub use self::proto::*;
 pub mod proto_ext;
+pub mod subjects;
 
 #[allow(unused_qualifications)]
 #[allow(clippy::all)] // Cannot really check the sanity of generated code :shrugs:

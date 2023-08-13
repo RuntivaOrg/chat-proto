@@ -43,7 +43,7 @@ message UpdatesConnection {
 // makes an internal NATS request to register the peer-list as active for this 
 // connection with the shared REDIS Presence cache.
 // This is used to determine who should receive is typing notifications.
-message NatsRegisterOnPeerList {
+message NatsRegisterOnPeerListRequest {
   repeated MetadataMap headers = 1;
   UpdatesConnection data = 2;
 }
@@ -54,7 +54,7 @@ message NatsRegisterOnPeerList {
 // makes an internal NATS request to register the peer-list as active for this 
 // connection with the shared REDIS Presence cache.
 // This is used to determine who should receive is typing notifications.
-message NatsUnregisterFromPeerList {
+message NatsUnregisterFromPeerListRequest {
   repeated MetadataMap headers = 1;
   UpdatesConnection data = 2;
 }
@@ -65,7 +65,7 @@ message NatsUnregisterFromPeerList {
 // `ActiveOnPeer` method call to the chat-server, the chat-server in turn
 // makes an internal NATS request to register the current active Peer with the shared REDIS Presence cache.
 // This is used to determine who should receive is typing notifications.
-message NatsRegisterOnPeer {
+message NatsRegisterOnPeerRequest {
   repeated MetadataMap headers = 1;
   ConnectionPeer data = 2;
 }
@@ -82,7 +82,7 @@ message ConnectionPeer {
 // `LeavePeer` method call to the chat-server, the chat-server in turn
 // makes an internal NATS request to unregister the current active Peer with the shared REDIS Presence cache.
 // This is used to stop sending is typing notifications to this connection.
-message NatsUnregisterFromPeer {
+message NatsUnregisterFromPeerRequest {
   repeated MetadataMap headers = 1;
   ConnectionPeer data = 2;
 }
