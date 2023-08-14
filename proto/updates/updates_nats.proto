@@ -29,40 +29,44 @@ message NatsUpdatesCloseRequest {
 }
 
 message UpdatesConnection {
+  UpdatesConnectionKey connection_key = 1;
+  // host:port of the chat server that owns the connection
+  string chat_server = 3;
+}
+
+message UpdatesConnectionKey {
   // user_id of the user who is connected for updates
   int64 user_id = 1;
   // unique client app name that recieves the updates 
   string app_id = 2;
-  // host:port of the chat server that owns the connection
-  string chat_server = 3;
-  }
+}
 
 // ************ RegisterOnPeerList ************ //
-// Backend NATS messaging for `ActiveOnPeerList`: When a client makes a 
-// `ActiveOnPeerList` method call to the chat-server, the chat-server in turn
+// Backend NATS messaging for `RegisterOnPeerList`: When a client makes a 
+// `RegisterOnPeerList` method call to the chat-server, the chat-server in turn
 // makes an internal NATS request to register the peer-list as active for this 
 // connection with the shared REDIS Presence cache.
 // This is used to determine who should receive is typing notifications.
 message NatsRegisterOnPeerListRequest {
   repeated MetadataMap headers = 1;
-  UpdatesConnection data = 2;
+  UpdatesConnectionKey data = 2;
 }
 
 // ************ UnregisterFromPeerList ************ //
-// Backend NATS messaging for `ActiveOnPeerList`: When a client makes a 
-// `ActiveOnPeerList` method call to the chat-server, the chat-server in turn
+// Backend NATS messaging for `UnregisterFromPeerList`: When a client makes a 
+// `UnregisterFromPeerList` method call to the chat-server, the chat-server in turn
 // makes an internal NATS request to register the peer-list as active for this 
 // connection with the shared REDIS Presence cache.
 // This is used to determine who should receive is typing notifications.
 message NatsUnregisterFromPeerListRequest {
   repeated MetadataMap headers = 1;
-  UpdatesConnection data = 2;
+  UpdatesConnectionKey data = 2;
 }
 
 
 // ************ RegisterOnPeer ************ //
-// Backend NATS messaging for `ActiveOnPeer`: When a client makes a 
-// `ActiveOnPeer` method call to the chat-server, the chat-server in turn
+// Backend NATS messaging for `RegisterOnPeer`: When a client makes a 
+// `RegisterOnPeer` method call to the chat-server, the chat-server in turn
 // makes an internal NATS request to register the current active Peer with the shared REDIS Presence cache.
 // This is used to determine who should receive is typing notifications.
 message NatsRegisterOnPeerRequest {
@@ -71,15 +75,15 @@ message NatsRegisterOnPeerRequest {
 }
 
 message ConnectionPeer {
-  // owning connection for this request
-  UpdatesConnection connection = 1;
+  // updates connection key associated with this peer registration
+  UpdatesConnectionKey connection = 1;
   // peer_id of the peer that is active
   int64 peer_id = 2;
 }
 
 // ************ UnregisterFromPeer ************ //
-// Backend NATS messaging for `LeavePeer`: When a client makes a 
-// `LeavePeer` method call to the chat-server, the chat-server in turn
+// Backend NATS messaging for `LeaveUnregisterFromPeerPeer`: When a client makes a 
+// `UnregisterFromPeer` method call to the chat-server, the chat-server in turn
 // makes an internal NATS request to unregister the current active Peer with the shared REDIS Presence cache.
 // This is used to stop sending is typing notifications to this connection.
 message NatsUnregisterFromPeerRequest {

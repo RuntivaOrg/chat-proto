@@ -4,8 +4,8 @@ use crate::proto_ext::updates_stream::{DataGetter, HeaderGetter, NatsRequestSett
 
 // ***********************************  Request Getters ***********************************
 // EditAbout Request Data message
-impl DataGetter<proto::UpdatesConnection> for proto::NatsRegisterOnPeerListRequest {
-    fn to_data(self) -> Option<proto::UpdatesConnection> {
+impl DataGetter<proto::UpdatesConnectionKey> for proto::NatsRegisterOnPeerListRequest {
+    fn to_data(self) -> Option<proto::UpdatesConnectionKey> {
         self.data
     }
 }
@@ -18,12 +18,12 @@ impl HeaderGetter for proto::NatsRegisterOnPeerListRequest {
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::UpdatesConnection, proto::NatsRegisterOnPeerListRequest>
+impl NatsRequestSetter<proto::UpdatesConnectionKey, proto::NatsRegisterOnPeerListRequest>
     for proto::NatsRegisterOnPeerListRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto::MetadataMap>>,
-        data: impl Into<proto::UpdatesConnection>,
+        data: impl Into<proto::UpdatesConnectionKey>,
     ) -> Self {
         proto::NatsRegisterOnPeerListRequest {
             headers: headers.into(),
