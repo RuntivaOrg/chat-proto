@@ -76,7 +76,7 @@ message NatsRegisterOnPeerRequest {
 
 message ConnectionPeer {
   // updates connection key associated with this peer registration
-  UpdatesConnectionKey connection = 1;
+  UpdatesConnectionKey connection_key = 1;
   // peer_id of the peer that is active
   int64 peer_id = 2;
 }
