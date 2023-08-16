@@ -54,7 +54,11 @@ message NatsGetUserChatsRequest {
 
 message NatsGetUserChatsResponse {
   oneof msg {
-    UserPeer data = 1;
+    GetUserChatsResponse data = 1;
     ErrorReply error = 2;
   }
+}
+
+message GetUserChatsResponse {
+  repeated UserPeer user_peers = 1;
 }

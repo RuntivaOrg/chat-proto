@@ -36,8 +36,8 @@ impl NatsRequestSetter<proto::GetUserChatsRequest, proto::NatsGetUserChatsReques
 
 // ***********************************  Response Getters ***********************************
 // Create Response Data setter
-impl DataGetter<proto::UserPeer> for proto::NatsGetUserChatsResponse {
-    fn to_data(self) -> Option<proto::UserPeer> {
+impl DataGetter<proto::GetUserChatsResponse> for proto::NatsGetUserChatsResponse {
+    fn to_data(self) -> Option<proto::GetUserChatsResponse> {
         match self.msg {
             Some(proto::nats_get_user_chats_response::Msg::Data(data)) => Some(data),
             _ => None,
@@ -57,10 +57,10 @@ impl ErrorGetter for proto::NatsGetUserChatsResponse {
 
 // ***********************************  Response Setters ***********************************
 // Create Response Data setter
-impl DataSetter<proto::UserPeer, proto::NatsGetUserChatsResponse>
+impl DataSetter<proto::GetUserChatsResponse, proto::NatsGetUserChatsResponse>
     for proto::NatsGetUserChatsResponse
 {
-    fn set_data(data: impl Into<proto::UserPeer>) -> Self {
+    fn set_data(data: impl Into<proto::GetUserChatsResponse>) -> Self {
         let data = data.into();
         proto::NatsGetUserChatsResponse {
             msg: Some(proto::nats_get_user_chats_response::Msg::Data(data)),
