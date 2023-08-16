@@ -38,11 +38,10 @@ message PeerChannel {
 
 // Schema for User Peers
 message UserPeer {
-    int64 peer_id = 1;
-    PeerInput peer_type = 2; 
-    string name = 3;
-    string desc = 4;
-    optional string color = 5;
-    optional string photo_url = 6;
+    PeerInput peer = 1; 
+    string name = 2;
+    string desc = 3;
+    optional string color = 4;
+    optional string photo_url = 5;
 }
 
