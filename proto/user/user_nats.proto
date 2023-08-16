@@ -6,6 +6,8 @@ package chat;
 import "user/user_inputs.proto";
 import "user/user.proto";
 
+import "common_peer.proto";
+
 import "error_reply.proto";
 import "nats_metadata.proto";
 
@@ -38,4 +40,21 @@ message NatsUserCreateRequest {
 message NatsUserDeleteRequest {
   repeated MetadataMap headers = 1;
   UserDeleteRequest data = 2;
+}
+
+
+// ********** User_Delete ********** //
+// Backend NATS messaging for retrieving a user's chats and chat_groups.
+// Used by Presence service to retrieve user's chats and chat_groups. 
+message NatsGetUserChatsRequest {
+  repeated MetadataMap headers = 1;
+  GetUserChatsRequest data = 2;
+}
+
+
+message NatsGetUserChatsResponse {
+  oneof msg {
+    UserPeer data = 1;
+    ErrorReply error = 2;
+  }
 }

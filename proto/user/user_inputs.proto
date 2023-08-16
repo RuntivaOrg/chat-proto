@@ -19,3 +19,8 @@ message UserCreateRequest {
 message UserDeleteRequest {
     int64 id = 1;
 }
+
+
+message GetUserChatsRequest {
+    int64 user_id = 1;
+}

@@ -34,3 +34,15 @@ message PeerTopic {
 message PeerChannel {
   int64 channel_id = 1;
 }
+
+
+// Schema for User Peers
+message UserPeer {
+    int64 peer_id = 1;
+    PeerInput peer_type = 2; 
+    string name = 3;
+    string desc = 4;
+    optional string color = 5;
+    optional string photo_url = 6;
+}
+
