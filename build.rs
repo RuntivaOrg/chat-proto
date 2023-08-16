@@ -44,10 +44,9 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     tonic_build::configure()
         .protoc_arg("--experimental_allow_proto3_optional")
+        .file_descriptor_set_path(out_dir.join("chatserver.bin"))
         .build_server(true)
         .build_client(true)
-        .file_descriptor_set_path(out_dir.join("chat_server.bin"))
-        .out_dir("./src")
         .compile(iface_files, dirs)?;
 
     // recompile protobufs only if any of the proto files changes.
