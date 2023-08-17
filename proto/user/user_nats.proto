@@ -60,5 +60,5 @@ message NatsGetUserChatsResponse {
 }
 
 message GetUserChatsResponse {
-  repeated UserPeer user_peers = 1;
+  repeated PeerInput user_peers = 1;
 }
