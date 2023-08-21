@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package updates_stream;
+
+import "updates/messages/message.proto";
+
+
+// *******************************************************************************
+// Update Messages - Channels
+message UpdateChannel {
+    int64 channel_id = 1;
+}
+
+message UpdateChannelNewMessage {
+    Message message_details = 1;
+    int32 pts = 2;
+    int32 pts_count = 3;
+}

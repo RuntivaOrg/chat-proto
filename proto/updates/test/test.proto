@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+
+package chat;
+
+message Test1 {
+    int64 id = 1;
+}
+
+message Test2 {
+    string testing = 1;
+}

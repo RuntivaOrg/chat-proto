@@ -5,6 +5,7 @@ package updates_stream;
 import "google/protobuf/empty.proto";
 
 import "updates/updates_inputs.proto";
+import "updates/updates_stream.proto";
 
 // Service reponsible for pushing all real-time chat-related updates to the client
 service UpdatesService {

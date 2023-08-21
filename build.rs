@@ -16,9 +16,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/userprofile/userprofile.proto",
         "proto/userprofile/userprofile_inputs.proto",
         "proto/userprofile/userprofile_nats.proto",
-        "proto/chatgroup.proto",
-        "proto/chatgroup_inputs.proto",
-        "proto/chatgroup_nats.proto",
+        "proto/chatgroup/chatgroup.proto",
+        "proto/chatgroup/chatgroup_inputs.proto",
+        "proto/chatgroup/chatgroup_nats.proto",
         "proto/message.proto",
         "proto/message_inputs.proto",
         "proto/message_nats.proto",
@@ -39,6 +39,10 @@ fn main() -> Result<(), Box<dyn Error>> {
         // rich error messages
         //"proto/status.proto",
         //"proto/error_details.proto",
+        // test
+        //"proto/updates/test/test.proto",
+        // Chatgroups
+        "proto/updates/chatgroups/chatgroup.proto",
     ];
     let dirs = &["proto"];
 

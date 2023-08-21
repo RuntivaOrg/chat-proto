@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+//import "common_peer.proto";
+import "updates/test/test.proto";
+
+package updates_stream;
+
+message TestParent {
+    chat.Test1 tt = 1;
+}
+
+
+// ********************************************************************************
+// Entities - messages
+message Message {
+    oneof message {
+        MessageEmpty message_empty = 1;
+        MessageDetails message_details = 2;
+    }
+}
+
+message MessageEmpty {
+    int64 id = 1;
+    int64 peer_id = 2;
+}
+
+message MessageDetails {
+    // This message ID
+    int64 message_id = 1;
+    // The originating/sender user id of this message. 
+    int64 from_id = 2;
+    // ID of the containing Peer of this message, Peer can be Chat, ChatGroup, Topic or Channel.
+    // For direct user-to-user chats, the Chat peer is always provided (not user peer)
+    string peer_id = 3;
+    // When a message is created by forwarding an existing message, this object is 
+    // populated with the original message's info
+    string fwd_from = 4; // TODO: Convert to object
+    // When a user replies to an existing message, the object is 
+    // populated with the details of the original message being replied to.
+    string reply_to = 5; // TODO: Convert to object
+    // The date this message was sent by the sending (from_id) user
+    google.protobuf.Timestamp sent_date = 6;
+    // This object contains the entities data for this message. This includes any 
+    // styling and mentions and tagging.
+    string entities = 7; // TODO: Convert to MessageEntity
+    // Last time this message was edited. Will be empty/null if this message has 
+    // not been previously edited 
+    optional google.protobuf.Timestamp edit_date = 8;
+    // For future use: Grouping ID of multiple media messages sent together.
+    int64 group_id = 9;
+    // Any existing reactions to this message
+    string reactions = 10; // TODO: Convert to object
+    // TTL period of this message (in seconds). When the sent_date + ttl_period (in seconds) > NOW
+    // this message will be deleted on the servers and is to be deleted on the client.
+    optional int32 ttl_period = 11;
+
+    // *** Flags ***
+    // This flag indicates that this message was sent by the client user and is considered
+    // an outgoing message
+    bool out = 20;
+    // This flag indicates that this client user was mentioned in this message
+    bool mentioned = 21;
+    // Flag indicating that the current user has not read the media attachments in this message
+    bool media_unread = 22;
+    // Flag indicating this is a silent message. Server side will not send any notifications 
+    // for this message and the client should also not provide any alerts/notifications with the 
+    // client experience for this message
+    bool silent = 23;
+    // Flag indicating this message is pinned. Pinned messages are to be displayed at the top
+    // of the chat (peer) screen. 
+    bool pinned = 24;
+
+    // Flag indicating the message is protected and cannot be forwarded. The client
+    // should not provide any functionality to allow this message to be forwarded.
+    bool noforwards = 25;
+
+    // *** Channel specific ***
+    // Flag indicating this message is a channel post. PeerInput type will always be a Channel when
+    // this is true.
+    bool post = 30; 
+    // Thie author username that sent/created this post. This is only provided when  
+    // signatures are enabled for the channel.
+    string post_author = 31;
+    // Flag indicating the message should be shown as not modified to the user, even if an edit date is present
+    bool hide_edit = 32;
+    // Contains the current number of views for this message. This tracker is only used in 
+    // Channels (channel posts and topic forums).
+    int32 views_count = 33;
+    // Contains the current number of forwards that have occurred for this message. This is only tracked for
+    // channel posts and topic forums 
+    int32 forwards_count = 34;
+    // Channel posts can enable the ability to allow subscribers of the channel to comment/respond to posts.
+    // This child_thread contains details/stats about those subscriber responses.
+    string child_thread = 35; // TODO: Convert to object
+
+}

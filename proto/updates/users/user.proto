@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+//import "google/protobuf/timestamp.proto";
+
+package updates_stream;
+
+
+
+// Details of users mentioned in updates 
+message UserContainer {
+    oneof user {
+        // Invalid/deleted user
+        int64 empty_user = 1;
+        // User data
+        UserData user_data  = 2;
+    }
+}
+
+message UserData {
+    int32 todo = 1;
+}

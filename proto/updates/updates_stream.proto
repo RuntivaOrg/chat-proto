@@ -1,0 +1,164 @@
+syntax = "proto3";
+
+package updates_stream;
+
+import "google/protobuf/timestamp.proto";
+
+import "updates/channels/channel.proto";
+import "updates/messages/message.proto";
+import "updates/users/user.proto";
+
+import "updates/chatgroups/chatgroup.proto";
+
+
+// Messages used by the Updates service. This is the primary Response vehicle for real-time updates to
+// connected devices -- used by the `Connect` gRPC streaming response method.
+message UpdatesStream {
+    oneof update {
+        // Too many updates to send to client -- need to manually request them in batches
+        UpdatesTooMany too_long = 1;
+        // One message sent to (received from) another user
+        UpdateShortMessage short_message = 2;
+        // One message sent (or received) in a group chat 
+        UpdateShortChatMessage short_chat_message = 3;
+        UpdateShortSentMessage short_sent_message = 4;
+        // Update w/ no auxilary data needed
+        UpdateShort short = 5;
+        
+        // Batch of incoming updates events
+        UpdatesCombined combined = 6;
+        // Batch of incoming updates events
+        Updates updates = 7;
+    }
+}
+
+// ******************************************
+// UpdatesStream Updates method wrappers
+
+message UpdatesTooMany {}
+
+// Short Update 
+message UpdateShortMessage {}
+
+message UpdateShortChatMessage {}
+
+message UpdateShort {
+    // Incoming Update 
+    UpdateContainer update = 1;
+
+    // Current timestamp of this update
+    google.protobuf.Timestamp date = 4;
+}
+
+message UpdateShortSentMessage  {}
+
+// Events wrapper for a group of updates 
+message UpdatesCombined {
+    // Updates
+    repeated UpdateContainer updates = 1;
+
+    // Users related to these updates
+    repeated UserContainer users = 2;
+
+    // Peers related to the updates
+    repeated PeerContainer peers = 3;
+
+    // Current timestamp of this update
+    google.protobuf.Timestamp date = 4;
+
+    // seq value of the first update in this group
+    int32 seq_start = 5;
+
+    // seq value of the last udpate in this group
+    int32 seq = 6;
+}
+
+// Standard events wrapper for Updates 
+message Updates  {
+    // Updates
+    repeated UpdateContainer updates = 1;
+
+    // Users related to these updates
+    repeated UserContainer users = 2;
+
+    // Peers related to the updates
+    repeated PeerContainer peers = 3;
+
+    // Current timestamp of this update
+    google.protobuf.Timestamp date = 4;
+
+    // update seq value for this update
+    int32 seq = 5;
+
+}
+
+
+// Details of peers mentioned in updates
+message PeerContainer{
+        oneof user {
+        // invalid/deleted peer
+        int64 empty_peer = 1;
+        // Peer data
+        PeerData peer_data  = 2;
+        // Peer - permission restricted
+        PeerForbidden peer_forbidden = 3;
+    }
+}
+
+message PeerData {
+    int32 todo_peer = 1;
+}
+
+message PeerForbidden {
+    int64 id = 1;
+    string name = 2;
+} 
+
+
+// *******************************************************************************
+// Core primary message for transmitting all available Update Events to the client
+message UpdateContainer{
+    oneof update {
+        // Channel Update Msgs
+        UpdateChannel channel_id = 1;
+        UpdateChannelNewMessage channel_new_message = 2;
+
+        // ChatGroup Update Msgs
+        UpdateChatGroupParticipants chatgroup_participants_update = 3; // Just this one ? or break into each add/delete/admin change?
+// updateChatDefaultBannedRights#54c01850 peer:Peer default_banned_rights:ChatBannedRights version:int = Update;
+// updateChat#f89a6a4e chat_id:long = Update;
+
+        // Message Update Flags
+        UpdateNewMessage new_message = 4;
+    }
+
+}
+
+
+
+// *******************************************************************************
+// Update Messages - ChatGroups
+message UpdateChatGroupParticipants {
+    oneof participants {
+        chatgroup.v1.ChatGroupParticipantsForbidden participants_forbidden = 1;
+        chatgroup.v1.ChatGroupParticipantDetails participants_details = 2;
+    }
+}
+
+message UpdateChatGroupAdmin {
+    int64 chatgroup_id = 1;
+    int64 user_id = 2;
+    bool is_admin = 3;
+
+}
+
+// *******************************************************************************
+// Update Messages - Messages
+message UpdateNewMessage {
+    Message message_details = 1;
+    int32 pts = 2;
+    int32 pts_count = 3;
+}
+
+
+

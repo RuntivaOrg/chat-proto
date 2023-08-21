@@ -10,14 +10,18 @@ pub mod proto_ext;
 pub mod subjects;
 
 #[allow(unused_qualifications)]
-#[allow(clippy::all)] // Cannot really check the sanity of generated code :shrugs:
+#[allow(clippy::all)] // generated code - no need to clippy check
 mod proto {
     pub mod chat {
-        // proto package names here
         tonic::include_proto!("chat");
     }
     pub mod updates_stream {
         tonic::include_proto!("updates_stream");
+    }
+    pub mod chatgroup {
+        pub mod v1 {
+            tonic::include_proto!("chatgroup.v1");
+        }
     }
     pub const FILE_DESCRIPTOR_SET: &[u8] = tonic::include_file_descriptor_set!("chatserver");
 }

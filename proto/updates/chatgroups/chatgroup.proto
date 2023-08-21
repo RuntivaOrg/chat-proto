@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+
+package chatgroup.v1;
+
+message ChatGroupTest {
+    int64 id = 1;
+    string name = 2;
+}
+
+
+
+
+// ********************************************************************************
+// Entities - ChatGroups
+message ChatGroupParticipantsForbidden {
+    int64 chatgroup_id = 1;
+    int64 part_details_todo = 2;
+}
+
+message ChatGroupParticipantDetails {
+    int64 chatgroup_id = 1;
+    repeated int64 part_details_todo = 2;
+
+}

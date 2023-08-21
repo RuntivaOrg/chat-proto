@@ -11,8 +11,8 @@ import "chat/chat.proto";
 import "chat/chat_inputs.proto";
 
 
-import "chatgroup.proto";
-import "chatgroup_inputs.proto";
+import "chatgroup/chatgroup.proto";
+import "chatgroup/chatgroup_inputs.proto";
 
 //import "message.proto";
 import "message_inputs.proto";
