@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package chat;
+package chatgroups.v1;
 
 import "chatgroup/chatgroup_inputs.proto";
 import "chatgroup/chatgroup.proto";
@@ -14,55 +14,55 @@ import "nats_metadata.proto";
 // ********** ChatGroup_Create ********** //
 // Backend NATS messaging for `ChatGroup_Create`: Request to create a new chat group
 message NatsChatGroupCreateRequest {
-  repeated MetadataMap headers = 1;
+  repeated chat.MetadataMap headers = 1;
   ChatGroupCreateRequest data = 2;
 }
 
 message NatsChatGroupCreateResponse {
   oneof msg {
     ChatGroup data = 1;
-    ErrorReply error = 2;
+    chat.ErrorReply error = 2;
   }
 }
 
 // ********** ChatGroup_UpdateTitle ********** //
 // Backend NATS messaging for `ChatGroup_UpdateTitle` and `ChatGroup_UpdateAbout`: Requests to update the title or about of a chat group
 message NatsChatGroupUpdateTitleRequest {
-  repeated MetadataMap headers = 1;
+  repeated chat.MetadataMap headers = 1;
   ChatGroupUpdateTitleRequest data = 2;
 }
 
 // ********** ChatGroup_UpdateAbout ********** //
 // Backend NATS messaging for `ChatGroup_UpdateTitle` and `ChatGroup_UpdateAbout`: Requests to update the title or about of a chat group
 message NatsChatGroupUpdateAboutRequest {
-  repeated MetadataMap headers = 1;
+  repeated chat.MetadataMap headers = 1;
   ChatGroupUpdateAboutRequest data = 2;
 }
 
 // ********** ChatGroup_AddUser ********** //
 // Backend NATS messaging for `ChatGroup_AddUser`: Request to add a user from a chat group
 message NatsChatGroupAddUserRequest {
-  repeated MetadataMap headers = 1;
+  repeated chat.MetadataMap headers = 1;
   ChatGroupAddUserRequest data = 2;
 }
 
 // ********** ChatGroup_RemoveUser ********** //
 // Backend NATS messaging for `ChatGroup_RemoveUser`: Request to remove a user from a chat group
 message NatsChatGroupRemoveUserRequest {
-  repeated MetadataMap headers = 1;
+  repeated chat.MetadataMap headers = 1;
   ChatGroupRemoveUserRequest data = 2;
 }
 
 // ********** ChatGroup_EditAdmin ********** //
 // Backend NATS messaging for `ChatGroup_EditAdmin`: Request to set/unset a chat participant as admin
 message NatsChatGroupEditAdminRequest {
-  repeated MetadataMap headers = 1;
+  repeated chat.MetadataMap headers = 1;
   ChatGroupEditAdminRequest data = 2;
 }
 
 // ********** ChatGroup_Delete ********** //
 // Backend NATS messaging for `ChatGroup_Delete`: Deletes a chat group
 message NatsChatGroupDeleteRequest {
-  repeated MetadataMap headers = 1;
+  repeated chat.MetadataMap headers = 1;
   ChatGroupDeleteRequest data = 2;
 }

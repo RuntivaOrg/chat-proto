@@ -1,31 +1,37 @@
 use crate::chat as proto;
+use crate::chatgroups::v1 as proto_chatgroups;
 
 use crate::proto_ext::chat::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // EditAdmin Request Data message
-impl DataGetter<proto::ChatGroupEditAdminRequest> for proto::NatsChatGroupEditAdminRequest {
-    fn to_data(self) -> Option<proto::ChatGroupEditAdminRequest> {
+impl DataGetter<proto_chatgroups::ChatGroupEditAdminRequest>
+    for proto_chatgroups::NatsChatGroupEditAdminRequest
+{
+    fn to_data(self) -> Option<proto_chatgroups::ChatGroupEditAdminRequest> {
         self.data
     }
 }
 
 // EditAdmin Request Headers
-impl HeaderGetter for proto::NatsChatGroupEditAdminRequest {
+impl HeaderGetter for proto_chatgroups::NatsChatGroupEditAdminRequest {
     fn headers(&self) -> &Vec<proto::MetadataMap> {
         &self.headers
     }
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::ChatGroupEditAdminRequest, proto::NatsChatGroupEditAdminRequest>
-    for proto::NatsChatGroupEditAdminRequest
+impl
+    NatsRequestSetter<
+        proto_chatgroups::ChatGroupEditAdminRequest,
+        proto_chatgroups::NatsChatGroupEditAdminRequest,
+    > for proto_chatgroups::NatsChatGroupEditAdminRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto::MetadataMap>>,
-        data: impl Into<proto::ChatGroupEditAdminRequest>,
+        data: impl Into<proto_chatgroups::ChatGroupEditAdminRequest>,
     ) -> Self {
-        proto::NatsChatGroupEditAdminRequest {
+        proto_chatgroups::NatsChatGroupEditAdminRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }

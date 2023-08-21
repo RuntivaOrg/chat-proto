@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package chat;
+package chatgroups.v1;
 //import "google/protobuf/timestamp.proto";
 
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.

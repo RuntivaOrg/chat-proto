@@ -33,25 +33,25 @@ service ChatService {
 
     // ****************************** ChatGroups ******************************
     // Creates a new chat group
-    rpc ChatGroup_Create(ChatGroupCreateRequest) returns (ChatGroup) {}
+    rpc ChatGroup_Create(chatgroups.v1.ChatGroupCreateRequest) returns (chatgroups.v1.ChatGroup) {}
 
     // Updates the title of a given chat group
-    rpc ChatGroup_UpdateTitle(ChatGroupUpdateTitleRequest) returns (google.protobuf.Empty) {}
+    rpc ChatGroup_UpdateTitle(chatgroups.v1.ChatGroupUpdateTitleRequest) returns (google.protobuf.Empty) {}
 
     // Updates the About of a given chat group
-    rpc ChatGroup_UpdateAbout(ChatGroupUpdateAboutRequest) returns (google.protobuf.Empty) {}
+    rpc ChatGroup_UpdateAbout(chatgroups.v1.ChatGroupUpdateAboutRequest) returns (google.protobuf.Empty) {}
 
     // Adds a user to a chat group
-    rpc ChatGroup_AddUser(ChatGroupAddUserRequest) returns (google.protobuf.Empty) {}
+    rpc ChatGroup_AddUser(chatgroups.v1.ChatGroupAddUserRequest) returns (google.protobuf.Empty) {}
 
     // Removes a user to a chat group
-    rpc ChatGroup_RemoveUser(ChatGroupRemoveUserRequest) returns (google.protobuf.Empty) {}
+    rpc ChatGroup_RemoveUser(chatgroups.v1.ChatGroupRemoveUserRequest) returns (google.protobuf.Empty) {}
 
     // Sets/unsets user as admin for a chat group
-    rpc ChatGroup_EditAdmin(ChatGroupEditAdminRequest) returns (google.protobuf.Empty) {}
+    rpc ChatGroup_EditAdmin(chatgroups.v1.ChatGroupEditAdminRequest) returns (google.protobuf.Empty) {}
 
     // Deletes a chat group
-    rpc ChatGroup_Delete(ChatGroupDeleteRequest) returns (google.protobuf.Empty) {}
+    rpc ChatGroup_Delete(chatgroups.v1.ChatGroupDeleteRequest) returns (google.protobuf.Empty) {}
 
     // ******************************* Messages *******************************
     // Sends a new message to a chat
