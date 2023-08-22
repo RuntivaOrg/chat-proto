@@ -3,8 +3,8 @@ syntax = "proto3";
 package runtiva.nats.v1;
 
 
-import "user/user_inputs.proto";
-import "user/user.proto";
+import "chat-svc/v1/user/user_inputs.proto";
+import "chat-svc/v1/user/user.proto";
 
 import "nats/v1/common.proto";
 

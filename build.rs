@@ -4,21 +4,33 @@ fn main() -> Result<(), Box<dyn Error>> {
     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
 
     let iface_files = &[
+        // *************************************************************************************
+        // Chat Service
         "proto/chat_svc.proto",
         // Channels
         "proto/chat-svc/v1/channel/entities.proto",
         "proto/chat-svc/v1/channel/service_messages.proto",
         "proto/chat-svc/v1/channel/channel_shared.proto",
         // Chats
-        "proto/chat/v1/chat.proto",
-        "proto/chat/v1/chat_inputs.proto",
+        "proto/chat-svc/v1/chat/chat.proto",
+        "proto/chat-svc/v1/chat/chat_inputs.proto",
         // Chatgroups
-        "proto/chatgroup/v1/entities.proto",
-        "proto/chatgroup/v1/service_messages.proto",
+        "proto/chat-svc/v1/chatgroup/entities.proto",
+        "proto/chat-svc/v1/chatgroup/service_messages.proto",
+        // Chatgroups
+        //"proto/updates/chatgroups/chatgroup.proto",
         // Messages
-        "proto/message/v1/message.proto",
-        "proto/message/v1/message_entity.proto",
-        "proto/message/v1/message_inputs.proto",
+        "proto/chat-svc/v1/message/message.proto",
+        "proto/chat-svc/v1/message/message_entity.proto",
+        "proto/chat-svc/v1/message/message_inputs.proto",
+        // Users
+        "proto/chat-svc/v1/user/user_inputs.proto",
+        "proto/chat-svc/v1/user/user.proto",
+        // UserProfiles
+        "proto/chat-svc/v1/userprofile/userprofile.proto",
+        "proto/chat-svc/v1/userprofile/userprofile_inputs.proto",
+        "proto/chat-svc/v1/userprofile/userprofile_nats.proto",
+        // *************************************************************************************
         // NATS specific messages and entities
         "proto/nats/v1/common.proto",
         "proto/nats/v1/enums.proto",
@@ -29,19 +41,11 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/nats/v1/user.proto",
         // Common
         "proto/common_peer.proto",
-        // Users
-        "proto/user/user_inputs.proto",
-        "proto/user/user.proto",
-        // UserProfiles
-        "proto/userprofile/userprofile.proto",
-        "proto/userprofile/userprofile_inputs.proto",
-        "proto/userprofile/userprofile_nats.proto",
-        // UpdatesService
+        // *************************************************************************************
+        // Updates Service
         "proto/updates_svc.proto",
         "proto/updates/updates_inputs.proto",
         "proto/updates/updates_nats.proto",
-        // Chatgroups
-        "proto/updates/chatgroups/chatgroup.proto",
     ];
     let dirs = &["proto"];
 

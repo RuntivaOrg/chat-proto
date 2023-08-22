@@ -5,14 +5,14 @@ package chat;
 import "chat-svc/v1/channel/entities.proto";
 import "chat-svc/v1/channel/service_messages.proto";
 
-import "chat/v1/chat.proto";
-import "chat/v1/chat_inputs.proto";
+import "chat-svc/v1/chat/chat.proto";
+import "chat-svc/v1/chat/chat_inputs.proto";
 
 
-import "chatgroup/v1/entities.proto";
-import "chatgroup/v1/service_messages.proto";
+import "chat-svc/v1/chatgroup/entities.proto";
+import "chat-svc/v1/chatgroup/service_messages.proto";
 
-import "message/v1/message_inputs.proto";
+import "chat-svc/v1/message/message_inputs.proto";
 
 import "field_behavior.proto";
 import "google/protobuf/empty.proto";

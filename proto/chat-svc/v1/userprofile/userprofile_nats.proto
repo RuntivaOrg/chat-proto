@@ -2,15 +2,15 @@ syntax = "proto3";
 
 package chat;
 
-import "userprofile/userprofile_inputs.proto";
-import "userprofile/userprofile.proto";
+import "chat-svc/v1/userprofile/userprofile_inputs.proto";
+import "chat-svc/v1/userprofile/userprofile.proto";
 
 import "nats/v1/common.proto";
 
 // NATS Specific messages that are used internally on the server-side.
 
 // ********** Get UserProfilesMin ********** //
-// Backend NATS messaging for `Chat_Create`: Request to retrieve a list of user profiles. 
+// Backend NATS messaging for `GetUserProfilesMin`: Request to retrieve a list of user profiles. 
 message NatsGetUserProfilesMinRequest {
   repeated runtiva.nats.v1.MetadataMap headers = 1;
   UserProfilesMinRequest data = 2;
