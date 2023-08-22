@@ -2,7 +2,6 @@
 // provide generic traits to cut down the amount of boilerplate code
 // required.
 
-use crate::proto::chat as proto;
 use crate::runtiva::nats::v1 as proto_nats;
 
 // Trait for generiically setting the headers and data component of a NATS **Request** message
@@ -30,7 +29,7 @@ where
 /// Trait for generically getting the error component of a NATS **Response** message
 /// *** Used in chat-server::api::api_handler.rs
 pub trait ErrorGetter {
-    fn error(&self) -> Option<&proto::ErrorReply>;
+    fn error(&self) -> Option<&proto_nats::ErrorReply>;
 }
 
 /// Trait for generically retrieving the header component of a NATS **Request** message

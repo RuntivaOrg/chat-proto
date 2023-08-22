@@ -1,4 +1,3 @@
-use crate::chat as proto;
 use crate::runtiva::nats::v1 as proto_nats;
 
 use crate::proto_ext::{
@@ -54,7 +53,7 @@ impl DataGetter<proto_chatgroups::ChatGroup> for proto_chatgroups::NatsChatGroup
 
 // Create Response Error setter
 impl ErrorGetter for proto_chatgroups::NatsChatGroupCreateResponse {
-    fn error(&self) -> Option<&proto::ErrorReply> {
+    fn error(&self) -> Option<&proto_nats::ErrorReply> {
         match &self.msg {
             Some(proto_chatgroups::nats_chat_group_create_response::Msg::Error(e)) => Some(e),
             _ => None,
@@ -76,10 +75,10 @@ impl DataSetter<proto_chatgroups::ChatGroup, proto_chatgroups::NatsChatGroupCrea
 }
 
 // Create Response Error setter
-impl ErrorSetter<proto::ErrorReply, proto_chatgroups::NatsChatGroupCreateResponse>
+impl ErrorSetter<proto_nats::ErrorReply, proto_chatgroups::NatsChatGroupCreateResponse>
     for proto_chatgroups::NatsChatGroupCreateResponse
 {
-    fn set_error(error: impl Into<proto::ErrorReply>) -> Self {
+    fn set_error(error: impl Into<proto_nats::ErrorReply>) -> Self {
         let error = error.into();
         proto_chatgroups::NatsChatGroupCreateResponse {
             msg: Some(proto_chatgroups::nats_chat_group_create_response::Msg::Error(error)),

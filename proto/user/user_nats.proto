@@ -8,7 +8,6 @@ import "user/user.proto";
 
 import "common_peer.proto";
 
-import "error_reply.proto";
 import "nats/v1/entities.proto";
 
 // NATS Specific messages that are used internally on the server-side. 
@@ -23,7 +22,7 @@ message NatsUserHeartbeatRequest {
 message NatsUserCreateResponse {
   oneof msg {
     User data = 1;
-    ErrorReply error = 2;
+    runtiva.nats.v1.ErrorReply error = 2;
   }
 }
 
@@ -55,7 +54,7 @@ message NatsGetUserChatsRequest {
 message NatsGetUserChatsResponse {
   oneof msg {
     GetUserChatsResponse data = 1;
-    ErrorReply error = 2;
+    runtiva.nats.v1.ErrorReply error = 2;
   }
 }
 

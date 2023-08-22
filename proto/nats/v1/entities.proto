@@ -2,13 +2,12 @@ syntax = "proto3";
 
 package runtiva.nats.v1;
 
-import "error_reply.proto";
 
 // Empty response for NATS requests to indicate success or failure (w/ error details)
 message NatsEmptyResponse {
   oneof msg {
     bool success = 1;
-    chat.ErrorReply error = 2;
+    runtiva.nats.v1.ErrorReply error = 2;
   }
 }
 
@@ -21,4 +20,30 @@ message NatsEmptyResponse {
 message MetadataMap {
     string key = 1;
     repeated string value = 2;
+}
+
+// External Error Response -- NOT USED ???
+message Error {
+  int32 code = 1;
+  string message = 2;
+  int32 status = 3;
+}
+
+// Internal/NATS Error Response
+message ErrorReply {
+  int32 code = 1;
+  string message = 2;
+  int32 status = 3;
+  repeated ErrorDetails details = 4;
+}
+
+message ErrorDetails {
+  string reason = 1;
+  string domain = 2;
+  repeated MetaData metadata = 3;
+}
+
+message MetaData {
+  string key = 1;
+  string value = 2;
 }

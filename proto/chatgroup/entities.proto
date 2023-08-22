@@ -23,3 +23,5 @@ message ChatGroup {
     string invite_link = 13;    // TODO: ExportedChatInvite type
 
 }
+
+

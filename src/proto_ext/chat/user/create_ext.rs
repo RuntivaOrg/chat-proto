@@ -48,7 +48,7 @@ impl DataGetter<proto::User> for proto::NatsUserCreateResponse {
 
 // Create Response Error setter
 impl ErrorGetter for proto::NatsUserCreateResponse {
-    fn error(&self) -> Option<&proto::ErrorReply> {
+    fn error(&self) -> Option<&proto_nats::ErrorReply> {
         match &self.msg {
             Some(proto::nats_user_create_response::Msg::Error(e)) => Some(e),
             _ => None,
@@ -68,10 +68,10 @@ impl DataSetter<proto::User, proto::NatsUserCreateResponse> for proto::NatsUserC
 }
 
 // Create Response Error setter
-impl ErrorSetter<proto::ErrorReply, proto::NatsUserCreateResponse>
+impl ErrorSetter<proto_nats::ErrorReply, proto::NatsUserCreateResponse>
     for proto::NatsUserCreateResponse
 {
-    fn set_error(error: impl Into<proto::ErrorReply>) -> Self {
+    fn set_error(error: impl Into<proto_nats::ErrorReply>) -> Self {
         let error = error.into();
         proto::NatsUserCreateResponse {
             msg: Some(proto::nats_user_create_response::Msg::Error(error)),

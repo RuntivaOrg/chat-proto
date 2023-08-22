@@ -6,7 +6,6 @@ import "channel/channel_inputs.proto";
 import "channel/channel.proto";
 //import "channel/channel_shared.proto";
 
-import "error_reply.proto";
 import "nats/v1/entities.proto";
 
 // NATS Specific messages that are used internally on the server-side to offboard request processing 
@@ -22,7 +21,7 @@ message NatsChannelCreateRequest {
 message NatsChannelCreateResponse {
   oneof msg {
     Channel data = 1;
-    ErrorReply error = 2;
+    runtiva.nats.v1.ErrorReply error = 2;
   }
 }
 
@@ -120,7 +119,7 @@ message NatsChannelJoinRequest {
 message NatsChannelJoinResponse {
   oneof msg {
     ChannelJoinResponse data = 1;
-    ErrorReply error = 2;
+    runtiva.nats.v1.ErrorReply error = 2;
   }
 }
 

@@ -5,7 +5,6 @@ package chat;
 import "userprofile/userprofile_inputs.proto";
 import "userprofile/userprofile.proto";
 
-import "error_reply.proto";
 import "nats/v1/entities.proto";
 
 // NATS Specific messages that are used internally on the server-side.
@@ -20,7 +19,7 @@ message NatsGetUserProfilesMinRequest {
 message NatsGetUserProfilesMinResponse {
   oneof msg {
     UserProfileMinArray data = 1;
-    ErrorReply error = 2;
+    runtiva.nats.v1.ErrorReply error = 2;
   }
 }
 
