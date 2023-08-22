@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package chat;
+package runtiva.nats.v1;
 
-import "message_inputs.proto";
+import "message/v1/message_inputs.proto";
 //import "message.proto";
 
 import "nats/v1/common.proto";
@@ -13,8 +13,8 @@ import "nats/v1/common.proto";
 // ********** Message_Send ********** //
 // Backend NATS messaging for `Message_Send`: Request to send a new message is a specified chat
 message NatsMessageSendRequest {
-  repeated runtiva.nats.v1.MetadataMap headers = 1;
-  MessageSendRequest data = 2;
+  repeated MetadataMap headers = 1;
+  chat.MessageSendRequest data = 2;
 }
 
 

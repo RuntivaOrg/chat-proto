@@ -1,12 +1,10 @@
 syntax = "proto3";
 
-package chat;
+package runtiva.nats.v1;
 
 
 import "user/user_inputs.proto";
 import "user/user.proto";
-
-import "common_peer.proto";
 
 import "nats/v1/common.proto";
 
@@ -15,30 +13,30 @@ import "nats/v1/common.proto";
 // ********** User_Hearbeat ********** //
 // Backend NATS messaging for persisting user hearbeat 
 message NatsUserHeartbeatRequest {
-  repeated runtiva.nats.v1.MetadataMap headers = 1;
-  UserHeartbeatRequest data = 2;
+  repeated MetadataMap headers = 1;
+  chat.UserHeartbeatRequest data = 2;
 }
 
 message NatsUserCreateResponse {
   oneof msg {
-    User data = 1;
-    runtiva.nats.v1.ErrorReply error = 2;
+    chat.User data = 1;
+    ErrorReply error = 2;
   }
 }
 
 // ********** User_Create ********** //
 // Backend NATS messaging for `User_Create`: Request to create a new chat 
 message NatsUserCreateRequest {
-  repeated runtiva.nats.v1.MetadataMap headers = 1;
-  UserCreateRequest data = 2;
+  repeated MetadataMap headers = 1;
+  chat.UserCreateRequest data = 2;
 }
 
 
 // ********** User_Delete ********** //
 // Backend NATS messaging for `User_Delete`: Deletes a chat 
 message NatsUserDeleteRequest {
-  repeated runtiva.nats.v1.MetadataMap headers = 1;
-  UserDeleteRequest data = 2;
+  repeated MetadataMap headers = 1;
+  chat.UserDeleteRequest data = 2;
 }
 
 
@@ -46,18 +44,15 @@ message NatsUserDeleteRequest {
 // Backend NATS messaging for retrieving a user's chats and chat_groups.
 // Used by Presence service to retrieve user's chats and chat_groups. 
 message NatsGetUserChatsRequest {
-  repeated runtiva.nats.v1.MetadataMap headers = 1;
-  GetUserChatsRequest data = 2;
+  repeated MetadataMap headers = 1;
+  chat.GetUserChatsRequest data = 2;
 }
 
 
 message NatsGetUserChatsResponse {
   oneof msg {
-    GetUserChatsResponse data = 1;
-    runtiva.nats.v1.ErrorReply error = 2;
+    chat.GetUserChatsResponse data = 1;
+    ErrorReply error = 2;
   }
 }
 
-message GetUserChatsResponse {
-  repeated PeerInput user_peers = 1;
-}

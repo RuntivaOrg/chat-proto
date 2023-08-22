@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package chat;
+
+enum ChannelType {
+    CHANNEL_TYPE_UNKNOWN = 0;
+    CHANNEL_TYPE_BROADCAST = 1;
+    CHANNEL_TYPE_DISCUSSIONGROUP = 2;
+    CHANNEL_TYPE_FORUM = 3;
+}
+
+
+enum JoinResponse {
+    JOIN_RESPONSE_APPROVED = 0;
+    JOIN_RESPONSE_WAITING_APPROVAL = 1;
+    JOIN_RESPONSE_NO_PENDING_REQUEST = 2;
+}

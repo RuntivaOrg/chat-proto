@@ -3,7 +3,7 @@ syntax = "proto3";
 package chat;
 
 import "google/protobuf/timestamp.proto";
-import "channel/channel_shared.proto";
+import "channel/v1/channel_shared.proto";
 
 message Channel {
     // ID of the channel
@@ -115,9 +115,28 @@ message ChannelStats {
 
 
 
-message GeoPoint {
-    double lat = 1;
-    double long = 2;
-    double radius = 3;
+message ChannelAdminRights {
+    bool is_anonymous = 1;
+	bool change_info = 2;
+	bool post_messages = 3;
+	bool edit_messages = 4;
+	bool delete_messages = 5;
+	bool ban_users = 6;
+	bool invite_users = 7;
+	bool pin_messages = 8;
+	bool add_admins = 9;
+	bool view_statistics = 10;
+	bool view_participants = 11;
+    bool disable_channel = 12;
+    bool delete_channel = 13;
 }
 
+message ChannelParticipantRights {
+    bool is_banned = 1;
+	bool view_messages = 2;
+	bool send_messages = 3;
+	bool send_media = 4;
+	bool embed_links = 5;
+	bool invite_users = 6;
+	optional google.protobuf.Timestamp until_date = 7;
+}

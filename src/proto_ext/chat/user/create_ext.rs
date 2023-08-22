@@ -7,28 +7,28 @@ use crate::proto_ext::{
 
 // ***********************************  Request Getters ***********************************
 // Create Request Data message
-impl DataGetter<proto::UserCreateRequest> for proto::NatsUserCreateRequest {
+impl DataGetter<proto::UserCreateRequest> for proto_nats::NatsUserCreateRequest {
     fn to_data(self) -> Option<proto::UserCreateRequest> {
         self.data
     }
 }
 
 // Create Request Headers
-impl HeaderGetter for proto::NatsUserCreateRequest {
+impl HeaderGetter for proto_nats::NatsUserCreateRequest {
     fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::UserCreateRequest, proto::NatsUserCreateRequest>
-    for proto::NatsUserCreateRequest
+impl NatsRequestSetter<proto::UserCreateRequest, proto_nats::NatsUserCreateRequest>
+    for proto_nats::NatsUserCreateRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto::UserCreateRequest>,
     ) -> Self {
-        proto::NatsUserCreateRequest {
+        proto_nats::NatsUserCreateRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }
@@ -37,20 +37,20 @@ impl NatsRequestSetter<proto::UserCreateRequest, proto::NatsUserCreateRequest>
 
 // ***********************************  Response Getters ***********************************
 // Create Response Data setter
-impl DataGetter<proto::User> for proto::NatsUserCreateResponse {
+impl DataGetter<proto::User> for proto_nats::NatsUserCreateResponse {
     fn to_data(self) -> Option<proto::User> {
         match self.msg {
-            Some(proto::nats_user_create_response::Msg::Data(data)) => Some(data),
+            Some(proto_nats::nats_user_create_response::Msg::Data(data)) => Some(data),
             _ => None,
         }
     }
 }
 
 // Create Response Error setter
-impl ErrorGetter for proto::NatsUserCreateResponse {
+impl ErrorGetter for proto_nats::NatsUserCreateResponse {
     fn error(&self) -> Option<&proto_nats::ErrorReply> {
         match &self.msg {
-            Some(proto::nats_user_create_response::Msg::Error(e)) => Some(e),
+            Some(proto_nats::nats_user_create_response::Msg::Error(e)) => Some(e),
             _ => None,
         }
     }
@@ -58,23 +58,25 @@ impl ErrorGetter for proto::NatsUserCreateResponse {
 
 // ***********************************  Response Setters ***********************************
 // Create Response Data setter
-impl DataSetter<proto::User, proto::NatsUserCreateResponse> for proto::NatsUserCreateResponse {
+impl DataSetter<proto::User, proto_nats::NatsUserCreateResponse>
+    for proto_nats::NatsUserCreateResponse
+{
     fn set_data(data: impl Into<proto::User>) -> Self {
         let data = data.into();
-        proto::NatsUserCreateResponse {
-            msg: Some(proto::nats_user_create_response::Msg::Data(data)),
+        proto_nats::NatsUserCreateResponse {
+            msg: Some(proto_nats::nats_user_create_response::Msg::Data(data)),
         }
     }
 }
 
 // Create Response Error setter
-impl ErrorSetter<proto_nats::ErrorReply, proto::NatsUserCreateResponse>
-    for proto::NatsUserCreateResponse
+impl ErrorSetter<proto_nats::ErrorReply, proto_nats::NatsUserCreateResponse>
+    for proto_nats::NatsUserCreateResponse
 {
     fn set_error(error: impl Into<proto_nats::ErrorReply>) -> Self {
         let error = error.into();
-        proto::NatsUserCreateResponse {
-            msg: Some(proto::nats_user_create_response::Msg::Error(error)),
+        proto_nats::NatsUserCreateResponse {
+            msg: Some(proto_nats::nats_user_create_response::Msg::Error(error)),
         }
     }
 }

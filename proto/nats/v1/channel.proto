@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package runtiva.nats.v1;
 
-import "channel/channel_inputs.proto";
-import "channel/channel.proto";
+import "channel/v1/service_messages.proto";
+import "channel/v1/entities.proto";
 //import "channel/channel_shared.proto";
 
 import "nats/v1/common.proto";

@@ -4,18 +4,18 @@ package chat;
 
 //import "google/api/annotations.proto";
 //import "google/api/field_behavior.proto";
-import "channel/channel.proto";
-import "channel/channel_inputs.proto";
+import "channel/v1/entities.proto";
+import "channel/v1/service_messages.proto";
 
-import "chat/chat.proto";
-import "chat/chat_inputs.proto";
+import "chat/v1/chat.proto";
+import "chat/v1/chat_inputs.proto";
 
 
-import "chatgroup/entities.proto";
-import "chatgroup/service_messages.proto";
+import "chatgroup/v1/entities.proto";
+import "chatgroup/v1/service_messages.proto";
 
 //import "message.proto";
-import "message_inputs.proto";
+import "message/v1/message_inputs.proto";
 
 import "field_behavior.proto";
 import "google/protobuf/empty.proto";

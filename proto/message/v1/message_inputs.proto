@@ -3,7 +3,7 @@ syntax = "proto3";
 package chat;
 
 import "common_peer.proto";
-import "common_entities.proto";
+import "message/v1/message_entity.proto";
 
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
 // Request Message for `Message_Send` RPC.

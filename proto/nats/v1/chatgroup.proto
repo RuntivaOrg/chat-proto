@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package runtiva.nats.v1;
 
-import "chatgroup/service_messages.proto";
-import "chatgroup/entities.proto";
+import "chatgroup/v1/service_messages.proto";
+import "chatgroup/v1/entities.proto";
 
 import "nats/v1/common.proto";
 

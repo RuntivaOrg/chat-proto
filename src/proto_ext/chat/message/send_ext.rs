@@ -5,28 +5,28 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // Send Request Data message
-impl DataGetter<proto::MessageSendRequest> for proto::NatsMessageSendRequest {
+impl DataGetter<proto::MessageSendRequest> for proto_nats::NatsMessageSendRequest {
     fn to_data(self) -> Option<proto::MessageSendRequest> {
         self.data
     }
 }
 
 // Send Request Headers
-impl HeaderGetter for proto::NatsMessageSendRequest {
+impl HeaderGetter for proto_nats::NatsMessageSendRequest {
     fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::MessageSendRequest, proto::NatsMessageSendRequest>
-    for proto::NatsMessageSendRequest
+impl NatsRequestSetter<proto::MessageSendRequest, proto_nats::NatsMessageSendRequest>
+    for proto_nats::NatsMessageSendRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto::MessageSendRequest>,
     ) -> Self {
-        proto::NatsMessageSendRequest {
+        proto_nats::NatsMessageSendRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }
