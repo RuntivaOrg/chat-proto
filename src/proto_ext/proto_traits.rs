@@ -3,6 +3,7 @@
 // required.
 
 use crate::proto::chat as proto;
+use crate::runtiva::nats::v1 as proto_nats;
 
 // Trait for generiically setting the headers and data component of a NATS **Request** message
 /// *** Used in chat-server::api::api_handler.rs
@@ -12,7 +13,7 @@ where
     N: prost::Message,
 {
     fn from_headers_and_message(
-        headers: impl Into<Vec<proto::MetadataMap>>,
+        headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<M>,
     ) -> N;
 }
@@ -34,7 +35,7 @@ pub trait ErrorGetter {
 
 /// Trait for generically retrieving the header component of a NATS **Request** message
 pub trait HeaderGetter {
-    fn headers(&self) -> &Vec<proto::MetadataMap>;
+    fn headers(&self) -> &Vec<proto_nats::MetadataMap>;
 }
 
 /// Trait for generically setting the data component of a NATS **Response** message

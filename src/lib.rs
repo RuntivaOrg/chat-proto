@@ -5,9 +5,10 @@
 mod error;
 pub use error::ChatProtoError;
 
-pub use self::proto::*;
 pub mod proto_ext;
 pub mod subjects;
+
+pub use proto::*;
 
 #[allow(unused_qualifications)]
 #[allow(clippy::all)] // generated code - no need to clippy check
@@ -27,6 +28,12 @@ mod proto {
         pub mod chatgroups {
             pub mod v1 {
                 tonic::include_proto!("runtiva.chatgroups.v1");
+            }
+        }
+
+        pub mod nats {
+            pub mod v1 {
+                tonic::include_proto!("runtiva.nats.v1");
             }
         }
     }

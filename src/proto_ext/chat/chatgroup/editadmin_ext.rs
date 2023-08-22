@@ -1,7 +1,7 @@
-use crate::chat as proto;
 use crate::runtiva::chatgroups::v1 as proto_chatgroups;
+use crate::runtiva::nats::v1 as proto_nats;
 
-use crate::proto_ext::chat::{DataGetter, HeaderGetter, NatsRequestSetter};
+use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // EditAdmin Request Data message
@@ -15,7 +15,7 @@ impl DataGetter<proto_chatgroups::ChatGroupEditAdminRequest>
 
 // EditAdmin Request Headers
 impl HeaderGetter for proto_chatgroups::NatsChatGroupEditAdminRequest {
-    fn headers(&self) -> &Vec<proto::MetadataMap> {
+    fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
 }
@@ -28,7 +28,7 @@ impl
     > for proto_chatgroups::NatsChatGroupEditAdminRequest
 {
     fn from_headers_and_message(
-        headers: impl Into<Vec<proto::MetadataMap>>,
+        headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto_chatgroups::ChatGroupEditAdminRequest>,
     ) -> Self {
         proto_chatgroups::NatsChatGroupEditAdminRequest {

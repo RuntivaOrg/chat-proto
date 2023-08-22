@@ -9,14 +9,14 @@ import "user/user.proto";
 import "common_peer.proto";
 
 import "error_reply.proto";
-import "nats_metadata.proto";
+import "nats/v1/entities.proto";
 
 // NATS Specific messages that are used internally on the server-side. 
 
 // ********** User_Hearbeat ********** //
 // Backend NATS messaging for persisting user hearbeat 
 message NatsUserHeartbeatRequest {
-  repeated MetadataMap headers = 1;
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
   UserHeartbeatRequest data = 2;
 }
 
@@ -30,7 +30,7 @@ message NatsUserCreateResponse {
 // ********** User_Create ********** //
 // Backend NATS messaging for `User_Create`: Request to create a new chat 
 message NatsUserCreateRequest {
-  repeated MetadataMap headers = 1;
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
   UserCreateRequest data = 2;
 }
 
@@ -38,7 +38,7 @@ message NatsUserCreateRequest {
 // ********** User_Delete ********** //
 // Backend NATS messaging for `User_Delete`: Deletes a chat 
 message NatsUserDeleteRequest {
-  repeated MetadataMap headers = 1;
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
   UserDeleteRequest data = 2;
 }
 
@@ -47,7 +47,7 @@ message NatsUserDeleteRequest {
 // Backend NATS messaging for retrieving a user's chats and chat_groups.
 // Used by Presence service to retrieve user's chats and chat_groups. 
 message NatsGetUserChatsRequest {
-  repeated MetadataMap headers = 1;
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
   GetUserChatsRequest data = 2;
 }
 

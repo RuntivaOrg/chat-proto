@@ -1,6 +1,7 @@
+use crate::runtiva::nats::v1 as proto_nats;
 use crate::updates_stream as proto;
 
-use crate::proto_ext::updates_stream::{DataGetter, HeaderGetter, NatsRequestSetter};
+use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // EditAbout Request Data message
@@ -12,7 +13,7 @@ impl DataGetter<proto::UpdatesConnectionKey> for proto::NatsRegisterOnPeerListRe
 
 // EditAbout Request Headers
 impl HeaderGetter for proto::NatsRegisterOnPeerListRequest {
-    fn headers(&self) -> &Vec<proto::MetadataMap> {
+    fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
 }
@@ -22,7 +23,7 @@ impl NatsRequestSetter<proto::UpdatesConnectionKey, proto::NatsRegisterOnPeerLis
     for proto::NatsRegisterOnPeerListRequest
 {
     fn from_headers_and_message(
-        headers: impl Into<Vec<proto::MetadataMap>>,
+        headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto::UpdatesConnectionKey>,
     ) -> Self {
         proto::NatsRegisterOnPeerListRequest {

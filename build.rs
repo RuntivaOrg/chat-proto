@@ -24,7 +24,10 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/message.proto",
         "proto/message_inputs.proto",
         "proto/message_nats.proto",
-        "proto/nats_emptyresponse.proto",
+        // NATS specific messages and entities
+        "proto/nats/v1/entities.proto",
+        "proto/nats/v1/enums.proto",
+        // Common
         "proto/common_peer.proto",
         "proto/common_entities.proto",
         // Users
@@ -35,9 +38,6 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/updates_svc.proto",
         "proto/updates/updates_inputs.proto",
         "proto/updates/updates_nats.proto",
-        "proto/updates/nats_emptyresponse.proto",
-        "proto/updates/nats_metadata.proto",
-        "proto/updates/error_reply.proto",
         // rich error messages
         //"proto/status.proto",
         //"proto/error_details.proto",

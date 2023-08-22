@@ -6,14 +6,14 @@ import "userprofile/userprofile_inputs.proto";
 import "userprofile/userprofile.proto";
 
 import "error_reply.proto";
-import "nats_metadata.proto";
+import "nats/v1/entities.proto";
 
 // NATS Specific messages that are used internally on the server-side.
 
 // ********** Get UserProfilesMin ********** //
 // Backend NATS messaging for `Chat_Create`: Request to retrieve a list of user profiles. 
 message NatsGetUserProfilesMinRequest {
-  repeated MetadataMap headers = 1;
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
   UserProfilesMinRequest data = 2;
 }
 

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package runtiva.nats.v1;
+
+import "error_reply.proto";
+
+// Empty response for NATS requests to indicate success or failure (w/ error details)
+message NatsEmptyResponse {
+  oneof msg {
+    bool success = 1;
+    chat.ErrorReply error = 2;
+  }
+}
+
+// NATS does not have headers, so to pass around the initila incoming client request header details, we convert to this message type and 
+// use it as part of each NAT Request message 
+ message Metadata {
+     repeated MetadataMap headers = 1;
+ }
+
+message MetadataMap {
+    string key = 1;
+    repeated string value = 2;
+}

@@ -1,6 +1,7 @@
 use crate::chat as proto;
+use crate::runtiva::nats::v1 as proto_nats;
 
-use crate::proto_ext::chat::{
+use crate::proto_ext::{
     DataGetter, DataSetter, ErrorGetter, ErrorSetter, HeaderGetter, NatsRequestSetter,
 };
 
@@ -14,7 +15,7 @@ impl DataGetter<proto::UserCreateRequest> for proto::NatsUserCreateRequest {
 
 // Create Request Headers
 impl HeaderGetter for proto::NatsUserCreateRequest {
-    fn headers(&self) -> &Vec<proto::MetadataMap> {
+    fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
 }
@@ -24,7 +25,7 @@ impl NatsRequestSetter<proto::UserCreateRequest, proto::NatsUserCreateRequest>
     for proto::NatsUserCreateRequest
 {
     fn from_headers_and_message(
-        headers: impl Into<Vec<proto::MetadataMap>>,
+        headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto::UserCreateRequest>,
     ) -> Self {
         proto::NatsUserCreateRequest {

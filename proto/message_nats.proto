@@ -6,7 +6,7 @@ import "message_inputs.proto";
 //import "message.proto";
 
 //import "error_reply.proto";
-import "nats_metadata.proto";
+import "nats/v1/entities.proto";
 
 // NATS Specific messages that are used internally on the server-side to offboard request processing 
 // from the ChatServer to the backend services. 
@@ -14,7 +14,7 @@ import "nats_metadata.proto";
 // ********** Message_Send ********** //
 // Backend NATS messaging for `Message_Send`: Request to send a new message is a specified chat
 message NatsMessageSendRequest {
-  repeated MetadataMap headers = 1;
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
   MessageSendRequest data = 2;
 }
 
