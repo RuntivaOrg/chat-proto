@@ -3,7 +3,7 @@ syntax = "proto3";
 package chat;
 
 import "google/protobuf/timestamp.proto";
-import "channel/v1/channel_shared.proto";
+import "chat-svc/v1/channel/channel_shared.proto";
 
 message Channel {
     // ID of the channel

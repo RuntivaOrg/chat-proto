@@ -1,8 +1,8 @@
 syntax = "proto3";
 
 package chat;
-import "channel/v1/channel_shared.proto";
-import "channel/v1/entities.proto";
+import "chat-svc/v1/channel/channel_shared.proto";
+import "chat-svc/v1/channel/entities.proto";
 
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
 // Request Message for `Channel_Create` RPC.

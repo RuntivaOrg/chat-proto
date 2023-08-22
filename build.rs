@@ -6,9 +6,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     let iface_files = &[
         "proto/chat_svc.proto",
         // Channels
-        "proto/channel/v1/entities.proto",
-        "proto/channel/v1/service_messages.proto",
-        "proto/channel/v1/channel_shared.proto",
+        "proto/chat-svc/v1/channel/entities.proto",
+        "proto/chat-svc/v1/channel/service_messages.proto",
+        "proto/chat-svc/v1/channel/channel_shared.proto",
         // Chats
         "proto/chat/v1/chat.proto",
         "proto/chat/v1/chat_inputs.proto",
