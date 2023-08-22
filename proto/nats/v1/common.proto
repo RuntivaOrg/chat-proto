@@ -22,13 +22,6 @@ message MetadataMap {
     repeated string value = 2;
 }
 
-// External Error Response -- NOT USED ???
-message Error {
-  int32 code = 1;
-  string message = 2;
-  int32 status = 3;
-}
-
 // Internal/NATS Error Response
 message ErrorReply {
   int32 code = 1;

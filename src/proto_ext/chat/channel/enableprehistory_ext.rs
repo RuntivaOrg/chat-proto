@@ -6,7 +6,7 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 // ***********************************  Request Getters ***********************************
 // RemoveUser Request Data message
 impl DataGetter<proto::ChannelEnablePrehistoryRequest>
-    for proto::NatsChannelEnablePrehistoryRequest
+    for proto_nats::NatsChannelEnablePrehistoryRequest
 {
     fn to_data(self) -> Option<proto::ChannelEnablePrehistoryRequest> {
         self.data
@@ -14,7 +14,7 @@ impl DataGetter<proto::ChannelEnablePrehistoryRequest>
 }
 
 // RemoveUser Request Headers
-impl HeaderGetter for proto::NatsChannelEnablePrehistoryRequest {
+impl HeaderGetter for proto_nats::NatsChannelEnablePrehistoryRequest {
     fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
@@ -24,14 +24,14 @@ impl HeaderGetter for proto::NatsChannelEnablePrehistoryRequest {
 impl
     NatsRequestSetter<
         proto::ChannelEnablePrehistoryRequest,
-        proto::NatsChannelEnablePrehistoryRequest,
-    > for proto::NatsChannelEnablePrehistoryRequest
+        proto_nats::NatsChannelEnablePrehistoryRequest,
+    > for proto_nats::NatsChannelEnablePrehistoryRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto::ChannelEnablePrehistoryRequest>,
     ) -> Self {
-        proto::NatsChannelEnablePrehistoryRequest {
+        proto_nats::NatsChannelEnablePrehistoryRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }

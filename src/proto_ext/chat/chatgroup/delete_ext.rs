@@ -6,7 +6,7 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 // ***********************************  Request Getters ***********************************
 // Delete Request Data message
 impl DataGetter<proto_chatgroups::ChatGroupDeleteRequest>
-    for proto_chatgroups::NatsChatGroupDeleteRequest
+    for proto_nats::NatsChatGroupDeleteRequest
 {
     fn to_data(self) -> Option<proto_chatgroups::ChatGroupDeleteRequest> {
         self.data
@@ -14,7 +14,7 @@ impl DataGetter<proto_chatgroups::ChatGroupDeleteRequest>
 }
 
 // Delete Request Headers
-impl HeaderGetter for proto_chatgroups::NatsChatGroupDeleteRequest {
+impl HeaderGetter for proto_nats::NatsChatGroupDeleteRequest {
     fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
@@ -24,14 +24,14 @@ impl HeaderGetter for proto_chatgroups::NatsChatGroupDeleteRequest {
 impl
     NatsRequestSetter<
         proto_chatgroups::ChatGroupDeleteRequest,
-        proto_chatgroups::NatsChatGroupDeleteRequest,
-    > for proto_chatgroups::NatsChatGroupDeleteRequest
+        proto_nats::NatsChatGroupDeleteRequest,
+    > for proto_nats::NatsChatGroupDeleteRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto_chatgroups::ChatGroupDeleteRequest>,
     ) -> Self {
-        proto_chatgroups::NatsChatGroupDeleteRequest {
+        proto_nats::NatsChatGroupDeleteRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }

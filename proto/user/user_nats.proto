@@ -8,7 +8,7 @@ import "user/user.proto";
 
 import "common_peer.proto";
 
-import "nats/v1/entities.proto";
+import "nats/v1/common.proto";
 
 // NATS Specific messages that are used internally on the server-side. 
 

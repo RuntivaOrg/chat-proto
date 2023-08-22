@@ -7,28 +7,28 @@ use crate::proto_ext::{
 
 // ***********************************  Request Getters ***********************************
 // Create Request Data message
-impl DataGetter<proto::ChannelCreateRequest> for proto::NatsChannelCreateRequest {
+impl DataGetter<proto::ChannelCreateRequest> for proto_nats::NatsChannelCreateRequest {
     fn to_data(self) -> Option<proto::ChannelCreateRequest> {
         self.data
     }
 }
 
 // Create Request Headers
-impl HeaderGetter for proto::NatsChannelCreateRequest {
+impl HeaderGetter for proto_nats::NatsChannelCreateRequest {
     fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::ChannelCreateRequest, proto::NatsChannelCreateRequest>
-    for proto::NatsChannelCreateRequest
+impl NatsRequestSetter<proto::ChannelCreateRequest, proto_nats::NatsChannelCreateRequest>
+    for proto_nats::NatsChannelCreateRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto::ChannelCreateRequest>,
     ) -> Self {
-        proto::NatsChannelCreateRequest {
+        proto_nats::NatsChannelCreateRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }
@@ -37,20 +37,20 @@ impl NatsRequestSetter<proto::ChannelCreateRequest, proto::NatsChannelCreateRequ
 
 // ***********************************  Response Getters ***********************************
 // Create Response Data getter
-impl DataGetter<proto::Channel> for proto::NatsChannelCreateResponse {
+impl DataGetter<proto::Channel> for proto_nats::NatsChannelCreateResponse {
     fn to_data(self) -> Option<proto::Channel> {
         match self.msg {
-            Some(proto::nats_channel_create_response::Msg::Data(data)) => Some(data),
+            Some(proto_nats::nats_channel_create_response::Msg::Data(data)) => Some(data),
             _ => None,
         }
     }
 }
 
 // Create Response Error getter
-impl ErrorGetter for proto::NatsChannelCreateResponse {
+impl ErrorGetter for proto_nats::NatsChannelCreateResponse {
     fn error(&self) -> Option<&proto_nats::ErrorReply> {
         match &self.msg {
-            Some(proto::nats_channel_create_response::Msg::Error(e)) => Some(e),
+            Some(proto_nats::nats_channel_create_response::Msg::Error(e)) => Some(e),
             _ => None,
         }
     }
@@ -58,25 +58,25 @@ impl ErrorGetter for proto::NatsChannelCreateResponse {
 
 // ***********************************  Response Setters ***********************************
 // Create Response Data setter
-impl DataSetter<proto::Channel, proto::NatsChannelCreateResponse>
-    for proto::NatsChannelCreateResponse
+impl DataSetter<proto::Channel, proto_nats::NatsChannelCreateResponse>
+    for proto_nats::NatsChannelCreateResponse
 {
     fn set_data(data: impl Into<proto::Channel>) -> Self {
         let data = data.into();
-        proto::NatsChannelCreateResponse {
-            msg: Some(proto::nats_channel_create_response::Msg::Data(data)),
+        proto_nats::NatsChannelCreateResponse {
+            msg: Some(proto_nats::nats_channel_create_response::Msg::Data(data)),
         }
     }
 }
 
 // Create Response Error setter
-impl ErrorSetter<proto_nats::ErrorReply, proto::NatsChannelCreateResponse>
-    for proto::NatsChannelCreateResponse
+impl ErrorSetter<proto_nats::ErrorReply, proto_nats::NatsChannelCreateResponse>
+    for proto_nats::NatsChannelCreateResponse
 {
     fn set_error(error: impl Into<proto_nats::ErrorReply>) -> Self {
         let error = error.into();
-        proto::NatsChannelCreateResponse {
-            msg: Some(proto::nats_channel_create_response::Msg::Error(error)),
+        proto_nats::NatsChannelCreateResponse {
+            msg: Some(proto_nats::nats_channel_create_response::Msg::Error(error)),
         }
     }
 }

@@ -5,14 +5,16 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // EditParticipant Request Data message
-impl DataGetter<proto::ChannelEditParticipantRequest> for proto::NatsChannelEditParticipantRequest {
+impl DataGetter<proto::ChannelEditParticipantRequest>
+    for proto_nats::NatsChannelEditParticipantRequest
+{
     fn to_data(self) -> Option<proto::ChannelEditParticipantRequest> {
         self.data
     }
 }
 
 // EditParticipant Request Headers
-impl HeaderGetter for proto::NatsChannelEditParticipantRequest {
+impl HeaderGetter for proto_nats::NatsChannelEditParticipantRequest {
     fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
@@ -22,14 +24,14 @@ impl HeaderGetter for proto::NatsChannelEditParticipantRequest {
 impl
     NatsRequestSetter<
         proto::ChannelEditParticipantRequest,
-        proto::NatsChannelEditParticipantRequest,
-    > for proto::NatsChannelEditParticipantRequest
+        proto_nats::NatsChannelEditParticipantRequest,
+    > for proto_nats::NatsChannelEditParticipantRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto::ChannelEditParticipantRequest>,
     ) -> Self {
-        proto::NatsChannelEditParticipantRequest {
+        proto_nats::NatsChannelEditParticipantRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }

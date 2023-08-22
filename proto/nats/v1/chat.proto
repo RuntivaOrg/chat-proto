@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package chat;
+package runtiva.nats.v1;
 
 import "chat/chat_inputs.proto";
 import "chat/chat.proto";
 
-import "nats/v1/entities.proto";
+import "nats/v1/common.proto";
 
 // NATS Specific messages that are used internally on the server-side to offboard request processing 
 // from the ChatServer to the backend services. 
@@ -13,20 +13,20 @@ import "nats/v1/entities.proto";
 // ********** Chat_Create ********** //
 // Backend NATS messaging for `Chat_Create`: Request to create a new chat 
 message NatsChatCreateRequest {
-  repeated runtiva.nats.v1.MetadataMap headers = 1;
-  ChatCreateRequest data = 2;
+  repeated MetadataMap headers = 1;
+  chat.ChatCreateRequest data = 2;
 }
 
 message NatsChatCreateResponse {
   oneof msg {
-    Chat data = 1;
-    runtiva.nats.v1.ErrorReply error = 2;
+    chat.Chat data = 1;
+    ErrorReply error = 2;
   }
 }
 
 // ********** Chat_Delete ********** //
 // Backend NATS messaging for `Chat_Delete`: Deletes a chat 
 message NatsChatDeleteRequest {
-  repeated runtiva.nats.v1.MetadataMap headers = 1;
-  ChatDeleteRequest data = 2;
+  repeated MetadataMap headers = 1;
+  chat.ChatDeleteRequest data = 2;
 }

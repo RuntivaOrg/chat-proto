@@ -4,28 +4,29 @@ use crate::proto_ext::package_chat::{DataGetter, HeaderGetter, NatsRequestSetter
 
 // ***********************************  Request Getters ***********************************
 // ExportInvite Request Data message
-impl DataGetter<proto::ChannelExportInviteRequest> for proto::NatsChannelExportInviteRequest {
+impl DataGetter<proto::ChannelExportInviteRequest> for proto_nats::NatsChannelExportInviteRequest {
     fn to_data(self) -> Option<proto::ChannelExportInviteRequest> {
         self.data
     }
 }
 
 // ExportInvite Request Headers
-impl HeaderGetter for proto::NatsChannelExportInviteRequest {
+impl HeaderGetter for proto_nats::NatsChannelExportInviteRequest {
     fn headers(&self) -> &Vec<proto::MetadataMap> {
         &self.headers
     }
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::ChannelExportInviteRequest, proto::NatsChannelExportInviteRequest>
-    for proto::NatsChannelExportInviteRequest
+impl
+    NatsRequestSetter<proto::ChannelExportInviteRequest, proto_nats::NatsChannelExportInviteRequest>
+    for proto_nats::NatsChannelExportInviteRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto::MetadataMap>>,
         data: impl Into<proto::ChannelExportInviteRequest>,
     ) -> Self {
-        proto::NatsChannelExportInviteRequest {
+        proto_nats::NatsChannelExportInviteRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }

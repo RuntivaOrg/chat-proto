@@ -6,7 +6,7 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 // ***********************************  Request Getters ***********************************
 // AddUser Request Data message
 impl DataGetter<proto_chatgroups::ChatGroupAddUserRequest>
-    for proto_chatgroups::NatsChatGroupAddUserRequest
+    for proto_nats::NatsChatGroupAddUserRequest
 {
     fn to_data(self) -> Option<proto_chatgroups::ChatGroupAddUserRequest> {
         self.data
@@ -14,7 +14,7 @@ impl DataGetter<proto_chatgroups::ChatGroupAddUserRequest>
 }
 
 // AddUser Request Headers
-impl HeaderGetter for proto_chatgroups::NatsChatGroupAddUserRequest {
+impl HeaderGetter for proto_nats::NatsChatGroupAddUserRequest {
     fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
@@ -24,14 +24,14 @@ impl HeaderGetter for proto_chatgroups::NatsChatGroupAddUserRequest {
 impl
     NatsRequestSetter<
         proto_chatgroups::ChatGroupAddUserRequest,
-        proto_chatgroups::NatsChatGroupAddUserRequest,
-    > for proto_chatgroups::NatsChatGroupAddUserRequest
+        proto_nats::NatsChatGroupAddUserRequest,
+    > for proto_nats::NatsChatGroupAddUserRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto_chatgroups::ChatGroupAddUserRequest>,
     ) -> Self {
-        proto_chatgroups::NatsChatGroupAddUserRequest {
+        proto_nats::NatsChatGroupAddUserRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }

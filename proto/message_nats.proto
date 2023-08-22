@@ -5,7 +5,7 @@ package chat;
 import "message_inputs.proto";
 //import "message.proto";
 
-import "nats/v1/entities.proto";
+import "nats/v1/common.proto";
 
 // NATS Specific messages that are used internally on the server-side to offboard request processing 
 // from the ChatServer to the backend services. 

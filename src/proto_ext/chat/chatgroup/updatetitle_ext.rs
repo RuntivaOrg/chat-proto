@@ -6,7 +6,7 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 // ***********************************  Request Getters ***********************************
 // UpdateTitle Request Data message
 impl DataGetter<proto_chatgroups::ChatGroupUpdateTitleRequest>
-    for proto_chatgroups::NatsChatGroupUpdateTitleRequest
+    for proto_nats::NatsChatGroupUpdateTitleRequest
 {
     fn to_data(self) -> Option<proto_chatgroups::ChatGroupUpdateTitleRequest> {
         self.data
@@ -14,7 +14,7 @@ impl DataGetter<proto_chatgroups::ChatGroupUpdateTitleRequest>
 }
 
 // UpdateTitle Request Headers
-impl HeaderGetter for proto_chatgroups::NatsChatGroupUpdateTitleRequest {
+impl HeaderGetter for proto_nats::NatsChatGroupUpdateTitleRequest {
     fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
@@ -24,14 +24,14 @@ impl HeaderGetter for proto_chatgroups::NatsChatGroupUpdateTitleRequest {
 impl
     NatsRequestSetter<
         proto_chatgroups::ChatGroupUpdateTitleRequest,
-        proto_chatgroups::NatsChatGroupUpdateTitleRequest,
-    > for proto_chatgroups::NatsChatGroupUpdateTitleRequest
+        proto_nats::NatsChatGroupUpdateTitleRequest,
+    > for proto_nats::NatsChatGroupUpdateTitleRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto_chatgroups::ChatGroupUpdateTitleRequest>,
     ) -> Self {
-        proto_chatgroups::NatsChatGroupUpdateTitleRequest {
+        proto_nats::NatsChatGroupUpdateTitleRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }

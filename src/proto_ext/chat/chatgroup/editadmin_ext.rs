@@ -6,7 +6,7 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 // ***********************************  Request Getters ***********************************
 // EditAdmin Request Data message
 impl DataGetter<proto_chatgroups::ChatGroupEditAdminRequest>
-    for proto_chatgroups::NatsChatGroupEditAdminRequest
+    for proto_nats::NatsChatGroupEditAdminRequest
 {
     fn to_data(self) -> Option<proto_chatgroups::ChatGroupEditAdminRequest> {
         self.data
@@ -14,7 +14,7 @@ impl DataGetter<proto_chatgroups::ChatGroupEditAdminRequest>
 }
 
 // EditAdmin Request Headers
-impl HeaderGetter for proto_chatgroups::NatsChatGroupEditAdminRequest {
+impl HeaderGetter for proto_nats::NatsChatGroupEditAdminRequest {
     fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
         &self.headers
     }
@@ -24,14 +24,14 @@ impl HeaderGetter for proto_chatgroups::NatsChatGroupEditAdminRequest {
 impl
     NatsRequestSetter<
         proto_chatgroups::ChatGroupEditAdminRequest,
-        proto_chatgroups::NatsChatGroupEditAdminRequest,
-    > for proto_chatgroups::NatsChatGroupEditAdminRequest
+        proto_nats::NatsChatGroupEditAdminRequest,
+    > for proto_nats::NatsChatGroupEditAdminRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
         data: impl Into<proto_chatgroups::ChatGroupEditAdminRequest>,
     ) -> Self {
-        proto_chatgroups::NatsChatGroupEditAdminRequest {
+        proto_nats::NatsChatGroupEditAdminRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }
