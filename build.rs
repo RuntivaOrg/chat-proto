@@ -16,9 +16,11 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/userprofile/userprofile.proto",
         "proto/userprofile/userprofile_inputs.proto",
         "proto/userprofile/userprofile_nats.proto",
-        "proto/chatgroup/chatgroup.proto",
-        "proto/chatgroup/chatgroup_inputs.proto",
-        "proto/chatgroup/chatgroup_nats.proto",
+        // Chatgroups
+        "proto/chatgroup/entities.proto",
+        "proto/chatgroup/service_messages.proto",
+        "proto/chatgroup/nats_messages.proto",
+        // Messages
         "proto/message.proto",
         "proto/message_inputs.proto",
         "proto/message_nats.proto",

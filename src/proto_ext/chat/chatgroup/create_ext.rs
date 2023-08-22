@@ -1,8 +1,8 @@
 use crate::chat as proto;
-use crate::chatgroups::v1 as proto_chatgroups;
 use crate::proto_ext::chat::{
     DataGetter, DataSetter, ErrorGetter, ErrorSetter, HeaderGetter, NatsRequestSetter,
 };
+use crate::runtiva::chatgroups::v1 as proto_chatgroups;
 
 // ***********************************  Request Getters ***********************************
 // Create Request Data message

@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package chatgroups.v1;
+package runtiva.chatgroups.v1;
 
-import "chatgroup/chatgroup_inputs.proto";
-import "chatgroup/chatgroup.proto";
+import "chatgroup/service_messages.proto";
+import "chatgroup/entities.proto";
 
 import "error_reply.proto";
 import "nats_metadata.proto";

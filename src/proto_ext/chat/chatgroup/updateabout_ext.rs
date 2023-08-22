@@ -1,5 +1,5 @@
 use crate::chat as proto;
-use crate::chatgroups::v1 as proto_chatgroups;
+use crate::runtiva::chatgroups::v1 as proto_chatgroups;
 
 use crate::proto_ext::chat::{DataGetter, HeaderGetter, NatsRequestSetter};
 

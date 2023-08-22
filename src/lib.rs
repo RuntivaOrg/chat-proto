@@ -23,11 +23,14 @@ mod proto {
             tonic::include_proto!("chatgroup.v1");
         }
     }
-    pub mod chatgroups {
-        pub mod v1 {
-            tonic::include_proto!("chatgroups.v1");
+    pub mod runtiva {
+        pub mod chatgroups {
+            pub mod v1 {
+                tonic::include_proto!("runtiva.chatgroups.v1");
+            }
         }
     }
+
     pub const FILE_DESCRIPTOR_SET: &[u8] = tonic::include_file_descriptor_set!("chatserver");
 }
 

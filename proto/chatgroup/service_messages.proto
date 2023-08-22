@@ -1,7 +1,6 @@
 syntax = "proto3";
 
-package chatgroups.v1;
-//import "google/protobuf/timestamp.proto";
+package runtiva.chatgroups.v1;
 
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
 // Request Message for `ChatGroup_Create` RPC.
