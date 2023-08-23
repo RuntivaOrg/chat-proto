@@ -42,8 +42,10 @@ mod proto {
         }
     }
 
-    pub const FILE_DESCRIPTOR_SET: &[u8] = tonic::include_file_descriptor_set!("chatserver");
+    pub const CHATSERVER_DESCRIPTOR_SET: &[u8] = tonic::include_file_descriptor_set!("chatserver");
 }
+
+pub use CHATSERVER_DESCRIPTOR_SET;
 
 pub fn pb_elapsed(t0: std::time::Instant, t1: std::time::Instant) -> prost_types::Duration {
     pb_duration(t1 - t0)
