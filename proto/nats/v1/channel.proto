@@ -15,12 +15,12 @@ import "nats/v1/common.proto";
 // Backend NATS messaging for `Channel_Create`: Request to create a new chat group
 message NatsChannelCreateRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelCreateRequest data = 2;
+  runtiva.chat.v1.ChannelCreateRequest data = 2;
 }
 
 message NatsChannelCreateResponse {
   oneof msg {
-    chat.Channel data = 1;
+    runtiva.chat.v1.Channel data = 1;
     ErrorReply error = 2;
   }
 }
@@ -29,96 +29,96 @@ message NatsChannelCreateResponse {
 // Backend NATS messaging for `Channel_EditAdmin`: Edits admin rights of the channel
 message NatsChannelEditAdminRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelEditAdminRequest data = 2;
+  runtiva.chat.v1.ChannelEditAdminRequest data = 2;
 }
 
 // ********** Channel_EditOwner ********** //
 // Backend NATS messaging for `Channel_EditOwner`: Assigns channel ownership to another user
 message NatsChannelEditOwnerRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelEditOwnerRequest data = 2;
+  runtiva.chat.v1.ChannelEditOwnerRequest data = 2;
 }
 
 // ********** Channel_EditParticipant ********** //
 // Backend NATS messaging for `Channel_EditParticipant`: Edits participant rights of the channel
 message NatsChannelEditParticipantRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelEditParticipantRequest data = 2;
+  runtiva.chat.v1.ChannelEditParticipantRequest data = 2;
 }
 
 // ********** Channel_EditPhoto ********** //
 // Backend NATS messaging for `Channel_EditPhoto`: Edits the photo of the channel
 message NatsChannelEditPhotoRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelEditPhotoRequest data = 2;
+  runtiva.chat.v1.ChannelEditPhotoRequest data = 2;
 }
 
 // ********** Channel_EditTitle ********** //
 // Backend NATS messaging for `Channel_EditTitle`: Edits the title of the channel
 message NatsChannelEditTitleRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelEditTitleRequest data = 2;
+  runtiva.chat.v1.ChannelEditTitleRequest data = 2;
 }
 
 // ********** Channel_EditAbout ********** //
 // Backend NATS messaging for `Channel_EditAbout`: Edits the about of the channel
 message NatsChannelEditAboutRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelEditAboutRequest data = 2;
+  runtiva.chat.v1.ChannelEditAboutRequest data = 2;
 }
 
 // ********** Channel_Delete ********** //
 // Backend NATS messaging for `Channel_Delete`: Deletes a channel
 message NatsChannelDeleteRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelDeleteRequest data = 2;
+  runtiva.chat.v1.ChannelDeleteRequest data = 2;
 }
 
 // ********** Channel_Disable ********** //
 // Backend NATS messaging for `Channel_Disable`: Disables/Enables a channel
 message NatsChannelDisableRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelDisableRequest data = 2;
+  runtiva.chat.v1.ChannelDisableRequest data = 2;
 }
 
 // ********** Channel_EnablePrehistory ********** //
 // Backend NATS messaging for `Channel_EnablePrehistory`: Enables prehistory for a channel
 message NatsChannelEnablePrehistoryRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelEnablePrehistoryRequest data = 2;
+  runtiva.chat.v1.ChannelEnablePrehistoryRequest data = 2;
 }
 
 // ********** Channel_ShowSignatures ********** //
 // Backend NATS messaging for `Channel_ShowSignatures`: Shows signatures for a channel
 message NatsChannelShowSignaturesRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelShowSignaturesRequest data = 2;
+  runtiva.chat.v1.ChannelShowSignaturesRequest data = 2;
 }
 
 // ********** Channel_SetJoinToSend ********** //
 // Backend NATS messaging for `Channel_SetJoinToSend`: Sets join to send for a channel
 message NatsChannelSetJoinToSendRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelSetJoinToSendRequest data = 2;
+  runtiva.chat.v1.ChannelSetJoinToSendRequest data = 2;
 }
 
 // ********** Channel_SetJoinToApprove ********** //
 // Backend NATS messaging for `Channel_SetJoinToApprove`: Sets join to approve for a channel
 message NatsChannelSetJoinApprovalRequiredRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelSetJoinApprovalRequiredRequest data = 2;
+  runtiva.chat.v1.ChannelSetJoinApprovalRequiredRequest data = 2;
 }
 
 // ********** Channel_Join ********** //
 // Backend NATS messaging for `Channel_Join`: Joins a channel
 message NatsChannelJoinRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelJoinRequest data = 2;
+  runtiva.chat.v1.ChannelJoinRequest data = 2;
 }
 
 message NatsChannelJoinResponse {
   oneof msg {
-    chat.ChannelJoinResponse data = 1;
+    runtiva.chat.v1.ChannelJoinResponse data = 1;
     ErrorReply error = 2;
   }
 }
@@ -127,14 +127,14 @@ message NatsChannelJoinResponse {
 // Backend NATS messaging for `Channel_Leave`: Leaves a channel
 message NatsChannelLeaveRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelLeaveRequest data = 2;
+  runtiva.chat.v1.ChannelLeaveRequest data = 2;
 }
 
 // ********** Channel_ActionJoinRequest ********** //
 // Backend NATS messaging for `Channel_ActionJoinRequest`: Approves or rejects a join request
 message NatsChannelActionJoinRequestRequest {
   repeated MetadataMap headers = 1;
-  chat.ChannelActionJoinRequestRequest data = 2;
+  runtiva.chat.v1.ChannelActionJoinRequestRequest data = 2;
 }
 
 // ********** Channel_ExportInvite ********** //

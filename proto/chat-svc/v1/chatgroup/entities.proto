@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package runtiva.chatgroups.v1;
+package runtiva.chat.v1;
 //import "field_behavior.proto";
 import "google/protobuf/timestamp.proto";
 

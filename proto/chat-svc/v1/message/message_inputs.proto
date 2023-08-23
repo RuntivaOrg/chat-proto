@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package chat;
+package runtiva.chat.v1;
 
-import "common_peer.proto";
+import "common/v1/common_peer.proto";
 import "chat-svc/v1/message/message_entity.proto";
 
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
@@ -17,7 +17,7 @@ message MessageSendRequest {
     int64 owner_id = 2;
 
     // owning container of the message -- channel, topic or chat_group
-    PeerInput input_peer = 3;
+    runtiva.common.v1.PeerInput input_peer = 3;
 
     // The actual message
     string Message = 4;
@@ -36,7 +36,7 @@ message MessageSendRequest {
     repeated MessageEntity entities = 8;
 
     // flag indicating the sender of the message is a channel
-    optional PeerInput send_as = 9;
+    optional runtiva.common.v1.PeerInput send_as = 9;
 
     // Send this message silently (no notifications for the receivers)
     bool silent = 10;

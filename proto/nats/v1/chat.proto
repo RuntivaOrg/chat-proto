@@ -14,12 +14,12 @@ import "nats/v1/common.proto";
 // Backend NATS messaging for `Chat_Create`: Request to create a new chat 
 message NatsChatCreateRequest {
   repeated MetadataMap headers = 1;
-  chat.ChatCreateRequest data = 2;
+  runtiva.chat.v1.ChatCreateRequest data = 2;
 }
 
 message NatsChatCreateResponse {
   oneof msg {
-    chat.Chat data = 1;
+    runtiva.chat.v1.Chat data = 1;
     ErrorReply error = 2;
   }
 }
@@ -28,5 +28,5 @@ message NatsChatCreateResponse {
 // Backend NATS messaging for `Chat_Delete`: Deletes a chat 
 message NatsChatDeleteRequest {
   repeated MetadataMap headers = 1;
-  chat.ChatDeleteRequest data = 2;
+  runtiva.chat.v1.ChatDeleteRequest data = 2;
 }

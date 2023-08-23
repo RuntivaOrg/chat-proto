@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package chat;
+package runtiva.common.v1;
 
 
 // The `Peer` type defines an entity in the chat system. It can be

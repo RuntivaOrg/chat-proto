@@ -1,14 +1,13 @@
-use crate::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // SetJoinToSend Request Data message
-impl DataGetter<proto::ChannelSetJoinToSendRequest>
+impl DataGetter<proto_chat::ChannelSetJoinToSendRequest>
     for proto_nats::NatsChannelSetJoinToSendRequest
 {
-    fn to_data(self) -> Option<proto::ChannelSetJoinToSendRequest> {
+    fn to_data(self) -> Option<proto_chat::ChannelSetJoinToSendRequest> {
         self.data
     }
 }
@@ -23,13 +22,13 @@ impl HeaderGetter for proto_nats::NatsChannelSetJoinToSendRequest {
 // ********************************** NATS Request Setter **********************************
 impl
     NatsRequestSetter<
-        proto::ChannelSetJoinToSendRequest,
+        proto_chat::ChannelSetJoinToSendRequest,
         proto_nats::NatsChannelSetJoinToSendRequest,
     > for proto_nats::NatsChannelSetJoinToSendRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ChannelSetJoinToSendRequest>,
+        data: impl Into<proto_chat::ChannelSetJoinToSendRequest>,
     ) -> Self {
         proto_nats::NatsChannelSetJoinToSendRequest {
             headers: headers.into(),

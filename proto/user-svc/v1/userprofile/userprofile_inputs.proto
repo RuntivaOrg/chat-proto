@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package chat;
+package runtiva.user.v1;
 
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
 message UserProfilesMinRequest {

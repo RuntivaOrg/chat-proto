@@ -13,21 +13,25 @@ pub use proto::*;
 #[allow(unused_qualifications)]
 #[allow(clippy::all)] // generated code - no need to clippy check
 mod proto {
-    pub mod chat {
-        tonic::include_proto!("chat");
-    }
     pub mod updates_stream {
         tonic::include_proto!("updates_stream");
     }
-    pub mod chatgroup {
-        pub mod v1 {
-            tonic::include_proto!("chatgroup.v1");
-        }
-    }
     pub mod runtiva {
-        pub mod chatgroups {
+        pub mod chat {
             pub mod v1 {
-                tonic::include_proto!("runtiva.chatgroups.v1");
+                tonic::include_proto!("runtiva.chat.v1");
+            }
+        }
+
+        pub mod user {
+            pub mod v1 {
+                tonic::include_proto!("runtiva.user.v1");
+            }
+        }
+
+        pub mod common {
+            pub mod v1 {
+                tonic::include_proto!("runtiva.common.v1");
             }
         }
 

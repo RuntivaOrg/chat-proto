@@ -14,7 +14,7 @@ import "nats/v1/common.proto";
 // Backend NATS messaging for `Message_Send`: Request to send a new message is a specified chat
 message NatsMessageSendRequest {
   repeated MetadataMap headers = 1;
-  chat.MessageSendRequest data = 2;
+  runtiva.chat.v1.MessageSendRequest data = 2;
 }
 
 

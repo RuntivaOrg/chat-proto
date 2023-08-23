@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package chat;
+package runtiva.chat.v1;
 import "chat-svc/v1/channel/channel_shared.proto";
 import "chat-svc/v1/channel/entities.proto";
 

@@ -1,12 +1,11 @@
-use crate::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // Send Request Data message
-impl DataGetter<proto::MessageSendRequest> for proto_nats::NatsMessageSendRequest {
-    fn to_data(self) -> Option<proto::MessageSendRequest> {
+impl DataGetter<proto_chat::MessageSendRequest> for proto_nats::NatsMessageSendRequest {
+    fn to_data(self) -> Option<proto_chat::MessageSendRequest> {
         self.data
     }
 }
@@ -19,12 +18,12 @@ impl HeaderGetter for proto_nats::NatsMessageSendRequest {
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::MessageSendRequest, proto_nats::NatsMessageSendRequest>
+impl NatsRequestSetter<proto_chat::MessageSendRequest, proto_nats::NatsMessageSendRequest>
     for proto_nats::NatsMessageSendRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::MessageSendRequest>,
+        data: impl Into<proto_chat::MessageSendRequest>,
     ) -> Self {
         proto_nats::NatsMessageSendRequest {
             headers: headers.into(),

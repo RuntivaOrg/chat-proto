@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package chat;
+package runtiva.nats.v1;
 
-import "chat-svc/v1/userprofile/userprofile_inputs.proto";
-import "chat-svc/v1/userprofile/userprofile.proto";
+import "user-svc/v1/userprofile/userprofile_inputs.proto";
+import "user-svc/v1/userprofile/userprofile.proto";
 
 import "nats/v1/common.proto";
 
@@ -13,12 +13,12 @@ import "nats/v1/common.proto";
 // Backend NATS messaging for `GetUserProfilesMin`: Request to retrieve a list of user profiles. 
 message NatsGetUserProfilesMinRequest {
   repeated runtiva.nats.v1.MetadataMap headers = 1;
-  UserProfilesMinRequest data = 2;
+  runtiva.user.v1.UserProfilesMinRequest data = 2;
 }
 
 message NatsGetUserProfilesMinResponse {
   oneof msg {
-    UserProfileMinArray data = 1;
+    runtiva.user.v1.UserProfileMinArray data = 1;
     runtiva.nats.v1.ErrorReply error = 2;
   }
 }

@@ -2,13 +2,8 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 //import "common_peer.proto";
-import "updates/test/test.proto";
 
 package updates_stream;
-
-message TestParent {
-    chat.Test1 tt = 1;
-}
 
 
 // ********************************************************************************

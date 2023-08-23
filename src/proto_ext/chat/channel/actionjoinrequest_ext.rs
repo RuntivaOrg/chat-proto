@@ -1,14 +1,13 @@
-use crate::proto::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // ActionJoinRequest Request Data message
-impl DataGetter<proto::ChannelActionJoinRequestRequest>
+impl DataGetter<proto_chat::ChannelActionJoinRequestRequest>
     for proto_nats::NatsChannelActionJoinRequestRequest
 {
-    fn to_data(self) -> Option<proto::ChannelActionJoinRequestRequest> {
+    fn to_data(self) -> Option<proto_chat::ChannelActionJoinRequestRequest> {
         self.data
     }
 }
@@ -23,13 +22,13 @@ impl HeaderGetter for proto_nats::NatsChannelActionJoinRequestRequest {
 // ********************************** NATS Request Setter **********************************
 impl
     NatsRequestSetter<
-        proto::ChannelActionJoinRequestRequest,
+        proto_chat::ChannelActionJoinRequestRequest,
         proto_nats::NatsChannelActionJoinRequestRequest,
     > for proto_nats::NatsChannelActionJoinRequestRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ChannelActionJoinRequestRequest>,
+        data: impl Into<proto_chat::ChannelActionJoinRequestRequest>,
     ) -> Self {
         proto_nats::NatsChannelActionJoinRequestRequest {
             headers: headers.into(),

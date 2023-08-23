@@ -1,14 +1,13 @@
-use crate::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // SetJoinApprovalRequired Request Data message
-impl DataGetter<proto::ChannelSetJoinApprovalRequiredRequest>
+impl DataGetter<proto_chat::ChannelSetJoinApprovalRequiredRequest>
     for proto_nats::NatsChannelSetJoinApprovalRequiredRequest
 {
-    fn to_data(self) -> Option<proto::ChannelSetJoinApprovalRequiredRequest> {
+    fn to_data(self) -> Option<proto_chat::ChannelSetJoinApprovalRequiredRequest> {
         self.data
     }
 }
@@ -23,13 +22,13 @@ impl HeaderGetter for proto_nats::NatsChannelSetJoinApprovalRequiredRequest {
 // ********************************** NATS Request Setter **********************************
 impl
     NatsRequestSetter<
-        proto::ChannelSetJoinApprovalRequiredRequest,
+        proto_chat::ChannelSetJoinApprovalRequiredRequest,
         proto_nats::NatsChannelSetJoinApprovalRequiredRequest,
     > for proto_nats::NatsChannelSetJoinApprovalRequiredRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ChannelSetJoinApprovalRequiredRequest>,
+        data: impl Into<proto_chat::ChannelSetJoinApprovalRequiredRequest>,
     ) -> Self {
         proto_nats::NatsChannelSetJoinApprovalRequiredRequest {
             headers: headers.into(),

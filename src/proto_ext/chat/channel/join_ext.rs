@@ -1,5 +1,4 @@
-use crate::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{
     DataGetter, DataSetter, ErrorGetter, ErrorSetter, HeaderGetter, NatsRequestSetter,
@@ -7,8 +6,8 @@ use crate::proto_ext::{
 
 // ***********************************  Request Getters ***********************************
 // Join Request Data message
-impl DataGetter<proto::ChannelJoinRequest> for proto_nats::NatsChannelJoinRequest {
-    fn to_data(self) -> Option<proto::ChannelJoinRequest> {
+impl DataGetter<proto_chat::ChannelJoinRequest> for proto_nats::NatsChannelJoinRequest {
+    fn to_data(self) -> Option<proto_chat::ChannelJoinRequest> {
         self.data
     }
 }
@@ -21,12 +20,12 @@ impl HeaderGetter for proto_nats::NatsChannelJoinRequest {
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::ChannelJoinRequest, proto_nats::NatsChannelJoinRequest>
+impl NatsRequestSetter<proto_chat::ChannelJoinRequest, proto_nats::NatsChannelJoinRequest>
     for proto_nats::NatsChannelJoinRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ChannelJoinRequest>,
+        data: impl Into<proto_chat::ChannelJoinRequest>,
     ) -> Self {
         proto_nats::NatsChannelJoinRequest {
             headers: headers.into(),
@@ -37,8 +36,8 @@ impl NatsRequestSetter<proto::ChannelJoinRequest, proto_nats::NatsChannelJoinReq
 
 // ***********************************  Response Getters ***********************************
 // Join Response Data getter
-impl DataGetter<proto::ChannelJoinResponse> for proto_nats::NatsChannelJoinResponse {
-    fn to_data(self) -> Option<proto::ChannelJoinResponse> {
+impl DataGetter<proto_chat::ChannelJoinResponse> for proto_nats::NatsChannelJoinResponse {
+    fn to_data(self) -> Option<proto_chat::ChannelJoinResponse> {
         match self.msg {
             Some(proto_nats::nats_channel_join_response::Msg::Data(data)) => Some(data),
             _ => None,
@@ -58,10 +57,10 @@ impl ErrorGetter for proto_nats::NatsChannelJoinResponse {
 
 // ***********************************  Response Setters ***********************************
 // Join Response Data setter
-impl DataSetter<proto::ChannelJoinResponse, proto_nats::NatsChannelJoinResponse>
+impl DataSetter<proto_chat::ChannelJoinResponse, proto_nats::NatsChannelJoinResponse>
     for proto_nats::NatsChannelJoinResponse
 {
-    fn set_data(data: impl Into<proto::ChannelJoinResponse>) -> Self {
+    fn set_data(data: impl Into<proto_chat::ChannelJoinResponse>) -> Self {
         let data = data.into();
         proto_nats::NatsChannelJoinResponse {
             msg: Some(proto_nats::nats_channel_join_response::Msg::Data(data)),

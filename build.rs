@@ -23,13 +23,14 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/chat-svc/v1/message/message.proto",
         "proto/chat-svc/v1/message/message_entity.proto",
         "proto/chat-svc/v1/message/message_inputs.proto",
+        // *************************************************************************************
+        // User Service
         // Users
-        "proto/chat-svc/v1/user/user_inputs.proto",
-        "proto/chat-svc/v1/user/user.proto",
+        "proto/user-svc/v1/user/user_inputs.proto",
+        "proto/user-svc/v1/user/user.proto",
         // UserProfiles
-        "proto/chat-svc/v1/userprofile/userprofile.proto",
-        "proto/chat-svc/v1/userprofile/userprofile_inputs.proto",
-        "proto/chat-svc/v1/userprofile/userprofile_nats.proto",
+        "proto/user-svc/v1/userprofile/userprofile.proto",
+        "proto/user-svc/v1/userprofile/userprofile_inputs.proto",
         // *************************************************************************************
         // NATS specific messages and entities
         "proto/nats/v1/common.proto",
@@ -39,8 +40,10 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/nats/v1/chatgroup.proto",
         "proto/nats/v1/message.proto",
         "proto/nats/v1/user.proto",
+        "proto/nats/v1/userprofile.proto",
+        // *************************************************************************************
         // Common
-        "proto/common_peer.proto",
+        "proto/common/v1/common_peer.proto",
         // *************************************************************************************
         // Updates Service
         "proto/updates_svc.proto",

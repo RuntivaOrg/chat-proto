@@ -1,12 +1,11 @@
-use crate::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // RemoveUser Request Data message
-impl DataGetter<proto::ChannelDeleteRequest> for proto_nats::NatsChannelDeleteRequest {
-    fn to_data(self) -> Option<proto::ChannelDeleteRequest> {
+impl DataGetter<proto_chat::ChannelDeleteRequest> for proto_nats::NatsChannelDeleteRequest {
+    fn to_data(self) -> Option<proto_chat::ChannelDeleteRequest> {
         self.data
     }
 }
@@ -19,12 +18,12 @@ impl HeaderGetter for proto_nats::NatsChannelDeleteRequest {
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::ChannelDeleteRequest, proto_nats::NatsChannelDeleteRequest>
+impl NatsRequestSetter<proto_chat::ChannelDeleteRequest, proto_nats::NatsChannelDeleteRequest>
     for proto_nats::NatsChannelDeleteRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ChannelDeleteRequest>,
+        data: impl Into<proto_chat::ChannelDeleteRequest>,
     ) -> Self {
         proto_nats::NatsChannelDeleteRequest {
             headers: headers.into(),

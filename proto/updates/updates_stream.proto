@@ -140,8 +140,8 @@ message UpdateContainer{
 // Update Messages - ChatGroups
 message UpdateChatGroupParticipants {
     oneof participants {
-        chatgroup.v1.ChatGroupParticipantsForbidden participants_forbidden = 1;
-        chatgroup.v1.ChatGroupParticipantDetails participants_details = 2;
+        ChatGroupParticipantsForbidden participants_forbidden = 1;
+        ChatGroupParticipantDetails participants_details = 2;
     }
 }
 

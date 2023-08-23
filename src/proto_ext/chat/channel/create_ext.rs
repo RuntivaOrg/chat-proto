@@ -1,5 +1,4 @@
-use crate::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{
     DataGetter, DataSetter, ErrorGetter, ErrorSetter, HeaderGetter, NatsRequestSetter,
@@ -7,8 +6,8 @@ use crate::proto_ext::{
 
 // ***********************************  Request Getters ***********************************
 // Create Request Data message
-impl DataGetter<proto::ChannelCreateRequest> for proto_nats::NatsChannelCreateRequest {
-    fn to_data(self) -> Option<proto::ChannelCreateRequest> {
+impl DataGetter<proto_chat::ChannelCreateRequest> for proto_nats::NatsChannelCreateRequest {
+    fn to_data(self) -> Option<proto_chat::ChannelCreateRequest> {
         self.data
     }
 }
@@ -21,12 +20,12 @@ impl HeaderGetter for proto_nats::NatsChannelCreateRequest {
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::ChannelCreateRequest, proto_nats::NatsChannelCreateRequest>
+impl NatsRequestSetter<proto_chat::ChannelCreateRequest, proto_nats::NatsChannelCreateRequest>
     for proto_nats::NatsChannelCreateRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ChannelCreateRequest>,
+        data: impl Into<proto_chat::ChannelCreateRequest>,
     ) -> Self {
         proto_nats::NatsChannelCreateRequest {
             headers: headers.into(),
@@ -37,8 +36,8 @@ impl NatsRequestSetter<proto::ChannelCreateRequest, proto_nats::NatsChannelCreat
 
 // ***********************************  Response Getters ***********************************
 // Create Response Data getter
-impl DataGetter<proto::Channel> for proto_nats::NatsChannelCreateResponse {
-    fn to_data(self) -> Option<proto::Channel> {
+impl DataGetter<proto_chat::Channel> for proto_nats::NatsChannelCreateResponse {
+    fn to_data(self) -> Option<proto_chat::Channel> {
         match self.msg {
             Some(proto_nats::nats_channel_create_response::Msg::Data(data)) => Some(data),
             _ => None,
@@ -58,10 +57,10 @@ impl ErrorGetter for proto_nats::NatsChannelCreateResponse {
 
 // ***********************************  Response Setters ***********************************
 // Create Response Data setter
-impl DataSetter<proto::Channel, proto_nats::NatsChannelCreateResponse>
+impl DataSetter<proto_chat::Channel, proto_nats::NatsChannelCreateResponse>
     for proto_nats::NatsChannelCreateResponse
 {
-    fn set_data(data: impl Into<proto::Channel>) -> Self {
+    fn set_data(data: impl Into<proto_chat::Channel>) -> Self {
         let data = data.into();
         proto_nats::NatsChannelCreateResponse {
             msg: Some(proto_nats::nats_channel_create_response::Msg::Data(data)),

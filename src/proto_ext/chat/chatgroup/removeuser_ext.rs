@@ -1,14 +1,13 @@
-use crate::runtiva::chatgroups::v1 as proto_chatgroups;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // RemoveUser Request Data message
-impl DataGetter<proto_chatgroups::ChatGroupRemoveUserRequest>
+impl DataGetter<proto_chat::ChatGroupRemoveUserRequest>
     for proto_nats::NatsChatGroupRemoveUserRequest
 {
-    fn to_data(self) -> Option<proto_chatgroups::ChatGroupRemoveUserRequest> {
+    fn to_data(self) -> Option<proto_chat::ChatGroupRemoveUserRequest> {
         self.data
     }
 }
@@ -23,13 +22,13 @@ impl HeaderGetter for proto_nats::NatsChatGroupRemoveUserRequest {
 // ********************************** NATS Request Setter **********************************
 impl
     NatsRequestSetter<
-        proto_chatgroups::ChatGroupRemoveUserRequest,
+        proto_chat::ChatGroupRemoveUserRequest,
         proto_nats::NatsChatGroupRemoveUserRequest,
     > for proto_nats::NatsChatGroupRemoveUserRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto_chatgroups::ChatGroupRemoveUserRequest>,
+        data: impl Into<proto_chat::ChatGroupRemoveUserRequest>,
     ) -> Self {
         proto_nats::NatsChatGroupRemoveUserRequest {
             headers: headers.into(),

@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 
-package chatgroup.v1;
+package updates_stream;
 
 message ChatGroupTest {
     int64 id = 1;

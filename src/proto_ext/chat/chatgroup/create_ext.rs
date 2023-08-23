@@ -1,16 +1,13 @@
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{
     DataGetter, DataSetter, ErrorGetter, ErrorSetter, HeaderGetter, NatsRequestSetter,
 };
-use crate::runtiva::chatgroups::v1 as proto_chatgroups;
 
 // ***********************************  Request Getters ***********************************
 // Create Request Data message
-impl DataGetter<proto_chatgroups::ChatGroupCreateRequest>
-    for proto_nats::NatsChatGroupCreateRequest
-{
-    fn to_data(self) -> Option<proto_chatgroups::ChatGroupCreateRequest> {
+impl DataGetter<proto_chat::ChatGroupCreateRequest> for proto_nats::NatsChatGroupCreateRequest {
+    fn to_data(self) -> Option<proto_chat::ChatGroupCreateRequest> {
         self.data
     }
 }
@@ -23,15 +20,12 @@ impl HeaderGetter for proto_nats::NatsChatGroupCreateRequest {
 }
 
 // ********************************** NATS Request Setter **********************************
-impl
-    NatsRequestSetter<
-        proto_chatgroups::ChatGroupCreateRequest,
-        proto_nats::NatsChatGroupCreateRequest,
-    > for proto_nats::NatsChatGroupCreateRequest
+impl NatsRequestSetter<proto_chat::ChatGroupCreateRequest, proto_nats::NatsChatGroupCreateRequest>
+    for proto_nats::NatsChatGroupCreateRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto_chatgroups::ChatGroupCreateRequest>,
+        data: impl Into<proto_chat::ChatGroupCreateRequest>,
     ) -> Self {
         proto_nats::NatsChatGroupCreateRequest {
             headers: headers.into(),
@@ -42,8 +36,8 @@ impl
 
 // ***********************************  Response Getters ***********************************
 // Create Response Data setter
-impl DataGetter<proto_chatgroups::ChatGroup> for proto_nats::NatsChatGroupCreateResponse {
-    fn to_data(self) -> Option<proto_chatgroups::ChatGroup> {
+impl DataGetter<proto_chat::ChatGroup> for proto_nats::NatsChatGroupCreateResponse {
+    fn to_data(self) -> Option<proto_chat::ChatGroup> {
         match self.msg {
             Some(proto_nats::nats_chat_group_create_response::Msg::Data(data)) => Some(data),
             _ => None,
@@ -63,10 +57,10 @@ impl ErrorGetter for proto_nats::NatsChatGroupCreateResponse {
 
 // ***********************************  Response Setters ***********************************
 // Create Response Data setter
-impl DataSetter<proto_chatgroups::ChatGroup, proto_nats::NatsChatGroupCreateResponse>
+impl DataSetter<proto_chat::ChatGroup, proto_nats::NatsChatGroupCreateResponse>
     for proto_nats::NatsChatGroupCreateResponse
 {
-    fn set_data(data: impl Into<proto_chatgroups::ChatGroup>) -> Self {
+    fn set_data(data: impl Into<proto_chat::ChatGroup>) -> Self {
         let data = data.into();
         proto_nats::NatsChatGroupCreateResponse {
             msg: Some(proto_nats::nats_chat_group_create_response::Msg::Data(data)),

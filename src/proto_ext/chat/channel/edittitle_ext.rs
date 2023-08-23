@@ -1,12 +1,11 @@
-use crate::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // EditTitle Request Data message
-impl DataGetter<proto::ChannelEditTitleRequest> for proto_nats::NatsChannelEditTitleRequest {
-    fn to_data(self) -> Option<proto::ChannelEditTitleRequest> {
+impl DataGetter<proto_chat::ChannelEditTitleRequest> for proto_nats::NatsChannelEditTitleRequest {
+    fn to_data(self) -> Option<proto_chat::ChannelEditTitleRequest> {
         self.data
     }
 }
@@ -19,12 +18,12 @@ impl HeaderGetter for proto_nats::NatsChannelEditTitleRequest {
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::ChannelEditTitleRequest, proto_nats::NatsChannelEditTitleRequest>
+impl NatsRequestSetter<proto_chat::ChannelEditTitleRequest, proto_nats::NatsChannelEditTitleRequest>
     for proto_nats::NatsChannelEditTitleRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ChannelEditTitleRequest>,
+        data: impl Into<proto_chat::ChannelEditTitleRequest>,
     ) -> Self {
         proto_nats::NatsChannelEditTitleRequest {
             headers: headers.into(),

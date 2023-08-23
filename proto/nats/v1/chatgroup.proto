@@ -14,12 +14,12 @@ import "nats/v1/common.proto";
 // Backend NATS messaging for `ChatGroup_Create`: Request to create a new chat group
 message NatsChatGroupCreateRequest {
   repeated MetadataMap headers = 1;
-  runtiva.chatgroups.v1.ChatGroupCreateRequest data = 2;
+  runtiva.chat.v1.ChatGroupCreateRequest data = 2;
 }
 
 message NatsChatGroupCreateResponse {
   oneof msg {
-    runtiva.chatgroups.v1.ChatGroup data = 1;
+    runtiva.chat.v1.ChatGroup data = 1;
     ErrorReply error = 2;
   }
 }
@@ -28,40 +28,40 @@ message NatsChatGroupCreateResponse {
 // Backend NATS messaging for `ChatGroup_UpdateTitle` and `ChatGroup_UpdateAbout`: Requests to update the title or about of a chat group
 message NatsChatGroupUpdateTitleRequest {
   repeated MetadataMap headers = 1;
-  runtiva.chatgroups.v1.ChatGroupUpdateTitleRequest data = 2;
+  runtiva.chat.v1.ChatGroupUpdateTitleRequest data = 2;
 }
 
 // ********** ChatGroup_UpdateAbout ********** //
 // Backend NATS messaging for `ChatGroup_UpdateTitle` and `ChatGroup_UpdateAbout`: Requests to update the title or about of a chat group
 message NatsChatGroupUpdateAboutRequest {
   repeated MetadataMap headers = 1;
-  runtiva.chatgroups.v1.ChatGroupUpdateAboutRequest data = 2;
+  runtiva.chat.v1.ChatGroupUpdateAboutRequest data = 2;
 }
 
 // ********** ChatGroup_AddUser ********** //
 // Backend NATS messaging for `ChatGroup_AddUser`: Request to add a user from a chat group
 message NatsChatGroupAddUserRequest {
   repeated MetadataMap headers = 1;
-  runtiva.chatgroups.v1.ChatGroupAddUserRequest data = 2;
+  runtiva.chat.v1.ChatGroupAddUserRequest data = 2;
 }
 
 // ********** ChatGroup_RemoveUser ********** //
 // Backend NATS messaging for `ChatGroup_RemoveUser`: Request to remove a user from a chat group
 message NatsChatGroupRemoveUserRequest {
   repeated MetadataMap headers = 1;
-  runtiva.chatgroups.v1.ChatGroupRemoveUserRequest data = 2;
+  runtiva.chat.v1.ChatGroupRemoveUserRequest data = 2;
 }
 
 // ********** ChatGroup_EditAdmin ********** //
 // Backend NATS messaging for `ChatGroup_EditAdmin`: Request to set/unset a chat participant as admin
 message NatsChatGroupEditAdminRequest {
   repeated MetadataMap headers = 1;
-  runtiva.chatgroups.v1.ChatGroupEditAdminRequest data = 2;
+  runtiva.chat.v1.ChatGroupEditAdminRequest data = 2;
 }
 
 // ********** ChatGroup_Delete ********** //
 // Backend NATS messaging for `ChatGroup_Delete`: Deletes a chat group
 message NatsChatGroupDeleteRequest {
   repeated MetadataMap headers = 1;
-  runtiva.chatgroups.v1.ChatGroupDeleteRequest data = 2;
+  runtiva.chat.v1.ChatGroupDeleteRequest data = 2;
 }

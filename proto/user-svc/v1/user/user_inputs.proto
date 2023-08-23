@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package chat;
+package runtiva.user.v1;
 
 import "google/protobuf/timestamp.proto";
 
-import "common_peer.proto";
+import "common/v1/common_peer.proto";
 
 
 message UserHeartbeatRequest {
@@ -30,5 +30,5 @@ message GetUserChatsRequest {
 
 // Currently NATS specific messages
 message GetUserChatsResponse {
-  repeated PeerInput user_peers = 1;
+  repeated  runtiva.common.v1.PeerInput user_peers = 1;
 }

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package chat;
+package runtiva.chat.v1;
 
 // Schema for Message
 message Message {

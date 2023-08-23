@@ -1,14 +1,13 @@
-use crate::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // RemoveUser Request Data message
-impl DataGetter<proto::ChannelEnablePrehistoryRequest>
+impl DataGetter<proto_chat::ChannelEnablePrehistoryRequest>
     for proto_nats::NatsChannelEnablePrehistoryRequest
 {
-    fn to_data(self) -> Option<proto::ChannelEnablePrehistoryRequest> {
+    fn to_data(self) -> Option<proto_chat::ChannelEnablePrehistoryRequest> {
         self.data
     }
 }
@@ -23,13 +22,13 @@ impl HeaderGetter for proto_nats::NatsChannelEnablePrehistoryRequest {
 // ********************************** NATS Request Setter **********************************
 impl
     NatsRequestSetter<
-        proto::ChannelEnablePrehistoryRequest,
+        proto_chat::ChannelEnablePrehistoryRequest,
         proto_nats::NatsChannelEnablePrehistoryRequest,
     > for proto_nats::NatsChannelEnablePrehistoryRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ChannelEnablePrehistoryRequest>,
+        data: impl Into<proto_chat::ChannelEnablePrehistoryRequest>,
     ) -> Self {
         proto_nats::NatsChannelEnablePrehistoryRequest {
             headers: headers.into(),

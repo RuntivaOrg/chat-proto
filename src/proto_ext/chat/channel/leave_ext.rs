@@ -1,12 +1,11 @@
-use crate::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // Leave Request Data message
-impl DataGetter<proto::ChannelLeaveRequest> for proto_nats::NatsChannelLeaveRequest {
-    fn to_data(self) -> Option<proto::ChannelLeaveRequest> {
+impl DataGetter<proto_chat::ChannelLeaveRequest> for proto_nats::NatsChannelLeaveRequest {
+    fn to_data(self) -> Option<proto_chat::ChannelLeaveRequest> {
         self.data
     }
 }
@@ -19,12 +18,12 @@ impl HeaderGetter for proto_nats::NatsChannelLeaveRequest {
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::ChannelLeaveRequest, proto_nats::NatsChannelLeaveRequest>
+impl NatsRequestSetter<proto_chat::ChannelLeaveRequest, proto_nats::NatsChannelLeaveRequest>
     for proto_nats::NatsChannelLeaveRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ChannelLeaveRequest>,
+        data: impl Into<proto_chat::ChannelLeaveRequest>,
     ) -> Self {
         proto_nats::NatsChannelLeaveRequest {
             headers: headers.into(),

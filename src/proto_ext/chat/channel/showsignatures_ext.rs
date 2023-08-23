@@ -1,14 +1,13 @@
-use crate::chat as proto;
-use crate::runtiva::nats::v1 as proto_nats;
+use crate::runtiva::{chat::v1 as proto_chat, nats::v1 as proto_nats};
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // ShowSignatures Request Data message
-impl DataGetter<proto::ChannelShowSignaturesRequest>
+impl DataGetter<proto_chat::ChannelShowSignaturesRequest>
     for proto_nats::NatsChannelShowSignaturesRequest
 {
-    fn to_data(self) -> Option<proto::ChannelShowSignaturesRequest> {
+    fn to_data(self) -> Option<proto_chat::ChannelShowSignaturesRequest> {
         self.data
     }
 }
@@ -23,13 +22,13 @@ impl HeaderGetter for proto_nats::NatsChannelShowSignaturesRequest {
 // ********************************** NATS Request Setter **********************************
 impl
     NatsRequestSetter<
-        proto::ChannelShowSignaturesRequest,
+        proto_chat::ChannelShowSignaturesRequest,
         proto_nats::NatsChannelShowSignaturesRequest,
     > for proto_nats::NatsChannelShowSignaturesRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ChannelShowSignaturesRequest>,
+        data: impl Into<proto_chat::ChannelShowSignaturesRequest>,
     ) -> Self {
         proto_nats::NatsChannelShowSignaturesRequest {
             headers: headers.into(),
