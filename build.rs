@@ -46,6 +46,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/common/v1/common_peer.proto",
         // *************************************************************************************
         // Updates Service
+        "proto/persist-svc/v1/chatgroup_events.proto",
+        // *************************************************************************************
+        // Updates Service
         "proto/updates_svc.proto",
         "proto/updates/updates_inputs.proto",
         "proto/updates/updates_nats.proto",

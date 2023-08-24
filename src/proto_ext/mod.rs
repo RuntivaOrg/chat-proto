@@ -1,6 +1,7 @@
 mod empty_response_ext;
 
 pub mod chat;
+pub mod persist_svc;
 pub mod updates_stream;
 
 mod proto_date_converter;
