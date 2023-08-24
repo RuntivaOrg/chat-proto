@@ -11,17 +11,17 @@ import "google/protobuf/timestamp.proto";
 // ********** ChatGroup Participant Added ********** 
 message NatsChatGroupParticipantAddedEvent {
   repeated runtiva.nats.v1.MetadataMap headers = 1;
-  ChatParticipantAddedMsg data = 2;
+  ChatGroupParticipantAdded data = 2;
 }
 
 // ********** ChatGroup Participant Removed ********** 
 message NatsChatGroupParticipantRemovedEvent {
   repeated runtiva.nats.v1.MetadataMap headers = 1;
-  ChatParticipantRemovedMsg data = 2;
+  ChatGroupParticipantRemoved data = 2;
 }
 
 
-message ChatParticipantAddedMsg {
+message ChatGroupParticipantAdded {
     // The chatgroup ID
     int64 chatgroup_id = 1;
     // ID of the new member of this chat group
@@ -34,7 +34,7 @@ message ChatParticipantAddedMsg {
     int32 version = 5;
 }
 
-message ChatParticipantRemovedMsg {
+message ChatGroupParticipantRemoved {
     // The chatgroup ID
     int64 chatgroup_id = 1;
     // ID of the new member of this chat group

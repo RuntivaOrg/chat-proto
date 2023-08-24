@@ -4,10 +4,10 @@ use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Event Getters ***********************************
 // ActionJoinRequest Request Data message
-impl DataGetter<proto_persist::ChatParticipantAddedMsg>
+impl DataGetter<proto_persist::ChatGroupParticipantAdded>
     for proto_persist::NatsChatGroupParticipantAddedEvent
 {
-    fn to_data(self) -> Option<proto_persist::ChatParticipantAddedMsg> {
+    fn to_data(self) -> Option<proto_persist::ChatGroupParticipantAdded> {
         self.data
     }
 }
@@ -22,13 +22,13 @@ impl HeaderGetter for proto_persist::NatsChatGroupParticipantAddedEvent {
 // ********************************** NATS Event Setter **********************************
 impl
     NatsRequestSetter<
-        proto_persist::ChatParticipantAddedMsg,
+        proto_persist::ChatGroupParticipantAdded,
         proto_persist::NatsChatGroupParticipantAddedEvent,
     > for proto_persist::NatsChatGroupParticipantAddedEvent
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto_persist::ChatParticipantAddedMsg>,
+        data: impl Into<proto_persist::ChatGroupParticipantAdded>,
     ) -> Self {
         proto_persist::NatsChatGroupParticipantAddedEvent {
             headers: headers.into(),
