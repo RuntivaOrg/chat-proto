@@ -13,8 +13,10 @@ impl DataGetter<proto::ConnectionPeer> for proto::NatsUnregisterFromPeerRequest 
 
 // EditAbout Request Headers
 impl HeaderGetter for proto::NatsUnregisterFromPeerRequest {
-    fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
-        &self.headers
+    fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
+        let mut swapped = vec![];
+        std::mem::swap(&mut self.headers, &mut swapped);
+        swapped
     }
 }
 

@@ -5,6 +5,7 @@
 mod error;
 pub use error::ChatProtoError;
 
+pub mod messages;
 pub mod proto_ext;
 pub mod subjects;
 

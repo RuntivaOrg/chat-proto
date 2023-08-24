@@ -12,8 +12,10 @@ impl DataGetter<proto_chat::ChatGroupAddUserRequest> for proto_nats::NatsChatGro
 
 // AddUser Request Headers
 impl HeaderGetter for proto_nats::NatsChatGroupAddUserRequest {
-    fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
-        &self.headers
+    fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
+        let mut swapped = vec![];
+        std::mem::swap(&mut self.headers, &mut swapped);
+        swapped
     }
 }
 

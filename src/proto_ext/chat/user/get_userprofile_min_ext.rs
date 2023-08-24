@@ -14,8 +14,10 @@ impl DataGetter<proto_user::UserProfilesMinRequest> for proto_nats::NatsGetUserP
 
 // Create Request Headers
 impl HeaderGetter for proto_nats::NatsGetUserProfilesMinRequest {
-    fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
-        &self.headers
+    fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
+        let mut swapped = vec![];
+        std::mem::swap(&mut self.headers, &mut swapped);
+        swapped
     }
 }
 

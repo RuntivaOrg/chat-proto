@@ -12,8 +12,10 @@ impl DataGetter<proto_chat::ChatGroupDeleteRequest> for proto_nats::NatsChatGrou
 
 // Delete Request Headers
 impl HeaderGetter for proto_nats::NatsChatGroupDeleteRequest {
-    fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
-        &self.headers
+    fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
+        let mut swapped = vec![];
+        std::mem::swap(&mut self.headers, &mut swapped);
+        swapped
     }
 }
 

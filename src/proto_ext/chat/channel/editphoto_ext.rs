@@ -12,8 +12,10 @@ impl DataGetter<proto_chat::ChannelEditPhotoRequest> for proto_nats::NatsChannel
 
 // EditPhoto Request Headers
 impl HeaderGetter for proto_nats::NatsChannelEditPhotoRequest {
-    fn headers(&self) -> &Vec<proto_nats::MetadataMap> {
-        &self.headers
+    fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
+        let mut swapped = vec![];
+        std::mem::swap(&mut self.headers, &mut swapped);
+        swapped
     }
 }
 
