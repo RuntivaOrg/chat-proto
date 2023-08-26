@@ -3,13 +3,6 @@ syntax = "proto3";
 
 package updates_stream;
 
-message ChatGroupTest {
-    int64 id = 1;
-    string name = 2;
-}
-
-
-
 
 // ********************************************************************************
 // Entities - ChatGroups

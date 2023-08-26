@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package runtiva.common.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message NotificationSettings {
+    // If set, indicates whether or not to display previews of messages in notifications;
+    // otherwise, the default behavior should be used.
+    optional bool show_previews = 1;
+    // If set, indicates whether or not to mute or unmute this chat group;
+    // otherwise, the default behavior should be used.
+    optional bool silent = 2;
+    // Mute all notifications until this date.
+    optional google.protobuf.Timestamp mute_until = 3;
+    // Notification sound for iOS application
+    optional NotificationSound ios_sound = 4;
+    // Notification sound for Android application
+    optional NotificationSound android_sound = 5;
+    // Notification sound for other apps
+    optional NotificationSound other_sound = 6;
+}
+
+message NotificationSound {
+    // Sound name
+    string name = 1;
+    // Sound file ??? 
+    string file = 2;
+}

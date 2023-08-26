@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package runtiva.common.v1;
+
+import "google/protobuf/timestamp.proto";
+
+import "common/v1/notification_settings.proto";
+
+// `ChatGroup`s are a collection of up to 200? users that have full rights (unless banned/blocked) to interact with others
+// in the group.
+// 
+// Chat groups are auto-created and mapped to leagues/contests in the app.
+message ChatGroup {
+    int64 chatgroup_id = 1;
+    // The unique Nanoid of this chat group
+    string public_id = 2;
+    // Unique ID of this group -- used to avoid duplicate chat groups from being created by resending of client messages
+    string unique_id = 3;
+    // ID of the owning user of this chat group
+    int64 owner_id = 4;
+    // name of this chat. Blank until set by user. If set, users can ask to join by searching for this name.
+    optional string username = 5;
+    // Tile for this chat group
+    string title = 6;
+    // About string for this chat group
+    optional string about = 7;
+    // Chat group photo
+    optional int64 photo_id = 8;
+    // ID of Message currently pinned to the top of the chat group
+    optional int64 pinned_msg_id = 9;
+    // Time to live of messages in this chat group. Messages after `ttl_period` seconds will be deleted.
+    int32 ttl_period = 10;
+    // Emoji representing a specific chat theme
+    optional string theme_emoticon = 11;
+    // Allowed messages reactions
+    //repeated ChatReactions available_reactions = 12;
+    // Date chat group was created
+    google.protobuf.Timestamp date = 12;
+    // *** Notification Properties ***
+    // Notification settings for this chat group
+    NotificationSettings notification_settings = 13;
+
+}

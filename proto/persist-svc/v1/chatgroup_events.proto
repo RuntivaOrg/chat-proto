@@ -5,8 +5,16 @@ package runtiva.persist.v1;
 //import "chat-svc/v1/chat/chat_inputs.proto";
 //import "chat-svc/v1/chat/chat.proto";
 
-import "nats/v1/common.proto";
 import "google/protobuf/timestamp.proto";
+
+import "nats/v1/common.proto";
+import "common/v1/chatgroup.proto";
+
+// ********** ChatGroup Participant Added ********** 
+message NatsChatGroupCreatedEvent {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  ChatGroupCreated data = 2;
+}
 
 // ********** ChatGroup Participant Added ********** 
 message NatsChatGroupParticipantAddedEvent {
@@ -18,6 +26,10 @@ message NatsChatGroupParticipantAddedEvent {
 message NatsChatGroupParticipantRemovedEvent {
   repeated runtiva.nats.v1.MetadataMap headers = 1;
   ChatGroupParticipantRemoved data = 2;
+}
+
+message ChatGroupCreated {
+    runtiva.common.v1.ChatGroup chatgroup = 1;
 }
 
 
