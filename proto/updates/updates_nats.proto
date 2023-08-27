@@ -86,3 +86,16 @@ message NatsUnregisterFromPeerRequest {
   repeated runtiva.nats.v1.MetadataMap headers = 1;
   ConnectionPeer data = 2;
 }
+
+// ************ GetConnectionsForUsers ************ //
+// Backend NATS messaging for `GetConnectionsRequest`: This is primarily used by 
+// the chat-distro service to get the list of connections for pushing updates to clients.
+message NatsGetConnectionsRequest {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  GetConnectionsRequest data = 2;
+}
+
+message GetConnectionsRequest {
+  // list of user_ids to get connections for
+  repeated int64 user_ids = 1;
+}

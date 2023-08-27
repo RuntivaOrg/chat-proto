@@ -9,6 +9,9 @@ pub const SUB_UPDATES_UNREGISTER_FROM_PEER_LIST: &str = "register_from_peer_list
 pub const SUB_UPDATES_REGISTER_ON_PEER: &str = "register_on_peer"; // NatsRegisterOnPeerRequest
 pub const SUB_UPDATES_UNREGISTER_FROM_PEER: &str = "unregister_from_peer"; // NatsUnregisterFromPeerRequest
 
+// Queries
+pub const SUB_UPDATES_GET_CONNECTIONS: &str = "get_connections"; // NatsGetConnectionsRequest
+
 // Utility functions
 pub fn get_presence_connection_command(sub: &str) -> String {
     format!("presence.connection.command.{}", sub)
