@@ -12,6 +12,10 @@ impl DataGetter<proto_chat::MessageSendRequest> for proto_nats::NatsMessageSendR
 
 // Send Request Headers
 impl HeaderGetter for proto_nats::NatsMessageSendRequest {
+    fn headers(&self) -> &[proto_nats::MetadataMap] {
+        &self.headers
+    }
+
     fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
         let mut swapped = vec![];
         std::mem::swap(&mut self.headers, &mut swapped);

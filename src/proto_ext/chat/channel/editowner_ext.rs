@@ -12,6 +12,10 @@ impl DataGetter<proto_chat::ChannelEditOwnerRequest> for proto_nats::NatsChannel
 
 // EditOwner Request Headers
 impl HeaderGetter for proto_nats::NatsChannelEditOwnerRequest {
+    fn headers(&self) -> &[proto_nats::MetadataMap] {
+        &self.headers
+    }
+
     fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
         let mut swapped = vec![];
         std::mem::swap(&mut self.headers, &mut swapped);

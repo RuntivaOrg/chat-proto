@@ -14,6 +14,10 @@ impl DataGetter<proto_persist::ChatGroupParticipantAdded>
 
 // ActionJoinRequest Request Headers
 impl HeaderGetter for proto_persist::NatsChatGroupParticipantAddedEvent {
+    fn headers(&self) -> &[proto_nats::MetadataMap] {
+        &self.headers
+    }
+
     fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
         let mut swapped = vec![];
         std::mem::swap(&mut self.headers, &mut swapped);

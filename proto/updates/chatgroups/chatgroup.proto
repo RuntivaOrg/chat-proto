@@ -3,9 +3,23 @@ syntax = "proto3";
 
 package updates_stream;
 
+import "nats/v1/common.proto";
+import "common/v1/chatgroup.proto";
+
 
 // ********************************************************************************
 // Entities - ChatGroups
+
+// *************** ChatGroup Created *************** 
+message NatsChatGroupCreatedEvent {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  ChatGroupCreated data = 2;
+}
+
+message ChatGroupCreated {
+    runtiva.common.v1.ChatGroup chatgroup = 1;
+}
+
 message ChatGroupParticipantsForbidden {
     int64 chatgroup_id = 1;
     int64 part_details_todo = 2;

@@ -34,6 +34,7 @@ pub trait ErrorGetter {
 
 /// Trait for generically retrieving the header component of a NATS **Request** message
 pub trait HeaderGetter {
+    fn headers(&self) -> &[proto_nats::MetadataMap];
     fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap>;
 }
 

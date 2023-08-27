@@ -3,15 +3,19 @@ use crate::runtiva::{nats::v1 as proto_nats, persist::v1 as proto_persist};
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Event Getters ***********************************
-// ActionJoinRequest Request Data message
+// Request Data message
 impl DataGetter<proto_persist::ChatGroupCreated> for proto_persist::NatsChatGroupCreatedEvent {
     fn to_data(self) -> Option<proto_persist::ChatGroupCreated> {
         self.data
     }
 }
 
-// ActionJoinRequest Request Headers
+// Request Headers
 impl HeaderGetter for proto_persist::NatsChatGroupCreatedEvent {
+    fn headers(&self) -> &[proto_nats::MetadataMap] {
+        &self.headers
+    }
+
     fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
         let mut swapped = vec![];
         std::mem::swap(&mut self.headers, &mut swapped);

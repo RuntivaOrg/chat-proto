@@ -10,7 +10,7 @@ import "google/protobuf/timestamp.proto";
 import "nats/v1/common.proto";
 import "common/v1/chatgroup.proto";
 
-// ********** ChatGroup Participant Added ********** 
+// *************** ChatGroup Created *************** 
 message NatsChatGroupCreatedEvent {
   repeated runtiva.nats.v1.MetadataMap headers = 1;
   ChatGroupCreated data = 2;

@@ -14,6 +14,10 @@ impl DataGetter<proto_chat::ChannelCreateRequest> for proto_nats::NatsChannelCre
 
 // Create Request Headers
 impl HeaderGetter for proto_nats::NatsChannelCreateRequest {
+    fn headers(&self) -> &[proto_nats::MetadataMap] {
+        &self.headers
+    }
+
     fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
         let mut swapped = vec![];
         std::mem::swap(&mut self.headers, &mut swapped);

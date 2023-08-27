@@ -36,6 +36,7 @@ message ErrorDetails {
   repeated MetaData metadata = 3;
 }
 
+// TODO: Rename this so it is clearer that this relates to error details as opposed to the NATS request Metadata (above) ??
 message MetaData {
   string key = 1;
   string value = 2;

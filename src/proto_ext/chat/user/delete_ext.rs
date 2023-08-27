@@ -12,6 +12,10 @@ impl DataGetter<proto_user::UserDeleteRequest> for proto_nats::NatsUserDeleteReq
 
 // Delete Request Headers
 impl HeaderGetter for proto_nats::NatsUserDeleteRequest {
+    fn headers(&self) -> &[proto_nats::MetadataMap] {
+        &self.headers
+    }
+
     fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
         let mut swapped = vec![];
         std::mem::swap(&mut self.headers, &mut swapped);

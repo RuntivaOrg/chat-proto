@@ -12,6 +12,10 @@ impl DataGetter<proto_user::UserHeartbeatRequest> for proto_nats::NatsUserHeartb
 
 // Create Request Headers
 impl HeaderGetter for proto_nats::NatsUserHeartbeatRequest {
+    fn headers(&self) -> &[proto_nats::MetadataMap] {
+        &self.headers
+    }
+    
     fn take_headers(&mut self) -> Vec<proto_nats::MetadataMap> {
         let mut swapped = vec![];
         std::mem::swap(&mut self.headers, &mut swapped);
