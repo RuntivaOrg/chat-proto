@@ -16,6 +16,12 @@ message NatsChatGroupCreatedEvent {
   ChatGroupCreated data = 2;
 }
 
+// ********** ChatGroup Title Edited ********** 
+message NatsChatGroupTitleUpdatedEvent {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  ChatGroupTitleUpdated data = 2;
+}
+
 // ********** ChatGroup Participant Added ********** 
 message NatsChatGroupParticipantAddedEvent {
   repeated runtiva.nats.v1.MetadataMap headers = 1;
@@ -30,6 +36,11 @@ message NatsChatGroupParticipantRemovedEvent {
 
 message ChatGroupCreated {
     runtiva.common.v1.ChatGroup chatgroup = 1;
+}
+
+message ChatGroupTitleUpdated {
+    int64 channel_id = 1;
+    string value = 2;
 }
 
 
