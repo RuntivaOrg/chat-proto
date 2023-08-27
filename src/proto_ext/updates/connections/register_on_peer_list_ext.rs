@@ -1,7 +1,5 @@
-use crate::runtiva::nats::v1 as proto_nats;
-use crate::runtiva::updates::v1 as proto_updates;
-
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
+use crate::runtiva::{nats::v1 as proto_nats, updates::v1 as proto_updates};
 
 // ***********************************  Request Getters ***********************************
 // EditAbout Request Data message

@@ -1,7 +1,5 @@
-use crate::runtiva::nats::v1 as proto_nats;
-use crate::runtiva::updates::v1 as proto_updates;
-
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
+use crate::runtiva::{nats::v1 as proto_nats, updates::v1 as proto_updates};
 
 // ***********************************  Request Getters ***********************************
 // EditAbout Request Data message
@@ -25,8 +23,11 @@ impl HeaderGetter for proto_updates::NatsGetConnectionsRequest {
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto_updates::GetConnectionsRequest, proto_updates::NatsGetConnectionsRequest>
-    for proto_updates::NatsGetConnectionsRequest
+impl
+    NatsRequestSetter<
+        proto_updates::GetConnectionsRequest,
+        proto_updates::NatsGetConnectionsRequest,
+    > for proto_updates::NatsGetConnectionsRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
