@@ -44,10 +44,10 @@ impl
 
 // ***********************************  Response Getters ***********************************
 // Create Response Data getter
-impl DataGetter<proto_updates::GetConnectionsReponse>
+impl DataGetter<proto_updates::GetConnectionsResponse>
     for proto_updates::NatsGetConnectionsResponse
 {
-    fn to_data(self) -> Option<proto_updates::GetConnectionsReponse> {
+    fn to_data(self) -> Option<proto_updates::GetConnectionsResponse> {
         match self.msg {
             Some(proto_updates::nats_get_connections_response::Msg::Data(data)) => Some(data),
             _ => None,
@@ -67,10 +67,10 @@ impl ErrorGetter for proto_updates::NatsGetConnectionsResponse {
 
 // ***********************************  Response Setters ***********************************
 // Create Response Data setter
-impl DataSetter<proto_updates::GetConnectionsReponse, proto_updates::NatsGetConnectionsResponse>
+impl DataSetter<proto_updates::GetConnectionsResponse, proto_updates::NatsGetConnectionsResponse>
     for proto_updates::NatsGetConnectionsResponse
 {
-    fn set_data(data: impl Into<proto_updates::GetConnectionsReponse>) -> Self {
+    fn set_data(data: impl Into<proto_updates::GetConnectionsResponse>) -> Self {
         let data = data.into();
         proto_updates::NatsGetConnectionsResponse {
             msg: Some(proto_updates::nats_get_connections_response::Msg::Data(

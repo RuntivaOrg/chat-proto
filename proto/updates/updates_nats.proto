@@ -102,12 +102,12 @@ message GetConnectionsRequest {
 
 message NatsGetConnectionsResponse {
   oneof msg {
-    GetConnectionsReponse data = 1;
+    GetConnectionsResponse data = 1;
     runtiva.nats.v1.ErrorReply error = 2;
   }
 }
 
-message GetConnectionsReponse {
+message GetConnectionsResponse {
   // list of user connections for the requested user_ids
   repeated UserConnections user_connections = 1;
 }
