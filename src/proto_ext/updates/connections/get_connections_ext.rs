@@ -1,4 +1,6 @@
-use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
+use crate::proto_ext::{
+    DataGetter, DataSetter, ErrorGetter, ErrorSetter, HeaderGetter, NatsRequestSetter,
+};
 use crate::runtiva::{nats::v1 as proto_nats, updates::v1 as proto_updates};
 
 // ***********************************  Request Getters ***********************************
@@ -41,9 +43,53 @@ impl
 }
 
 // ***********************************  Response Getters ***********************************
-//
-// *** Uses the generic implementations from chat-proto\src\proto_ext\empty_response_ext.rs
+// Create Response Data getter
+impl DataGetter<proto_updates::GetConnectionsReponse>
+    for proto_updates::NatsGetConnectionsResponse
+{
+    fn to_data(self) -> Option<proto_updates::GetConnectionsReponse> {
+        match self.msg {
+            Some(proto_updates::nats_get_connections_response::Msg::Data(data)) => Some(data),
+            _ => None,
+        }
+    }
+}
+
+// Create Response Error getter
+impl ErrorGetter for proto_updates::NatsGetConnectionsResponse {
+    fn error(&self) -> Option<&proto_nats::ErrorReply> {
+        match &self.msg {
+            Some(proto_updates::nats_get_connections_response::Msg::Error(e)) => Some(e),
+            _ => None,
+        }
+    }
+}
 
 // ***********************************  Response Setters ***********************************
-//
-// *** Uses the generic implementations from chat-proto\src\proto_ext\error_response_ext.rs
+// Create Response Data setter
+impl DataSetter<proto_updates::GetConnectionsReponse, proto_updates::NatsGetConnectionsResponse>
+    for proto_updates::NatsGetConnectionsResponse
+{
+    fn set_data(data: impl Into<proto_updates::GetConnectionsReponse>) -> Self {
+        let data = data.into();
+        proto_updates::NatsGetConnectionsResponse {
+            msg: Some(proto_updates::nats_get_connections_response::Msg::Data(
+                data,
+            )),
+        }
+    }
+}
+
+// Create Response Error setter
+impl ErrorSetter<proto_nats::ErrorReply, proto_updates::NatsGetConnectionsResponse>
+    for proto_updates::NatsGetConnectionsResponse
+{
+    fn set_error(error: impl Into<proto_nats::ErrorReply>) -> Self {
+        let error = error.into();
+        proto_updates::NatsGetConnectionsResponse {
+            msg: Some(proto_updates::nats_get_connections_response::Msg::Error(
+                error,
+            )),
+        }
+    }
+}
