@@ -108,7 +108,18 @@ message NatsGetConnectionsResponse {
 }
 
 message GetConnectionsReponse {
-  // list of connections for the requested user_ids
-  repeated UpdatesConnection connections = 1;
+  // list of user connections for the requested user_ids
+  repeated UserConnections user_connections = 1;
 }
 
+message UserConnections {
+  int64 user_id = 1;
+  repeated UserConnection connections = 2;
+}
+
+message UserConnection {
+  // user_id:app_id
+  string conn_key = 2;
+  // host:port of the chat server that owns the connection
+  string chat_server = 3;
+}
