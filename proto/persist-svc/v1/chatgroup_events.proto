@@ -39,7 +39,7 @@ message ChatGroupCreated {
 }
 
 message ChatGroupTitleUpdated {
-    int64 channel_id = 1;
+    int64 chatgroup_id = 1;
     string value = 2;
 }
 
