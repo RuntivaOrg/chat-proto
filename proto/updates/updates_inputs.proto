@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package updates_stream;
+package runtiva.updates.v1;
 
 //import "google/protobuf/timestamp.proto";
 

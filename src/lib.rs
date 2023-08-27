@@ -17,10 +17,14 @@ mod proto {
 
     // The order of these appear to be important. When common is moved up, there are compile errors
 
-    pub mod updates_stream {
-        tonic::include_proto!("updates_stream");
-    }
     pub mod runtiva {
+
+        pub mod updates {
+            pub mod v1 {
+                tonic::include_proto!("runtiva.updates.v1");
+            }
+        }
+
         // Primary chat service -- calls made by clients to chat-server
         pub mod chat {
             pub mod v1 {

@@ -2,7 +2,7 @@ mod empty_response_ext;
 
 pub mod chat;
 pub mod persist_svc;
-pub mod updates_stream;
+pub mod updates;
 
 mod proto_date_converter;
 pub use proto_date_converter::ProtoDateConverter;

@@ -3,8 +3,7 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 //import "common_peer.proto";
 
-package updates_stream;
-
+package runtiva.updates.v1;
 
 // ********************************************************************************
 // Entities - messages

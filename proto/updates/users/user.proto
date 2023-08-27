@@ -2,9 +2,7 @@ syntax = "proto3";
 
 //import "google/protobuf/timestamp.proto";
 
-package updates_stream;
-
-
+package runtiva.updates.v1;
 
 // Details of users mentioned in updates 
 message UserContainer {

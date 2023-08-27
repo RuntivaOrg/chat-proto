@@ -1,18 +1,20 @@
 use crate::runtiva::nats::v1 as proto_nats;
-use crate::updates_stream as proto;
+use crate::runtiva::updates::v1 as proto_updates;
 
 use crate::proto_ext::{DataGetter, HeaderGetter, NatsRequestSetter};
 
 // ***********************************  Request Getters ***********************************
 // EditAbout Request Data message
-impl DataGetter<proto::ConnectionPeer> for proto::NatsRegisterOnPeerRequest {
-    fn to_data(self) -> Option<proto::ConnectionPeer> {
+impl DataGetter<proto_updates::UpdatesConnectionKey>
+    for proto_updates::NatsUnregisterFromPeerListRequest
+{
+    fn to_data(self) -> Option<proto_updates::UpdatesConnectionKey> {
         self.data
     }
 }
 
 // EditAbout Request Headers
-impl HeaderGetter for proto::NatsRegisterOnPeerRequest {
+impl HeaderGetter for proto_updates::NatsUnregisterFromPeerListRequest {
     fn headers(&self) -> &[proto_nats::MetadataMap] {
         &self.headers
     }
@@ -25,14 +27,17 @@ impl HeaderGetter for proto::NatsRegisterOnPeerRequest {
 }
 
 // ********************************** NATS Request Setter **********************************
-impl NatsRequestSetter<proto::ConnectionPeer, proto::NatsRegisterOnPeerRequest>
-    for proto::NatsRegisterOnPeerRequest
+impl
+    NatsRequestSetter<
+        proto_updates::UpdatesConnectionKey,
+        proto_updates::NatsUnregisterFromPeerListRequest,
+    > for proto_updates::NatsUnregisterFromPeerListRequest
 {
     fn from_headers_and_message(
         headers: impl Into<Vec<proto_nats::MetadataMap>>,
-        data: impl Into<proto::ConnectionPeer>,
+        data: impl Into<proto_updates::UpdatesConnectionKey>,
     ) -> Self {
-        proto::NatsRegisterOnPeerRequest {
+        proto_updates::NatsUnregisterFromPeerListRequest {
             headers: headers.into(),
             data: Some(data.into()),
         }
