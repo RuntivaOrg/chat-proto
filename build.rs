@@ -47,13 +47,15 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/common/v1/chatgroup.proto",
         "proto/common/v1/notification_settings.proto",
         // *************************************************************************************
-        // Updates Service
+        // Persist Service
         "proto/persist-svc/v1/chatgroup_events.proto",
         // *************************************************************************************
+        // Connections Service
+        "proto/connections_svc.proto",
+        "proto/connections/updates_inputs.proto",
+        "proto/connections/updates_nats.proto",
+        // *************************************************************************************
         // Updates Service
-        "proto/updates_svc.proto",
-        "proto/updates/updates_inputs.proto",
-        "proto/updates/updates_nats.proto",
     ];
     let dirs = &["proto"];
 
