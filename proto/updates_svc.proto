@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package runtiva.updates.v1;
+
+import "google/protobuf/empty.proto";
+
+import "connections/updates_inputs.proto";
+import "updates/updates_stream.proto";
+
+// Service reponsible for pushing all real-time chat-related updates to the client
+// via the server-side streaming `UpdatesConnect` connection
+service UpdatesService {
+
+    // Test method
+    rpc ChatGroupUpdateTitle(ChatGroupTitleUpdated) returns (google.protobuf.Empty) {}
+
+}
+
+
+message ChatGroupTitleUpdated {
+    int64 conn_user_id = 1;
+    string conn_app_id = 2;
+    int64 chatgroup_id = 3;
+    string title = 4;
+}

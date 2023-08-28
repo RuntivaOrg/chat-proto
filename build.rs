@@ -56,6 +56,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/connections/updates_nats.proto",
         // *************************************************************************************
         // Updates Service
+        "proto/updates_svc.proto",
     ];
     let dirs = &["proto"];
 
