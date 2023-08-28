@@ -124,12 +124,13 @@ message UpdateContainer{
         UpdateChannelNewMessage channel_new_message = 2;
 
         // ChatGroup Update Msgs
-        UpdateChatGroupParticipants chatgroup_participants_update = 3; // Just this one ? or break into each add/delete/admin change?
+        UpdateChatGroupTitle chatgroup_title_update = 3;
+        UpdateChatGroupParticipants chatgroup_participants_update = 4; // Just this one ? or break into each add/delete/admin change?
 // updateChatDefaultBannedRights#54c01850 peer:Peer default_banned_rights:ChatBannedRights version:int = Update;
 // updateChat#f89a6a4e chat_id:long = Update;
 
         // Message Update Flags
-        UpdateNewMessage new_message = 4;
+        UpdateNewMessage new_message = 5;
     }
 
 }
@@ -138,6 +139,12 @@ message UpdateContainer{
 
 // *******************************************************************************
 // Update Messages - ChatGroups
+
+message UpdateChatGroupTitle {
+    int64 chatgroup_id = 1;
+    string title = 2;
+}
+
 message UpdateChatGroupParticipants {
     oneof participants {
         ChatGroupParticipantsForbidden participants_forbidden = 1;
