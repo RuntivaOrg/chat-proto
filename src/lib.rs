@@ -19,6 +19,12 @@ mod proto {
 
     pub mod runtiva {
 
+        pub mod connections {
+            pub mod v1 {
+                tonic::include_proto!("runtiva.connections.v1");
+            }
+        }
+
         pub mod updates {
             pub mod v1 {
                 tonic::include_proto!("runtiva.updates.v1");

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package runtiva.updates.v1;
+package runtiva.connections.v1;
 
 import "nats/v1/common.proto";
 

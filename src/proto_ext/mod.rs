@@ -1,6 +1,7 @@
 mod empty_response_ext;
 
 pub mod chat;
+pub mod connections_svc;
 pub mod persist_svc;
 pub mod updates;
 
