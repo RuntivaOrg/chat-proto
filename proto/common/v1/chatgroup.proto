@@ -40,4 +40,8 @@ message ChatGroup {
     // Notification settings for this chat group
     NotificationSettings notification_settings = 13;
 
+    // *** Participant Properties ***
+    // current participants
+    repeated int64 participants = 14;
+
 }
