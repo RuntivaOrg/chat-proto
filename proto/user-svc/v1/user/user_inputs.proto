@@ -12,6 +12,17 @@ message UserHeartbeatRequest {
     google.protobuf.Timestamp date = 2;
 }
 
+// User Updates State
+message GetUserStateRequest{}
+
+message GetUserStateResponse {
+    int32 seq = 1;
+    int32 pts = 2;
+    google.protobuf.Timestamp date = 3;
+    int32 unread_count = 4;
+}
+
+
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
 // Request Message for `Chat_Create` RPC.
 message UserCreateRequest {

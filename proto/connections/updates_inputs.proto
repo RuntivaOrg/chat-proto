@@ -8,6 +8,10 @@ package runtiva.connections.v1;
 // e.g. Only when a user is on the same peer as the user who is typing, the user will receive the IsTyping message. 
 message ConnectRequest {
     string app_id = 1;
+
+    // pass in current local state of the user
+    //int32 local_seq = 2;
+    //int32 local_pts = 3;
 }
 
 message ConnectPeerRequest {

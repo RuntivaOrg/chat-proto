@@ -8,6 +8,8 @@ import "user-svc/v1/user/user.proto";
 
 import "nats/v1/common.proto";
 
+import "google/protobuf/empty.proto";
+
 // NATS Specific messages that are used internally on the server-side. 
 
 // ********** User_Hearbeat ********** //
@@ -23,6 +25,22 @@ message NatsUserCreateResponse {
     ErrorReply error = 2;
   }
 }
+
+
+// ********** User Updates State ********** //
+// Backend NATS messaging for `User_GetState`: Request to get user's current updates stream state 
+message NatsGetUserStateRequest{
+  repeated MetadataMap headers = 1;
+  runtiva.user.v1.GetUserStateRequest data = 2;
+}
+
+message NatsGetUserStateResponse {
+  oneof msg {
+    runtiva.user.v1.GetUserStateResponse data = 1;
+    ErrorReply error = 2;
+  }
+}
+
 
 // ********** User_Create ********** //
 // Backend NATS messaging for `User_Create`: Request to create a new chat 
