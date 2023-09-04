@@ -22,3 +22,17 @@ message NatsGetUserStateResponse {
     ErrorReply error = 2;
   }
 }
+
+// ********** Get User Updates Slice ********** //
+// Backend NATS messaging for `User_GetUpdatesSlice`: Request to get a slice of user updates  
+message NatsGetUserUpdatesSliceRequest{
+  repeated MetadataMap headers = 1;
+  runtiva.updates.v1.GetUserUpdatesSliceRequest data = 2;
+}
+
+message NatsGetUserUpdatesSliceResponse {
+  oneof msg {
+    runtiva.updates.v1.GetUserUpdatesSliceResponse data = 1;
+    ErrorReply error = 2;
+  }
+}

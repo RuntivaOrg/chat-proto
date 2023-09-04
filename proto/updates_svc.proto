@@ -18,6 +18,11 @@ service UpdatesService {
     rpc User_GetState(GetUserStateRequest) returns (GetUserStateResponse) {}
 
 
+    // **************************** Updates ***************************
+    // Gets a slice of updates from the user's mailbox stream 
+    rpc User_GetUpdatesSlice(GetUserUpdatesSliceRequest) returns (GetUserUpdatesSliceResponse) {}
+
+
     // Test method
     rpc ChatGroupUpdateTitle(ChatGroupTitleUpdated) returns (google.protobuf.Empty) {}
 

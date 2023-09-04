@@ -10,6 +10,7 @@ import "updates/users/user.proto";
 
 import "updates/chatgroups/chatgroup.proto";
 
+import "common/v1/chatgroup.proto";
 
 // Messages used by the Updates service. This is the primary Response vehicle for real-time updates to
 // connected devices -- used by the `Connect` gRPC streaming response method.
@@ -124,13 +125,14 @@ message UpdateContainer{
         UpdateChannelNewMessage channel_new_message = 2;
 
         // ChatGroup Update Msgs
-        UpdateChatGroupTitle chatgroup_title_update = 3;
-        UpdateChatGroupParticipants chatgroup_participants_update = 4; // Just this one ? or break into each add/delete/admin change?
+        CreateChatGroup chatgroup_create = 3;
+        UpdateChatGroupTitle chatgroup_title_update = 4;
+        UpdateChatGroupParticipants chatgroup_participants_update = 5; // Just this one ? or break into each add/delete/admin change?
 // updateChatDefaultBannedRights#54c01850 peer:Peer default_banned_rights:ChatBannedRights version:int = Update;
 // updateChat#f89a6a4e chat_id:long = Update;
 
         // Message Update Flags
-        UpdateNewMessage new_message = 5;
+        UpdateNewMessage new_message = 6;
     }
 
 }
@@ -140,6 +142,9 @@ message UpdateContainer{
 // *******************************************************************************
 // Update Messages - ChatGroups
 
+message CreateChatGroup {
+    runtiva.common.v1.ChatGroup chatgroup_details = 1;
+}
 message UpdateChatGroupTitle {
     int64 chatgroup_id = 1;
     string title = 2;
