@@ -1,0 +1,24 @@
+
+syntax = "proto3";
+
+package runtiva.nats.v1;
+
+import "updates/state/state_inputs.proto";
+
+import "nats/v1/common.proto";
+
+//import "google/protobuf/empty.proto";
+
+// ********** User Updates State ********** //
+// Backend NATS messaging for `User_GetState`: Request to get user's current updates stream state 
+message NatsGetUserStateRequest{
+  repeated MetadataMap headers = 1;
+  runtiva.updates.v1.GetUserStateRequest data = 2;
+}
+
+message NatsGetUserStateResponse {
+  oneof msg {
+    runtiva.updates.v1.GetUserStateResponse data = 1;
+    ErrorReply error = 2;
+  }
+}

@@ -39,6 +39,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "proto/nats/v1/chat.proto",
         "proto/nats/v1/chatgroup.proto",
         "proto/nats/v1/message.proto",
+        "proto/nats/v1/state.proto",
         "proto/nats/v1/user.proto",
         "proto/nats/v1/userprofile.proto",
         // *************************************************************************************

@@ -7,9 +7,16 @@ import "google/protobuf/empty.proto";
 import "connections/updates_inputs.proto";
 import "updates/updates_stream.proto";
 
+import "updates/state/state_inputs.proto";
+
 // Service reponsible for pushing all real-time chat-related updates to the client
 // via the server-side streaming `UpdatesConnect` connection
 service UpdatesService {
+
+    // **************************** Init/State ***************************
+    // Gets the user's current updates state 
+    rpc User_GetState(GetUserStateRequest) returns (GetUserStateResponse) {}
+
 
     // Test method
     rpc ChatGroupUpdateTitle(ChatGroupTitleUpdated) returns (google.protobuf.Empty) {}

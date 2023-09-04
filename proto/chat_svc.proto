@@ -14,7 +14,7 @@ import "chat-svc/v1/chatgroup/service_messages.proto";
 
 import "chat-svc/v1/message/message_inputs.proto";
 
-import "user-svc/v1/user/user_inputs.proto";
+//import "user-svc/v1/user/user_inputs.proto";
 
 import "field_behavior.proto";
 import "google/protobuf/empty.proto";
@@ -22,9 +22,6 @@ import "google/protobuf/empty.proto";
 // Interface exported by the server.
 service ChatService {
 
-    // **************************** Init/State ***************************
-    // Gets the user's current updates state 
-    rpc User_GetState(runtiva.user.v1.GetUserStateRequest) returns (runtiva.user.v1.GetUserStateResponse) {}
 
     // ****************************** Chats ******************************
     // Creates a new chat 
