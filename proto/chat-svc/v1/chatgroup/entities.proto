@@ -17,7 +17,7 @@ message ChatGroup {
     optional int64 pinned_msg_id = 8;
     repeated string available_reactions = 9; // Todo: ChatReactions
     
-    int32 ttl_period = 10;
+    optional int32 ttl_period = 10;
 
     // Invite Link
     string invite_link = 13;    // TODO: ExportedChatInvite type

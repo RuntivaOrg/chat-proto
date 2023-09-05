@@ -8,7 +8,7 @@ message ChatCreateRequest {
     string unique_id = 1;
     int64 initiating_user_id = 2;
     int64 other_user_id = 3;
-    int32 ttl_period = 4;
+    optional int32 ttl_period = 4;
 }
 
 // Request Message for `Chat_Delete` RPC. 
