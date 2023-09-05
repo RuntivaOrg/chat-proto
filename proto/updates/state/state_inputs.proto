@@ -19,7 +19,7 @@ message GetUserStateResponse {
 // Get User Updates Slice
 message GetUserUpdatesSliceRequest{
     int32 seq = 1;
-    int32 limit = 4;
+    int32 limit = 2;
 }
 
 message GetUserUpdatesSliceResponse {
