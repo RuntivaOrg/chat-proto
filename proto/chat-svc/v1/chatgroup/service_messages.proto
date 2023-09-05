@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package runtiva.chat.v1;
 
+import "google/protobuf/timestamp.proto";
+
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
 // Request Message for `ChatGroup_Create` RPC.
 message ChatGroupCreateRequest {
@@ -24,6 +26,75 @@ message ChatGroupUpdateAboutRequest {
     string value = 2;
 }
 
+// Request Message for `ChatGroup_UpdateIcon` RPC. 
+message ChatGroupUpdateIconRequest {
+    int64 id = 1;
+    oneof icon {
+        int64 photo64 = 2;
+        string theme_emoticon = 3;
+    }
+}
+
+
+// Request Message for `ChatGroup_UpdateAvailableReactions` RPC. 
+message ChatGroupUpdateAvailableReactionsRequest {
+    int64 id = 1;
+    oneof reactions {
+        AvailableReactionsAll all = 2;
+        AvailableReactionsNone none = 3;
+        AvailableReactionsCustom custom = 4;
+    }
+}
+
+message AvailableReactionsAll {}
+message AvailableReactionsNone {}
+message AvailableReactionsCustom {
+    repeated string reactions = 1;
+}
+
+// Request Message for `ChatGroup_UpdateSettings` RPC.
+message ChatGroupUpdateSettingsRequest {
+    int64 id = 1;
+    bool is_public = 2;
+    bool no_forwarding = 3;
+    bool approve_to_send = 4;
+    bool hidden_prehistory = 5;
+}
+
+// Request Message for `ChatGroup_UpdateTtl` RPC.
+message ChatGroupUpdateTtlRequest {
+    int64 id = 1;
+    optional int32 ttl_period = 2;
+}
+
+// Request Message for `ChatGroup_UpdateNotificationSettings` RPC.
+message ChatGroupUpdateNotificationSettingsRequest {
+    optional bool show_previews = 1;
+    optional bool silent = 2;
+    optional google.protobuf.Timestamp mute_until = 3;
+    optional NotificationSound ios_sound = 4;
+    optional NotificationSound android_sound = 5;
+    optional NotificationSound other_sound = 6;
+}
+
+message NotificationSound {
+    oneof sound {
+        NotificationionSoundNone none = 1;
+        NotificationionSoundDefault default = 2;
+        NotificationionSoundCustom custom = 3;
+        NotificationionSoundRingtone ringtone = 4;
+    }
+}
+
+message NotificationionSoundNone {}
+message NotificationionSoundDefault {}
+message NotificationionSoundCustom {
+    string title = 1;
+    bytes data = 2;
+}
+message NotificationionSoundRingtone {
+    int64 id = 1;
+}
 
 // Request Message for `ChatGroup_AddUser` RPC. 
 message ChatGroupAddUserRequest {
@@ -43,6 +114,12 @@ message ChatGroupEditAdminRequest {
     int64 id = 1;
     int64 user_id = 2;
     bool is_admin = 3;
+}
+
+// Request Message for `ChatGroup_ToggleDisable` RPC. 
+message ChatGroupToggleDisableRequest {
+    int64 id = 1;
+    bool is_disabled = 2;
 }
 
 // Request Message for `ChatGroup_Delete` RPC. 
