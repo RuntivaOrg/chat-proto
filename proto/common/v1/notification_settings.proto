@@ -22,8 +22,20 @@ message NotificationSettings {
 }
 
 message NotificationSound {
-    // Sound name
-    string name = 1;
-    // Sound file ??? 
-    string file = 2;
+    oneof sound {
+        NotificationionSoundNone none = 1;
+        NotificationionSoundDefault default = 2;
+        NotificationionSoundCustom custom = 3;
+        NotificationionSoundRingtone ringtone = 4;
+    }
+}
+
+message NotificationionSoundNone {}
+message NotificationionSoundDefault {}
+message NotificationionSoundCustom {
+    string title = 1;
+    bytes data = 2;
+}
+message NotificationionSoundRingtone {
+    int64 id = 1;
 }

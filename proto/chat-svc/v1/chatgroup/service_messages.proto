@@ -4,6 +4,9 @@ package runtiva.chat.v1;
 
 import "google/protobuf/timestamp.proto";
 
+import "common/v1/notification_settings.proto";
+import "common/v1/available_reactions.proto";
+
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
 // Request Message for `ChatGroup_Create` RPC.
 message ChatGroupCreateRequest {
@@ -40,18 +43,12 @@ message ChatGroupUpdateIconRequest {
 message ChatGroupUpdateAvailableReactionsRequest {
     int64 id = 1;
     oneof reactions {
-        AvailableReactionsAll all = 2;
-        AvailableReactionsNone none = 3;
-        AvailableReactionsCustom custom = 4;
+        runtiva.common.v1.AvailableReactionsAll all = 2;
+        runtiva.common.v1.AvailableReactionsNone none = 3;
+        runtiva.common.v1.AvailableReactionsCustom custom = 4;
     }
 }
 
-message AvailableReactionsAll {}
-message AvailableReactionsNone {}
-message AvailableReactionsCustom {
-    // Array of Reaction IDs.
-    repeated int64 reactions = 1;
-}
 
 // Request Message for `ChatGroup_UpdateSettings` RPC.
 message ChatGroupUpdateSettingsRequest {
@@ -73,29 +70,12 @@ message ChatGroupUpdateNotificationSettingsRequest {
     optional bool show_previews = 1;
     optional bool silent = 2;
     optional google.protobuf.Timestamp mute_until = 3;
-    optional NotificationSound ios_sound = 4;
-    optional NotificationSound android_sound = 5;
-    optional NotificationSound other_sound = 6;
+    optional runtiva.common.v1.NotificationSound ios_sound = 4;
+    optional runtiva.common.v1.NotificationSound android_sound = 5;
+    optional runtiva.common.v1.NotificationSound other_sound = 6;
 }
 
-message NotificationSound {
-    oneof sound {
-        NotificationionSoundNone none = 1;
-        NotificationionSoundDefault default = 2;
-        NotificationionSoundCustom custom = 3;
-        NotificationionSoundRingtone ringtone = 4;
-    }
-}
 
-message NotificationionSoundNone {}
-message NotificationionSoundDefault {}
-message NotificationionSoundCustom {
-    string title = 1;
-    bytes data = 2;
-}
-message NotificationionSoundRingtone {
-    int64 id = 1;
-}
 
 // Request Message for `ChatGroup_AddUser` RPC. 
 message ChatGroupAddUserRequest {

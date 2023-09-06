@@ -1,0 +1,15 @@
+
+syntax = "proto3";
+
+package runtiva.common.v1;
+
+// Types of Available Reactions.
+
+message AvailableReactionsAll {}
+
+message AvailableReactionsNone {}
+
+message AvailableReactionsCustom {
+    // Array of Reaction IDs.
+    repeated int64 reactions = 1;
+}
