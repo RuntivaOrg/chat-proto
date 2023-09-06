@@ -8,7 +8,7 @@ import "chat-svc/v1/chatgroup/entities.proto";
 import "nats/v1/common.proto";
 
 // NATS Specific messages that are used internally on the server-side to offboard request processing 
-// from the ChatServer to the backend services. 
+// from the ChatServer to the backend services (primarily to the chat-persistance-server). 
 
 // ********** ChatGroup_Create ********** //
 // Backend NATS messaging for `ChatGroup_Create`: Request to create a new chat group

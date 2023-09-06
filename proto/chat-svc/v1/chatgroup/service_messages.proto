@@ -17,20 +17,20 @@ message ChatGroupCreateRequest {
 // Request Message for `ChatGroup_UpdateTitle` RPC. 
 message ChatGroupUpdateTitleRequest {
     int64 id = 1;
-    string value = 2;
+    string title = 2;
 }
 
 // Request Message for `ChatGroup_UpdateAbout` RPC. 
 message ChatGroupUpdateAboutRequest {
     int64 id = 1;
-    string value = 2;
+    string about = 2;
 }
 
 // Request Message for `ChatGroup_UpdateIcon` RPC. 
 message ChatGroupUpdateIconRequest {
     int64 id = 1;
     oneof icon {
-        int64 photo64 = 2;
+        int64 photo_id = 2;
         string theme_emoticon = 3;
     }
 }
