@@ -19,19 +19,19 @@ message ChatGroupCreateRequest {
 
 // Request Message for `ChatGroup_UpdateTitle` RPC. 
 message ChatGroupUpdateTitleRequest {
-    int64 id = 1;
+    int64 chatgroup_id = 1;
     string title = 2;
 }
 
 // Request Message for `ChatGroup_UpdateAbout` RPC. 
 message ChatGroupUpdateAboutRequest {
-    int64 id = 1;
+    int64 chatgroup_id = 1;
     string about = 2;
 }
 
 // Request Message for `ChatGroup_UpdateIcon` RPC. 
 message ChatGroupUpdateIconRequest {
-    int64 id = 1;
+    int64 chatgroup_id = 1;
     oneof icon {
         int64 photo_id = 2;
         string theme_emoticon = 3;
@@ -41,7 +41,7 @@ message ChatGroupUpdateIconRequest {
 
 // Request Message for `ChatGroup_UpdateAvailableReactions` RPC. 
 message ChatGroupUpdateAvailableReactionsRequest {
-    int64 id = 1;
+    int64 chatgroup_d = 1;
     oneof reactions {
         runtiva.common.v1.AvailableReactionsAll all = 2;
         runtiva.common.v1.AvailableReactionsNone none = 3;
@@ -52,7 +52,7 @@ message ChatGroupUpdateAvailableReactionsRequest {
 
 // Request Message for `ChatGroup_UpdateSettings` RPC.
 message ChatGroupUpdateSettingsRequest {
-    int64 id = 1;
+    int64 chatgroup_id = 1;
     bool is_public = 2;
     bool no_forwarding = 3;
     bool approve_to_send = 4;
@@ -61,49 +61,50 @@ message ChatGroupUpdateSettingsRequest {
 
 // Request Message for `ChatGroup_UpdateTtl` RPC.
 message ChatGroupUpdateTtlRequest {
-    int64 id = 1;
+    int64 chatgroup_id = 1;
     optional int32 ttl_period = 2;
 }
 
 // Request Message for `ChatGroup_UpdateNotificationSettings` RPC.
 message ChatGroupUpdateNotificationSettingsRequest {
-    optional bool show_previews = 1;
-    optional bool silent = 2;
-    optional google.protobuf.Timestamp mute_until = 3;
-    optional runtiva.common.v1.NotificationSound ios_sound = 4;
-    optional runtiva.common.v1.NotificationSound android_sound = 5;
-    optional runtiva.common.v1.NotificationSound other_sound = 6;
+    int64 chatgroup_id = 1;
+    optional bool show_previews = 2;
+    optional bool silent = 3;
+    optional google.protobuf.Timestamp mute_until = 4;
+    optional runtiva.common.v1.NotificationSound ios_sound = 5;
+    optional runtiva.common.v1.NotificationSound android_sound = 6;
+    optional runtiva.common.v1.NotificationSound other_sound = 7;
 }
 
 
 
 // Request Message for `ChatGroup_AddUser` RPC. 
 message ChatGroupAddUserRequest {
-    int64 id = 1;
+    int64 chatgroup_id = 1;
     int64 user_id = 2;
     optional int64 first_msg_id = 3;
 }
 
 // Request Message for `ChatGroup_RemoveUser` RPC. 
 message ChatGroupRemoveUserRequest {
-    int64 id = 1;
+    int64 chatgroup_id = 1;
     int64 user_id = 2;
 }
 
 // Request Message for `ChatGroup_EditAdmin` RPC. 
 message ChatGroupEditAdminRequest {
-    int64 id = 1;
+    int64 chatgroup_id = 1;
     int64 user_id = 2;
     bool is_admin = 3;
 }
 
 // Request Message for `ChatGroup_ToggleDisable` RPC. 
 message ChatGroupToggleDisableRequest {
-    int64 id = 1;
+    int64 chatgroup_id = 1;
     bool is_disabled = 2;
 }
 
 // Request Message for `ChatGroup_Delete` RPC. 
 message ChatGroupDeleteRequest {
-    int64 id = 1;
+    int64 chatgroup_id = 1;
 }
