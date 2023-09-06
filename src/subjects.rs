@@ -39,3 +39,18 @@ pub fn get_chat_chatgroup_command(sub: &str) -> String {
 pub fn get_chat_chatgroup_query(sub: &str) -> String {
     format!("chat.chatgroup.query.{}", sub)
 }
+
+// ************* ChatGroup Subjects *****************
+pub const SUB_CHATGROUP_CREATE: &str = "create"; // NatsChatGroupCreateRequest
+pub const SUB_CHATGROUP_UPDATE_ABOUT: &str = "update_about"; // NatsChatGroupUpdateAboutRequest
+pub const SUB_CHATGROUP_UPDATE_TITLE: &str = "update_title"; // NatsChatGroupUpdateTitleRequest
+pub const SUB_CHATGROUP_UPDATE_ICON: &str = "update_icon"; // NatsChatGroupUpdateIconRequest
+pub const SUB_CHATGROUP_UPDATE_AVAILABLE_REACTIONS: &str = "update_available_reactions"; // NatsChatGroupUpdateAvailableReactionsRequest
+pub const SUB_CHATGROUP_UPDATE_SETTINGS: &str = "update_settings"; // NatsChatGroupUpdateSettingsRequest
+pub const SUB_CHATGROUP_UPDATE_TTL: &str = "update_ttl"; // NatsChatGroupUpdateTTLRequest
+pub const SUB_CHATGROUP_UPDATE_NOTIFICATION_SETTINGS: &str = "update_notification_settings"; // NatsChatGroupUpdateNotificationSettingsRequest
+pub const SUB_CHATGROUP_ADD_USER: &str = "add_user"; // NatsChatGroupAddUserRequest
+pub const SUB_CHATGROUP_REMOVE_USER: &str = "remove_user"; // NatsChatGroupRemoveUserRequest
+pub const SUB_CHATGROUP_EDIT_ADMIN: &str = "edit_admin"; // NatsChatGroupEditAdminRequest
+pub const SUB_CHATGROUP_TOGGLE_DISABLE: &str = "toggle_disable"; // NatsChatGroupToggleDisableRequest
+pub const SUB_CHATGROUP_DELETE: &str = "delete"; // NatsChatGroupDeleteRequest
