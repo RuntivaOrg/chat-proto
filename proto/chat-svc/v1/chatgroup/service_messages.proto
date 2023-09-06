@@ -49,7 +49,8 @@ message ChatGroupUpdateAvailableReactionsRequest {
 message AvailableReactionsAll {}
 message AvailableReactionsNone {}
 message AvailableReactionsCustom {
-    repeated string reactions = 1;
+    // Array of Reaction IDs.
+    repeated int64 reactions = 1;
 }
 
 // Request Message for `ChatGroup_UpdateSettings` RPC.
