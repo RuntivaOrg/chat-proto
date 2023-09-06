@@ -23,19 +23,19 @@ message NotificationSettings {
 
 message NotificationSound {
     oneof sound {
-        NotificationionSoundNone none = 1;
-        NotificationionSoundDefault default = 2;
-        NotificationionSoundCustom custom = 3;
-        NotificationionSoundRingtone ringtone = 4;
+        NotificationSoundNone none = 1;
+        NotificationSoundDefault default = 2;
+        NotificationSoundCustom custom = 3;
+        NotificationSoundRingtone ringtone = 4;
     }
 }
 
-message NotificationionSoundNone {}
-message NotificationionSoundDefault {}
-message NotificationionSoundCustom {
+message NotificationSoundNone {}
+message NotificationSoundDefault {}
+message NotificationSoundCustom {
     string title = 1;
     bytes data = 2;
 }
-message NotificationionSoundRingtone {
+message NotificationSoundRingtone {
     int64 id = 1;
 }
