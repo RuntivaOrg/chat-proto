@@ -51,7 +51,7 @@ service ChatService {
     rpc ChatGroup_UpdateSettings(ChatGroupUpdateSettingsRequest) returns (google.protobuf.Empty) {}
 
     // Updates the TTL Period for auto-deleting messages of a given chat group
-    rpc ChatGroup_UpdateTtl(ChatGroupUpdateTtlPeriodRequest) returns (google.protobuf.Empty) {}
+    rpc ChatGroup_UpdateTtlPeriod(ChatGroupUpdateTtlPeriodRequest) returns (google.protobuf.Empty) {}
 
     // Updates the Notification Settings of a given chat group
     rpc ChatGroup_UpdateNotificationSettings(ChatGroupUpdateNotificationSettingsRequest) returns (google.protobuf.Empty) {}

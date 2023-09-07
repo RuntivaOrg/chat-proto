@@ -59,8 +59,8 @@ message NatsChatGroupUpdateSettingsRequest {
   runtiva.chat.v1.ChatGroupUpdateSettingsRequest data = 2;
 }
 
-// ********** ChatGroup_UpdateTtl ********** //
-// Backend NATS messaging for `ChatGroup_UpdateTtl`: Requests to update the TTL Period of the messages in the chat group
+// ********** ChatGroup_UpdateTtlPeriod ********** //
+// Backend NATS messaging for `ChatGroup_UpdateTtlPeriod`: Requests to update the TTL Period of the messages in the chat group
 message NatsChatGroupUpdateTtlPeriodRequest {
   repeated MetadataMap headers = 1;
   runtiva.chat.v1.ChatGroupUpdateTtlPeriodRequest data = 2;
