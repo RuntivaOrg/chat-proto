@@ -46,6 +46,15 @@ mod proto {
         }
 
         // Events raised by the chat-persist service once an incoming request has been persisted,
+        // these messages are the external events that fanned out to all users that should receive the associated
+        // updates message
+        pub mod distro {
+            pub mod v1 {
+                tonic::include_proto!("runtiva.distro.v1");
+            }
+        }
+
+        // Events raised by the chat-persist service once an incoming request has been persisted,
         // these messages are the external events that are created from the internal domain events
         pub mod persist {
             pub mod v1 {

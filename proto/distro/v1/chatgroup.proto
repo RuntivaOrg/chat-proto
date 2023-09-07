@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package runtiva.distro.v1;
+
+import "chat-svc/v1/chatgroup/service_messages.proto";
+import "chat-svc/v1/chatgroup/entities.proto";
+
+import "nats/v1/common.proto";
+
+// NATS Specific messages that are used internally on the server-side to offboard request processing 
+// from the ChatServer to the backend services (primarily to the chat-persistance-server). 
+
+// ********** ChatGroup_Create ********** //
+// Backend DISTRO messaging for `ChatGroup_Create`: Request to create a new chat group
+message ChatGroup_Create {
+    repeated runtiva.nats.v1.MetadataMap headers = 1;
+    runtiva.chat.v1.ChatGroup data = 2;
+}
+
+// ********** ChatGroup_UpdateTitle ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateTitle`: Requests to update the title of a chat group
+message ChatGroup_TitleUpdate {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupUpdateTitleRequest data = 2;
+}
+
+// ********** ChatGroup_UpdateAbout ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateAbout`: Requests to update the about of a chat group
+message ChatGroup_AboutUpdate {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupUpdateAboutRequest data = 2;
+}
+
+// ********** ChatGroup_UpdateIcon ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateIcon`: Requests to update the photo or emoticon of a chat group
+message ChatGroup_IconUpdate {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupUpdateIconRequest data = 2;
+}
+
+// ********** ChatGroup_UpdateAvailableReactions ********** //
+// Backend DISTRO messaging for `ChatGroup_AvailableReactions`: Requests to update the available reactions of a chat group
+message ChatGroup_AvailableReactionsUpdate {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupUpdateAvailableReactionsRequest data = 2;
+}
+
+// ********** ChatGroup_UpdateSettings ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateSettings`: Requests to update the settings of a chat group
+message ChatGroup_SettingsUpdate {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupUpdateSettingsRequest data = 2;
+}
+
+// ********** ChatGroup_UpdateTtl ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateTtl`: Requests to update the TTL Period of the messages in the chat group
+message ChatGroup_TtlPeriodUpdate {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupUpdateTtlPeriodRequest data = 2;
+}
+
+// ********** ChatGroup_UpdateNotificationSettings ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateNotificationSettings`: Requests to update the notification settings in the chat group
+message ChatGroup_NotificationSettingsUpdate {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupUpdateNotificationSettingsRequest data = 2;
+}
+
+// ********** ChatGroup_AddUser ********** //
+// Backend DISTRO messaging for `ChatGroup_AddUser`: Request to add a user from a chat group
+message ChatGroup_UserAdd {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupAddUserRequest data = 2;
+}
+
+// ********** ChatGroup_RemoveUser ********** //
+// Backend DISTRO messaging for `ChatGroup_RemoveUser`: Request to remove a user from a chat group
+message ChatGroup_UserRemove {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupRemoveUserRequest data = 2;
+}
+
+// ********** ChatGroup_EditAdmin ********** //
+// Backend DISTRO messaging for `ChatGroup_EditAdmin`: Request to set/unset a chat participant as admin
+message ChatGroup_AdminEdit {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupEditAdminRequest data = 2;
+}
+
+// ********** ChatGroup_ToggleDisable ********** //
+// Backend DISTRO messaging for `ChatGroup_ToggleDisable`: Disable/Enables a chat group
+message ChatGroup_DisableUpdate {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupToggleDisableRequest data = 2;
+}
+
+// ********** ChatGroup_Delete ********** //
+// Backend DISTRO messaging for `ChatGroup_Delete`: Deletes a chat group
+message ChatGroup_Delete {
+  repeated runtiva.nats.v1.MetadataMap headers = 1;
+  runtiva.chat.v1.ChatGroupDeleteRequest data = 2;
+}

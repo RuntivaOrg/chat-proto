@@ -64,7 +64,7 @@ message ChatGroupParticipantRemoved {
     int64 user_id = 2;
     // ID of the user, who initiated the removal of the member from the caht group
     int64 remover_id = 3;
-    // The timestamp when the user was added to the group
+    // The timestamp when the user was removed to the group
     google.protobuf.Timestamp date = 4;
     // The chatgroup persist version after the user was added to the group
     int32 version = 5;

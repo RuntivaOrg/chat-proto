@@ -60,7 +60,7 @@ message ChatGroupUpdateSettingsRequest {
 }
 
 // Request Message for `ChatGroup_UpdateTtl` RPC.
-message ChatGroupUpdateTtlRequest {
+message ChatGroupUpdateTtlPeriodRequest {
     int64 id = 1;
     optional int32 ttl_period = 2;
 }

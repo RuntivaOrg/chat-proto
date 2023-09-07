@@ -51,6 +51,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         // Persist Service
         "proto/persist-svc/v1/chatgroup_events.proto",
         // *************************************************************************************
+        // Distro Messaging
+        "proto/distro/v1/chatgroup.proto",
+        // *************************************************************************************
         // Connections Service
         "proto/connections_svc.proto",
         "proto/connections/updates_inputs.proto",
