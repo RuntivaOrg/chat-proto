@@ -25,7 +25,7 @@ service UpdatesService {
 
 
     // Test method
-    rpc ChatGroupUpdateTitle(ChatGroupTitleUpdated) returns (google.protobuf.Empty) {}
+    //rpc ChatGroupUpdateTitle(ChatGroupTitleUpdated) returns (google.protobuf.Empty) {}
 
     // This is the primary rpc method for pushing updates to the client
     // Typical flow: 
