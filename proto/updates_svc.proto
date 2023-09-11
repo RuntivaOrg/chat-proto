@@ -8,6 +8,7 @@ import "connections/updates_inputs.proto";
 import "updates/updates_stream.proto";
 
 import "updates/state/state_inputs.proto";
+import "nats/v1/common.proto";
 
 // Service reponsible for pushing all real-time chat-related updates to the client
 // via the server-side streaming `UpdatesConnect` connection
@@ -26,6 +27,32 @@ service UpdatesService {
     // Test method
     rpc ChatGroupUpdateTitle(ChatGroupTitleUpdated) returns (google.protobuf.Empty) {}
 
+    // This is the primary rpc method for pushing updates to the client
+    // Typical flow: 
+    //   1. Client makes a call to ChatServer (e.g. SendMessage, ChatGroupCreate, etc)
+    //   2. ChatServer passes the request to the Persist server
+    //   3. Persist server processes the request, and if successful, fans out the updates 
+    //      to all the relevant users
+    //   4. The distro service recieves the fanout messages, looks up the connected clients, 
+    //      and sends them to the connected chat server (using this RPC call).
+    //   5. The chat server finds the active connection and sends the embedded UpdatesStream 
+    //      message to the client over the active connection.  
+    rpc PushDistroMessage(DistroEnvelope) returns (google.protobuf.Empty) {}
+}
+
+
+message DistroEnvelope {
+    repeated runtiva.nats.v1.MetadataMap headers = 1;
+    Envelope data = 2;
+}
+
+message Envelope {
+    // The user who sent the message
+    int64 conn_user_id = 1;
+    string conn_app_id = 2;
+
+    // The contained message
+    UpdatesStream distro_message = 3;
 }
 
 

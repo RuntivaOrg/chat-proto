@@ -2,30 +2,88 @@ syntax = "proto3";
 
 package runtiva.updates.v1;
 
+
+import "chat-svc/v1/chatgroup/service_messages.proto";
+import "chat-svc/v1/chatgroup/entities.proto";
+
 import "nats/v1/common.proto";
-import "common/v1/chatgroup.proto";
 
 
-// ********************************************************************************
-// Entities - ChatGroups
-
-// *************** ChatGroup Created *************** 
-message NatsChatGroupCreatedEvent {
-  repeated runtiva.nats.v1.MetadataMap headers = 1;
-  ChatGroupCreated data = 2;
+// ********** ChatGroup_Create ********** //
+// Backend DISTRO messaging for `ChatGroup_Create`: Request to create a new chat group
+message ChatGroup_Create {
+    runtiva.chat.v1.ChatGroup data = 2;
 }
 
-message ChatGroupCreated {
-    runtiva.common.v1.ChatGroup chatgroup = 1;
+// ********** ChatGroup_UpdateTitle ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateTitle`: Requests to update the title of a chat group
+message ChatGroup_TitleUpdate {
+  runtiva.chat.v1.ChatGroupUpdateTitleRequest data = 2;
 }
 
-message ChatGroupParticipantsForbidden {
-    int64 chatgroup_id = 1;
-    int64 part_details_todo = 2;
+// ********** ChatGroup_UpdateAbout ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateAbout`: Requests to update the about of a chat group
+message ChatGroup_AboutUpdate {
+  runtiva.chat.v1.ChatGroupUpdateAboutRequest data = 2;
 }
 
-message ChatGroupParticipantDetails {
-    int64 chatgroup_id = 1;
-    repeated int64 part_details_todo = 2;
-
+// ********** ChatGroup_UpdateIcon ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateIcon`: Requests to update the photo or emoticon of a chat group
+message ChatGroup_IconUpdate {
+  runtiva.chat.v1.ChatGroupUpdateIconRequest data = 2;
 }
+
+// ********** ChatGroup_UpdateAvailableReactions ********** //
+// Backend DISTRO messaging for `ChatGroup_AvailableReactions`: Requests to update the available reactions of a chat group
+message ChatGroup_AvailableReactionsUpdate {
+  runtiva.chat.v1.ChatGroupUpdateAvailableReactionsRequest data = 2;
+}
+
+// ********** ChatGroup_UpdateSettings ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateSettings`: Requests to update the settings of a chat group
+message ChatGroup_SettingsUpdate {
+  runtiva.chat.v1.ChatGroupUpdateSettingsRequest data = 2;
+}
+
+// ********** ChatGroup_UpdateTtl ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateTtl`: Requests to update the TTL Period of the messages in the chat group
+message ChatGroup_TtlPeriodUpdate {
+  runtiva.chat.v1.ChatGroupUpdateTtlPeriodRequest data = 2;
+}
+
+// ********** ChatGroup_UpdateNotificationSettings ********** //
+// Backend DISTRO messaging for `ChatGroup_UpdateNotificationSettings`: Requests to update the notification settings in the chat group
+message ChatGroup_NotificationSettingsUpdate {
+  runtiva.chat.v1.ChatGroupUpdateNotificationSettingsRequest data = 2;
+}
+
+// ********** ChatGroup_AddUser ********** //
+// Backend DISTRO messaging for `ChatGroup_AddUser`: Request to add a user from a chat group
+message ChatGroup_UserAdd {
+  runtiva.chat.v1.ChatGroupAddUserRequest data = 2;
+}
+
+// ********** ChatGroup_RemoveUser ********** //
+// Backend DISTRO messaging for `ChatGroup_RemoveUser`: Request to remove a user from a chat group
+message ChatGroup_UserRemove {
+  runtiva.chat.v1.ChatGroupRemoveUserRequest data = 2;
+}
+
+// ********** ChatGroup_EditAdmin ********** //
+// Backend DISTRO messaging for `ChatGroup_EditAdmin`: Request to set/unset a chat participant as admin
+message ChatGroup_AdminEdit {
+  runtiva.chat.v1.ChatGroupEditAdminRequest data = 2;
+}
+
+// ********** ChatGroup_ToggleDisable ********** //
+// Backend DISTRO messaging for `ChatGroup_ToggleDisable`: Disable/Enables a chat group
+message ChatGroup_DisableUpdate {
+  runtiva.chat.v1.ChatGroupToggleDisableRequest data = 2;
+}
+
+// ********** ChatGroup_Delete ********** //
+// Backend DISTRO messaging for `ChatGroup_Delete`: Deletes a chat group
+message ChatGroup_Delete {
+  runtiva.chat.v1.ChatGroupDeleteRequest data = 2;
+}
+

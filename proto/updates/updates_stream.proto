@@ -18,16 +18,20 @@ message UpdatesStream {
     oneof update {
         // Too many updates to send to client -- need to manually request them in batches
         UpdatesTooMany too_long = 1;
+        
         // One message sent to (received from) another user
         UpdateShortMessage short_message = 2;
+        
         // One message sent (or received) in a group chat 
         UpdateShortChatMessage short_chat_message = 3;
         UpdateShortSentMessage short_sent_message = 4;
-        // Update w/ no auxilary data needed
+        
+        // Update w/ no auxilary data needed -- only used for temporal updates (e.g. UserIsTyping)
         UpdateShort short = 5;
         
-        // Batch of incoming updates events
+        // Batch of incoming updates events -- used when there are multiple updates to send to the client
         UpdatesCombined combined = 6;
+
         // Batch of incoming updates events
         Updates updates = 7;
     }
@@ -43,6 +47,8 @@ message UpdateShortMessage {}
 
 message UpdateShortChatMessage {}
 
+message UpdateShortSentMessage  {}
+
 message UpdateShort {
     // Incoming Update 
     UpdateContainer update = 1;
@@ -50,8 +56,6 @@ message UpdateShort {
     // Current timestamp of this update
     google.protobuf.Timestamp date = 4;
 }
-
-message UpdateShortSentMessage  {}
 
 // Events wrapper for a group of updates 
 message UpdatesCombined {
@@ -125,52 +129,28 @@ message UpdateContainer{
         UpdateChannelNewMessage channel_new_message = 2;
 
         // ChatGroup Update Msgs
-        CreateChatGroup chatgroup_create = 3;
-        UpdateChatGroupTitle chatgroup_title_update = 4;
-        UpdateChatGroupParticipants chatgroup_participants_update = 5; // Just this one ? or break into each add/delete/admin change?
-// updateChatDefaultBannedRights#54c01850 peer:Peer default_banned_rights:ChatBannedRights version:int = Update;
-// updateChat#f89a6a4e chat_id:long = Update;
+        ChatGroup_Create chatgroup_create = 20;
+        ChatGroup_TitleUpdate chatgroup_title_update = 21;
+        ChatGroup_AboutUpdate chatgroup_about_update = 22;
+        ChatGroup_IconUpdate chatgroup_icon_update = 23;
+        ChatGroup_AvailableReactionsUpdate chatgroup_available_reactions_update = 24;
+
+        ChatGroup_SettingsUpdate chatgroup_settings_update = 25;
+        ChatGroup_TtlPeriodUpdate chatgroup_ttl_period_update = 26;
+        ChatGroup_NotificationSettingsUpdate chatgroup_notification_settings_update = 27;
+        ChatGroup_UserAdd chatgroup_user_add = 28;
+        ChatGroup_UserRemove chatgroup_user_remove = 29;
+        ChatGroup_AdminEdit chatgroup_admin_edit = 30;
+        ChatGroup_DisableUpdate chatgroup_disable_update = 31;
+        ChatGroup_Delete chatgroup_delete = 32;
 
         // Message Update Flags
-        UpdateNewMessage new_message = 6;
+        Message new_message = 40;
     }
 
 }
 
 
-
-// *******************************************************************************
-// Update Messages - ChatGroups
-
-message CreateChatGroup {
-    runtiva.common.v1.ChatGroup chatgroup_details = 1;
-}
-message UpdateChatGroupTitle {
-    int64 chatgroup_id = 1;
-    string title = 2;
-}
-
-message UpdateChatGroupParticipants {
-    oneof participants {
-        ChatGroupParticipantsForbidden participants_forbidden = 1;
-        ChatGroupParticipantDetails participants_details = 2;
-    }
-}
-
-message UpdateChatGroupAdmin {
-    int64 chatgroup_id = 1;
-    int64 user_id = 2;
-    bool is_admin = 3;
-
-}
-
-// *******************************************************************************
-// Update Messages - Messages
-message UpdateNewMessage {
-    Message message_details = 1;
-    int32 pts = 2;
-    int32 pts_count = 3;
-}
 
 
 
