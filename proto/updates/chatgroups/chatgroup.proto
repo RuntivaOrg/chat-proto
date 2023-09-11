@@ -2,11 +2,12 @@ syntax = "proto3";
 
 package runtiva.updates.v1;
 
+import "google/protobuf/timestamp.proto";
 
-import "chat-svc/v1/chatgroup/service_messages.proto";
 import "chat-svc/v1/chatgroup/entities.proto";
 
-import "nats/v1/common.proto";
+import "common/v1/notification_settings.proto";
+import "common/v1/available_reactions.proto";
 
 
 // ********** ChatGroup_Create ********** //
@@ -18,72 +19,99 @@ message ChatGroup_Create {
 // ********** ChatGroup_UpdateTitle ********** //
 // Backend DISTRO messaging for `ChatGroup_UpdateTitle`: Requests to update the title of a chat group
 message ChatGroup_TitleUpdate {
-  runtiva.chat.v1.ChatGroupUpdateTitleRequest data = 2;
+    int64 id = 1;
+    string title = 2;
 }
 
 // ********** ChatGroup_UpdateAbout ********** //
 // Backend DISTRO messaging for `ChatGroup_UpdateAbout`: Requests to update the about of a chat group
 message ChatGroup_AboutUpdate {
-  runtiva.chat.v1.ChatGroupUpdateAboutRequest data = 2;
+    int64 id = 1;
+    string about = 2;
 }
 
 // ********** ChatGroup_UpdateIcon ********** //
 // Backend DISTRO messaging for `ChatGroup_UpdateIcon`: Requests to update the photo or emoticon of a chat group
 message ChatGroup_IconUpdate {
-  runtiva.chat.v1.ChatGroupUpdateIconRequest data = 2;
+    int64 id = 1;
+    oneof icon {
+        int64 photo_id = 2;
+        string theme_emoticon = 3;
+    }
 }
 
 // ********** ChatGroup_UpdateAvailableReactions ********** //
 // Backend DISTRO messaging for `ChatGroup_AvailableReactions`: Requests to update the available reactions of a chat group
 message ChatGroup_AvailableReactionsUpdate {
-  runtiva.chat.v1.ChatGroupUpdateAvailableReactionsRequest data = 2;
+    int64 id = 1;
+    oneof reactions {
+        runtiva.common.v1.AvailableReactionsAll all = 2;
+        runtiva.common.v1.AvailableReactionsNone none = 3;
+        runtiva.common.v1.AvailableReactionsCustom custom = 4;
+    }
 }
 
 // ********** ChatGroup_UpdateSettings ********** //
 // Backend DISTRO messaging for `ChatGroup_UpdateSettings`: Requests to update the settings of a chat group
 message ChatGroup_SettingsUpdate {
-  runtiva.chat.v1.ChatGroupUpdateSettingsRequest data = 2;
+    int64 id = 1;
+    bool is_public = 2;
+    bool no_forwarding = 3;
+    bool approve_to_send = 4;
+    bool hidden_prehistory = 5;
 }
 
 // ********** ChatGroup_UpdateTtl ********** //
 // Backend DISTRO messaging for `ChatGroup_UpdateTtl`: Requests to update the TTL Period of the messages in the chat group
 message ChatGroup_TtlPeriodUpdate {
-  runtiva.chat.v1.ChatGroupUpdateTtlPeriodRequest data = 2;
+    int64 id = 1;
+    optional int32 ttl_period = 2;
 }
 
 // ********** ChatGroup_UpdateNotificationSettings ********** //
 // Backend DISTRO messaging for `ChatGroup_UpdateNotificationSettings`: Requests to update the notification settings in the chat group
 message ChatGroup_NotificationSettingsUpdate {
-  runtiva.chat.v1.ChatGroupUpdateNotificationSettingsRequest data = 2;
+    int64 id = 1;
+    optional bool show_previews = 2;
+    optional bool silent = 3;
+    optional google.protobuf.Timestamp mute_until = 4;
+    optional runtiva.common.v1.NotificationSound ios_sound = 5;
+    optional runtiva.common.v1.NotificationSound android_sound = 6;
+    optional runtiva.common.v1.NotificationSound other_sound = 7;
 }
 
 // ********** ChatGroup_AddUser ********** //
 // Backend DISTRO messaging for `ChatGroup_AddUser`: Request to add a user from a chat group
 message ChatGroup_UserAdd {
-  runtiva.chat.v1.ChatGroupAddUserRequest data = 2;
+    int64 id = 1;
+    int64 user_id = 2;
 }
 
 // ********** ChatGroup_RemoveUser ********** //
 // Backend DISTRO messaging for `ChatGroup_RemoveUser`: Request to remove a user from a chat group
 message ChatGroup_UserRemove {
-  runtiva.chat.v1.ChatGroupRemoveUserRequest data = 2;
+    int64 id = 1;
+    int64 user_id = 2;
 }
 
 // ********** ChatGroup_EditAdmin ********** //
 // Backend DISTRO messaging for `ChatGroup_EditAdmin`: Request to set/unset a chat participant as admin
 message ChatGroup_AdminEdit {
-  runtiva.chat.v1.ChatGroupEditAdminRequest data = 2;
+    int64 id = 1;
+    int64 user_id = 2;
+    bool is_admin = 3;
 }
 
 // ********** ChatGroup_ToggleDisable ********** //
 // Backend DISTRO messaging for `ChatGroup_ToggleDisable`: Disable/Enables a chat group
 message ChatGroup_DisableUpdate {
-  runtiva.chat.v1.ChatGroupToggleDisableRequest data = 2;
+    int64 id = 1;
+    bool is_disabled = 2;
 }
 
 // ********** ChatGroup_Delete ********** //
 // Backend DISTRO messaging for `ChatGroup_Delete`: Deletes a chat group
 message ChatGroup_Delete {
-  runtiva.chat.v1.ChatGroupDeleteRequest data = 2;
+    int64 id = 1;
 }
 
