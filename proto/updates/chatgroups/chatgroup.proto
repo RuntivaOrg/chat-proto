@@ -4,16 +4,17 @@ package runtiva.updates.v1;
 
 import "google/protobuf/timestamp.proto";
 
-import "chat-svc/v1/chatgroup/entities.proto";
+//import "chat-svc/v1/chatgroup/entities.proto";
 
 import "common/v1/notification_settings.proto";
 import "common/v1/available_reactions.proto";
+import "common/v1/chatgroup.proto";
 
 
 // ********** ChatGroup_Create ********** //
 // Backend DISTRO messaging for `ChatGroup_Create`: Request to create a new chat group
 message ChatGroup_Create {
-    runtiva.chat.v1.ChatGroup data = 2;
+    runtiva.common.v1.ChatGroup chat_group = 1;
 }
 
 // ********** ChatGroup_UpdateTitle ********** //
