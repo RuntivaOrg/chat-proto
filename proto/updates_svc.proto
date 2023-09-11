@@ -43,7 +43,7 @@ service UpdatesService {
 // Message created by Distro server with connection details to send to the chat server
 message ChatServerEnvelope {
     repeated runtiva.nats.v1.MetadataMap headers = 1;
-    Envelope data = 2;
+    ConnEnvelope data = 2;
 }
 
 message ConnEnvelope {
