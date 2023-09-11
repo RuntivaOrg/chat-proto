@@ -37,10 +37,26 @@ service UpdatesService {
     //      and sends them to the connected chat server (using this RPC call).
     //   5. The chat server finds the active connection and sends the embedded UpdatesStream 
     //      message to the client over the active connection.  
-    rpc PushDistroMessage(DistroEnvelope) returns (google.protobuf.Empty) {}
+    rpc PushDistroMessage(ChatServerEnvelope) returns (google.protobuf.Empty) {}
+}
+
+// Message created by Distro server with connection details to send to the chat server
+message ChatServerEnvelope {
+    repeated runtiva.nats.v1.MetadataMap headers = 1;
+    Envelope data = 2;
+}
+
+message ConnEnvelope {
+    // The user to whom the streaming message is being sent
+    int64 conn_user_id = 1;
+    string conn_app_id = 2;
+
+    // The contained message
+    UpdatesStream distro_message = 3;
 }
 
 
+// Message created by the persist server with user details to send to the Distro server.
 message DistroEnvelope {
     repeated runtiva.nats.v1.MetadataMap headers = 1;
     Envelope data = 2;
