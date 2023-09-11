@@ -47,9 +47,8 @@ message DistroEnvelope {
 }
 
 message Envelope {
-    // The user who sent the message
-    int64 conn_user_id = 1;
-    string conn_app_id = 2;
+    // The user to whom the streaming message is being sent
+    int64 user_id = 1;
 
     // The contained message
     UpdatesStream distro_message = 3;

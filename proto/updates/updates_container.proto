@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package runtiva.updates.v1;
+
+// import "google/protobuf/timestamp.proto";
+
+import "updates/channels/channel.proto";
+import "updates/messages/message.proto";
+// import "updates/users/user.proto";
+
+import "updates/chatgroups/chatgroup.proto";
+
+// import "common/v1/chatgroup.proto";
+
+
+// *******************************************************************************
+// Core primary message for transmitting all available Update Events to the client
+message UpdateContainer{
+    oneof update {
+        // Channel Update Msgs
+        UpdateChannel channel_id = 1;
+        UpdateChannelNewMessage channel_new_message = 2;
+
+        // ChatGroup Update Msgs
+        ChatGroup_Create chatgroup_create = 20;
+        ChatGroup_TitleUpdate chatgroup_title_update = 21;
+        ChatGroup_AboutUpdate chatgroup_about_update = 22;
+        ChatGroup_IconUpdate chatgroup_icon_update = 23;
+        ChatGroup_AvailableReactionsUpdate chatgroup_available_reactions_update = 24;
+
+        ChatGroup_SettingsUpdate chatgroup_settings_update = 25;
+        ChatGroup_TtlPeriodUpdate chatgroup_ttl_period_update = 26;
+        ChatGroup_NotificationSettingsUpdate chatgroup_notification_settings_update = 27;
+        ChatGroup_UserAdd chatgroup_user_add = 28;
+        ChatGroup_UserRemove chatgroup_user_remove = 29;
+        ChatGroup_AdminEdit chatgroup_admin_edit = 30;
+        ChatGroup_DisableUpdate chatgroup_disable_update = 31;
+        ChatGroup_Delete chatgroup_delete = 32;
+
+        // Message Update Flags
+        Message new_message = 40;
+    }
+
+}
+
+
+
+
+
