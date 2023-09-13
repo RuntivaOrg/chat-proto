@@ -4,7 +4,7 @@ pub mod chat;
 pub mod connections_svc;
 pub mod distro;
 pub mod persist_svc;
-pub mod updates;
+pub mod updates_;
 
 mod proto_date_converter;
 pub use proto_date_converter::ProtoDateConverter;
