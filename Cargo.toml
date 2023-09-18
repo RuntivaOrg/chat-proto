@@ -8,8 +8,8 @@ publish = false
 
 [dependencies]
 # gRPC
-prost = "0.12"
-prost-types = "0.12"
+prost = "0.12.1"
+prost-types = "0.12.1"
 tonic = { version = "0.10.0", features = ["gzip", "transport", "prost"] }
 tonic-reflection = "0.10.0"
 

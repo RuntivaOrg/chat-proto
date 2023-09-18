@@ -24,7 +24,7 @@ impl TryInto<ProtoDateConverter> for prost_types::Timestamp {
     type Error = ChatProtoError;
 
     fn try_into(self) -> Result<ProtoDateConverter, Self::Error> {
-        Ok(ProtoDateConverter(DateTime::<Utc>::from_utc(
+        Ok(ProtoDateConverter(DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(self.seconds, self.nanos as u32)
                 .ok_or(ChatProtoError::DateOutOfRange(self.seconds, self.nanos))?,
             Utc,
