@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+import "common/v1/common_peer.proto";
+import "common/v1/photo.proto";
+import "common/v1/message_entity.proto";
+
+package runtiva.common.v1;
+
+// TODO: Should this liver here or in the updates package? These are currently Updates objects. 
+
+message Poll {
+    int64 id = 1;
+
+    // Flag indicating whether the poll is closed (not accepting any more answers).
+    bool closed = 2;
+    // Flag indicating whether the users votes are publicly visible to all users (non-anonymous poll).
+    bool public_voters = 3;
+    // Flag indicating whether the poll is multiple choice (users can select multiple answers).
+    bool multiple_choice = 4;
+    // Flag indicating if this poll is a quiz (users can see the correct answer after voting).
+    bool quiz = 5;
+    // The question of the poll
+    string question = 6;
+    // The answers of the poll
+    repeated PollAnswer answers = 7;
+    // The amount of time in seconds the poll will be active after creation, 5-600. Can't be used 
+    // together with close_date.
+    optional int32 close_period = 8;
+    // Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and 
+    // no more than 600 seconds in the future. Can't be used together with close_period.
+    optional google.protobuf.Timestamp close_date = 9;
+}
+
+message PollAnswer {
+    // Textual representation of the poll answer
+    string text = 1;
+    // The param that has to be used to Messages_SendVote
+    bytes param = 2;
+}
+
+message PollResults {
+    // Poll Results
+    repeated PollAnswerVoters results = 1;
+    // Total number of users that voted in the poll
+    int32 total_voters = 2;
+    /// IDs of the last users that recently voted in the poll
+    repeated int64 recent_voters = 5;
+    // Explanation of the quiz solution
+    string solution = 6;
+    // Mesage entities for styled text in quiz solution
+    repeated MessageEntity solution_entities = 7;
+}
+
+message PollAnswerVoters {
+    // Flag indicating whether user has chosen this answer
+    bool chosen = 1;
+    // For quizzes, Flag indicating whether this answer is correct
+    optional bool correct = 2;
+    // The param that has to be passed to Messages_SendVote
+    bytes param = 3;
+    // Number of users that voted for this answer
+    int32 voters = 4;
+}

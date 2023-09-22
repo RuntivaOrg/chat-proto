@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package runtiva.common.v1;
+
+message Photo {
+    oneof photo {
+        PhotoEmpty empty = 1;
+        PhotoData data = 2;
+    }
+}
+
+message PhotoEmpty {
+}
+
+message PhotoData {
+    int64 id = 1;
+    int64 access_hash = 2;
+    google.protobuf.Timestamp date = 3;
+    bytes file_reference = 4;
+    repeated PhotoSize sizes = 5;
+    int32 dc_id = 6;
+}
+
+message PhotoSize {
+    // Thumbnail type
+    string type = 1;
+    // Image width
+    int32 width = 2;
+    // Image height
+    int32 height = 3;
+    // file size in bytes
+    int64 size = 4;
+}

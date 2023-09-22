@@ -21,7 +21,6 @@ fn main() -> Result<(), Box<dyn Error>> {
         //"proto/updates/chatgroups/chatgroup.proto",
         // Messages
         "proto/chat-svc/v1/message/message.proto",
-        "proto/chat-svc/v1/message/message_entity.proto",
         "proto/chat-svc/v1/message/message_inputs.proto",
         // *************************************************************************************
         // User Service
@@ -46,6 +45,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         // Common
         "proto/common/v1/common_peer.proto",
         "proto/common/v1/chatgroup.proto",
+        "proto/common/v1/message_entity.proto",
         "proto/common/v1/notification_settings.proto",
         // *************************************************************************************
         // Persist Service

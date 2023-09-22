@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+import "common/v1/common_peer.proto";
+import "common/v1/photo.proto";
+import "common/v1/poll.proto";
+
+package runtiva.common.v1;
+
+message MessageMedia {
+    oneof media {
+        MessageMediaEmpty empty = 1;
+        MessageMediaPhoto photo = 2;
+        MessageMediaDocument document = 3;
+        MessageMediaWebPage webpage = 4;
+        MessageMediaPoll poll = 5;
+            }   
+}
+
+message MessageMediaEmpty {
+    // Empty message media
+    int32 dummy = 1;
+}
+
+message MessageMediaPhoto {
+    // Flag indicating whether the photo should be hidden behind a spoiler warning
+    bool spoiler = 1;
+    // The photo
+    runtiva.common.v1.Photo photo = 2;
+    // Time to live in seconds of self-destructing photos
+    int32 ttl_seconds = 3;
+}
+
+message MessageMediaDocument {
+    // NOT CURRENTLY IMPLEMENTED
+}
+
+message MessageMediaWebPage {
+    oneof webpage {
+        MessageMediaWebPageEmpty empty = 1;
+        MessageMediaWebPageDetails data = 2;
+    }
+}
+
+message MessageMediaWebPageEmpty {}
+
+// NOT CURRENTLY IMPLEMENTED
+message MessageMediaWebPageDetails {
+    // // Preview ID of the web page
+    // int64 id = 1;
+    // // URL of the web page
+    // string url = 2;
+    // // Display URL of the web page
+    // string display_url = 3;
+    // // Hash (not currently used)
+    // int32 hash = 4;
+    // // Type of the web page: Can be article, photo, audio, video, document, profile, app, or something else
+    // string type = 5;
+    // // Shore name of the site (Google Docs, App Store)
+    // string site_name = 6;
+    // // Title of the web page
+    // string title = 7;
+    // // Content Description of the web page
+    // string description = 8;
+    // // The web page thumbnail
+    // runtiva.common.v1.Photo photo = 9;
+
+
+}
+
+message MessageMediaPoll {
+    // The poll
+    runtiva.common.v1.Poll poll = 1;
+    // The results of the poll
+    runtiva.common.v1.PollResults poll_results = 2;
+}

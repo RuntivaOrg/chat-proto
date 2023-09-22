@@ -3,7 +3,7 @@ syntax = "proto3";
 package runtiva.chat.v1;
 
 import "common/v1/common_peer.proto";
-import "chat-svc/v1/message/message_entity.proto";
+import "common/v1/message_entity.proto";
 
 // Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
 // Request Message for `Message_Send` RPC.
@@ -13,14 +13,8 @@ message MessageSendRequest {
     // format should be a Nanoid string 12-16 characters in length.
     string unique_id = 1;
 
-    // ID of the user sending the message. TODO: Convert the source of this to the JWT token.
-    int64 owner_id = 2;
-
     // owning container of the message -- channel, topic or chat_group
     runtiva.common.v1.PeerInput input_peer = 3;
-
-    // The actual message
-    string Message = 4;
 
     // ID of the message being forwarded
     optional int64 fwd_from_msg_id = 5;
@@ -33,12 +27,18 @@ message MessageSendRequest {
     // For topics and chat groups, this field is not applicable
     optional int64 top_msg_id = 7;
 
-    repeated MessageEntity entities = 8;
+    // The actual message
+    string Message = 4;
+
+    repeated runtiva.common.v1.MessageEntity entities = 8;
 
     // flag indicating the sender of the message is a channel
     optional runtiva.common.v1.PeerInput send_as = 9;
 
     // Send this message silently (no notifications for the receivers)
     bool silent = 10;
+
+    // flag indicating message not to be forwarded
+    bool no_forwards = 11;   
 }
 

@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+import "common/v1/common_peer.proto";
+import "common/v1/message_media.proto";
+import "common/v1/photo.proto";
+import "common/v1/poll.proto";
+
+package runtiva.common.v1;
+
+message MessageReplyHeader {
+    // The message ID in this same thread to which this message is replying
+    int64 reply_to_message_id = 1;
+    // The ID of originating message of the message thread
+    int64 reply_to_top_id = 2;
+}
+
+message MessageForwardHeader {
+    // ID of the user originally sending this message
+    int64 from_id = 1;
+    // The username of the original sender
+    string from_username = 2;
+    // The date message was originally sent
+    google.protobuf.Timestamp date = 3;
+    // ID of the channel message that was forwarded
+    int64 channel_post_id = 4;
+    // For channles (w/ signatures enabled), author of the channel message
+    string post_author = 5;
+    // Only for messages forwarded to the current user, full info about the user/channel that originally sent the message
+    optional PeerInput saved_from_peer = 6;
+    // Only for messages forwarded to the current user, ID of the message that was forwarded from the original user/channel
+    optional int64 saved_from_msg_id = 7; 
+}
