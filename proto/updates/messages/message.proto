@@ -39,8 +39,6 @@ message MessageDetails {
     // When a user replies to an existing message, the object is 
     // populated with the details of the original message being replied to.
     optional runtiva.common.v1.MessageReplyHeader reply_to = 6; 
-    // The date this message was sent by the sending (from_id) user
-    google.protobuf.Timestamp sent_date = 7;
     // The actual message text
     string Message = 8; 
     // The actual message text
@@ -48,6 +46,8 @@ message MessageDetails {
     // This object contains the entities data for this message. This includes any 
     // styling and mentions and tagging.
     runtiva.common.v1.MessageEntity entities = 10; 
+    // The date this message was sent by the sending (from_id) user
+    google.protobuf.Timestamp sent_date = 7;
     // Last time this message was edited. Will be empty/null if this message has 
     // not been previously edited 
     optional google.protobuf.Timestamp edit_date = 11;
@@ -101,3 +101,12 @@ message MessageDetails {
 
 }
 
+message Message_MessageDeliver {
+    // This message ID
+    int64 message_id = 1;
+}
+
+message Message_MessageRead {
+    // This message ID
+    int64 message_id = 1;
+}

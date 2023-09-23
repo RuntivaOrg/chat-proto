@@ -39,6 +39,8 @@ message UpdateContainer{
 
         // Message Update Flags
         Message new_message = 40;
+        Message_MessageDeliver message_deliver = 41;
+        Message_MessageRead message_read = 42;
     }
 
 }
