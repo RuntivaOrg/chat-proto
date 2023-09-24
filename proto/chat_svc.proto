@@ -6,7 +6,7 @@ import "chat-svc/v1/channel/entities.proto";
 import "chat-svc/v1/channel/service_messages.proto";
 
 import "chat-svc/v1/chat/chat.proto";
-import "chat-svc/v1/chat/chat_inputs.proto";
+import "chat-svc/v1/chat/service_messages.proto";
 
 
 import "chat-svc/v1/chatgroup/entities.proto";

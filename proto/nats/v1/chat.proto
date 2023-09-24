@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package runtiva.nats.v1;
 
-import "chat-svc/v1/chat/chat_inputs.proto";
+import "chat-svc/v1/chat/service_messages.proto";
 import "chat-svc/v1/chat/chat.proto";
 
 import "nats/v1/common.proto";

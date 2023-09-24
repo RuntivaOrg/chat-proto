@@ -7,18 +7,18 @@ fn main() -> Result<(), Box<dyn Error>> {
         // *************************************************************************************
         // Chat Service
         "proto/chat_svc.proto",
-        // Channels
-        "proto/chat-svc/v1/channel/entities.proto",
-        "proto/chat-svc/v1/channel/service_messages.proto",
-        "proto/chat-svc/v1/channel/channel_shared.proto",
         // Chats
         "proto/chat-svc/v1/chat/chat.proto",
-        "proto/chat-svc/v1/chat/chat_inputs.proto",
+        "proto/chat-svc/v1/chat/service_messages.proto",
         // Chatgroups
         "proto/chat-svc/v1/chatgroup/entities.proto",
         "proto/chat-svc/v1/chatgroup/service_messages.proto",
         // Chatgroups
         //"proto/updates/chatgroups/chatgroup.proto",
+        // Channels
+        "proto/chat-svc/v1/channel/entities.proto",
+        "proto/chat-svc/v1/channel/service_messages.proto",
+        "proto/chat-svc/v1/channel/channel_shared.proto",
         // Messages
         "proto/chat-svc/v1/message/message.proto",
         "proto/chat-svc/v1/message/message_inputs.proto",
