@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package runtiva.updates.v1;
+
+//import "google/protobuf/timestamp.proto";
+
+//import "common/v1/notification_settings.proto";
+//import "common/v1/available_reactions.proto";
+import "common/v1/chat.proto";
+
+
+// ********** ChatGroup_Create ********** //
+// Backend DISTRO messaging for `Chat_Create`: Request to create a new chat 
+message Chat_Create {
+    runtiva.common.v1.Chat chat = 1;
+}
+
+// ********** Chat_Delete ********** //
+// Backend DISTRO messaging for `Chat_Delete`: Deletes a chat 
+message Chat_Delete {
+    int64 id = 1;
+}
+

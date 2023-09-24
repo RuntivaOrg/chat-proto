@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package runtiva.chat.v1;
 
-// Schema for Message
-message Message {
-    int64 id = 1;
-    int64 peer_id = 2;
-    int64 user_id = 3;
-    int64 replyto_message_id = 4;
-    string message = 5;
-}
+// Schema for Message _ TO DELETE
+// message Message {
+//     int64 id = 1;
+//     int64 peer_id = 2;
+//     int64 user_id = 3;
+//     int64 replyto_message_id = 4;
+//     string message = 5;
+// }

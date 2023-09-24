@@ -42,3 +42,11 @@ message MessageSendRequest {
     bool no_forwards = 11;   
 }
 
+// MessageReadRequest is the request message for the Message_Read RPC.
+message MessageReadRequest {
+    // ID of the message to flag as read
+    int64 message_id = 1;
+
+    // owning container of the message -- channel, topic or chat_group
+    runtiva.common.v1.PeerInput input_peer = 2;
+}

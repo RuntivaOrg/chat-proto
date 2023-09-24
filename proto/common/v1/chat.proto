@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package runtiva.common.v1;
+
+import "google/protobuf/timestamp.proto";
+
+import "common/v1/notification_settings.proto";
+
+// `Chat`s are DM/Private 1-on-1 chats.
+message Chat {
+    int64 chat_id = 1;
+    // Time to live of messages in this chat group. Messages after `ttl_period` seconds will be deleted.
+    optional int32 ttl_period = 10;
+    // Emoji representing a specific chat theme
+    optional string theme_emoticon = 11;
+    // Allowed messages reactions
+    //repeated ChatReactions available_reactions = 12;
+    // Date chat group was created
+    google.protobuf.Timestamp date = 12;
+    // *** Notification Properties ***
+    // Notification settings for this chat group
+    NotificationSettings notification_settings = 13;
+
+    // *** Participant Properties ***
+    // current participants
+    repeated int64 participants = 14;
+
+}

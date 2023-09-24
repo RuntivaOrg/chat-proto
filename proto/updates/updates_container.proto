@@ -9,6 +9,7 @@ import "updates/messages/message.proto";
 // import "updates/users/user.proto";
 
 import "updates/chatgroups/chatgroup.proto";
+import "updates/chats/chat.proto";
 
 // import "common/v1/chatgroup.proto";
 
@@ -20,6 +21,10 @@ message UpdateContainer{
         // Channel Update Msgs
         UpdateChannel channel_id = 1;
         UpdateChannelNewMessage channel_new_message = 2;
+
+        // Chat Update Msgs
+        Chat_Create chat_create = 10;
+        Chat_Delete chat_delete = 11;
 
         // ChatGroup Update Msgs
         ChatGroup_Create chatgroup_create = 20;
@@ -36,6 +41,7 @@ message UpdateContainer{
         ChatGroup_AdminEdit chatgroup_admin_edit = 30;
         ChatGroup_DisableUpdate chatgroup_disable_update = 31;
         ChatGroup_Delete chatgroup_delete = 32;
+
 
         // Message Update Flags
         Message new_message = 40;
