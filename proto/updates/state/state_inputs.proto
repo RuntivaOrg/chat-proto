@@ -25,3 +25,10 @@ message GetUserUpdatesSliceRequest{
 message GetUserUpdatesSliceResponse {
     UpdatesCombined updates_slice = 1;
 }
+
+// Initiate Updates Connection Sync
+message InitiateUpdatesConnectionSyncRequest {
+    int32 local_seq = 1;
+    int32 local_pts = 2;
+    optional int32 limit = 3;
+} 

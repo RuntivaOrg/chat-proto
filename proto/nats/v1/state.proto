@@ -36,3 +36,11 @@ message NatsGetUserUpdatesSliceResponse {
     ErrorReply error = 2;
   }
 }
+
+// ********** InitiateUpdatesConnectionSyncRequest ********** //
+// Backend NATS messaging called when during runtiva.connections.v1.UpdatesConnection: 
+// Informs Persistance Server to sync the user's updates stream
+message NatsInitiateUpdatesConnectionSyncRequest{
+  repeated MetadataMap headers = 1;
+  runtiva.updates.v1.InitiateUpdatesConnectionSyncRequest data = 2;
+}
