@@ -10,7 +10,7 @@ message ConnectRequest {
     string app_id = 1;
 
     // pass in current local state of the user
-    //int32 local_seq = 2;
+    int32 local_seq = 2;
     //int32 local_pts = 3;
 }
 

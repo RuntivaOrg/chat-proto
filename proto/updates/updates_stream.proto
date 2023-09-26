@@ -13,8 +13,8 @@ import "updates/updates_container.proto";
 
 import "common/v1/chatgroup.proto";
 
-// Messages used by the Updates service. This is the primary Response vehicle for real-time updates to
-// connected devices -- used by the `Connect` gRPC streaming response method.
+// Messages used by the Updates service. This is the primary Response vehicle for real-time asynchronous updates to
+// connected devices -- used by the `runtiva.connections.v1.UpdatesConnect` gRPC method to return streaming responses.
 message UpdatesStream {
     oneof update {
         // Too many updates to send to client -- need to manually request them in batches
