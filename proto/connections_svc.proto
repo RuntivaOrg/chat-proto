@@ -12,7 +12,7 @@ service ConnectionsService {
     // `Connect` is called when the user opens the app and is ready to receive updates
     // This is a server-side stream RPC, meaning that the server will keep the connection open
     // and send updates to the client as they happen
-    rpc UpdatesConnect(ConnectRequest) returns (stream runtiva.updates.v1.UpdatesStream) {}
+    rpc UpdatesConnect(InitConnectRequest) returns (stream runtiva.updates.v1.UpdatesStream) {}
 
     // `RegisterOnPeerList` is called when the user opens the chat screen containing the 
     // list of their peers (e.g. chats, chatgroups)

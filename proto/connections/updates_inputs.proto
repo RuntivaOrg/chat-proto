@@ -6,18 +6,20 @@ package runtiva.connections.v1;
 
 // Messages used in calls to track user's current view to provide appropriate IsTyping messages.
 // e.g. Only when a user is on the same peer as the user who is typing, the user will receive the IsTyping message. 
-message ConnectRequest {
-    string app_id = 1;
+message InitConnectRequest {
+    ConnectRequest connection = 1;
 
     // pass in current local state of the user
     int32 local_seq = 2;
     //int32 local_pts = 3;
+    int32 limit = 4;
 }
 
 message ConnectPeerRequest {
-    string app_id = 1;
+    ConnectRequest connection = 1;
     int64 peer_id = 2;
 }
 
-
-
+message ConnectRequest {
+    string app_id = 1;
+}
