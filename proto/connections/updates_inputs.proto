@@ -12,7 +12,7 @@ message InitConnectRequest {
     // pass in current local state of the user
     int32 local_seq = 2;
     //int32 local_pts = 3;
-    int32 limit = 4;
+    optional int32 limit = 4;
 }
 
 message ConnectPeerRequest {
