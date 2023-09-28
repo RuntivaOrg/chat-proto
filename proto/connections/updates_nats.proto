@@ -120,6 +120,7 @@ message UserConnections {
 message UserConnection {
   // user_id:app_id
   string conn_key = 2;
-  // host:port of the chat server that owns the connection
-  string chat_server = 3;
+  // unique identifier of the chat server that owns the connection
+  // This is used to route messages (via NATS Subject) to the correct chat server
+  string server_identifier = 3;
 }
