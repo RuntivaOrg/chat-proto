@@ -26,8 +26,9 @@ message NatsUpdatesCloseRequest {
 
 message UpdatesConnection {
   UpdatesConnectionKey connection_key = 1;
-  // host:port of the chat server that owns the connection
-  string chat_server = 3;
+  // unique identifier of the chat server that owns the connection
+  // This is used to route messages (via NATS Subject) to the correct chat server
+  string server_identifier = 2;
 }
 
 message UpdatesConnectionKey {
