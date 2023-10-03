@@ -4,7 +4,7 @@ package runtiva.connections.v1;
 
 import "google/protobuf/empty.proto";
 
-import "connections/updates_inputs.proto";
+import "connections/inputs.proto";
 import "updates/updates_stream.proto";
 
 // Service reponsible for pushing all real-time chat-related updates to the client

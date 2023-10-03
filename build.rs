@@ -56,8 +56,8 @@ fn main() -> Result<(), Box<dyn Error>> {
         // *************************************************************************************
         // Connections Service
         "proto/connections_svc.proto",
-        "proto/connections/updates_inputs.proto",
-        "proto/connections/updates_nats.proto",
+        "proto/connections/inputs.proto",
+        "proto/connections/nats.proto",
         // *************************************************************************************
         // Updates Service
         "proto/updates_svc.proto",
