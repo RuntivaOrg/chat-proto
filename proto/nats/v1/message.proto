@@ -17,4 +17,11 @@ message NatsMessageSendRequest {
   runtiva.chat.v1.MessageSendRequest data = 2;
 }
 
+// ********** Message_Read ********** //
+// Backend NATS messaging for `Message_Read`: Request to update reads on chat/peer 
+message NatsMessageReadRequest {
+  repeated MetadataMap headers = 1;
+  runtiva.chat.v1.MessageReadRequest data = 2;
+}
+
 

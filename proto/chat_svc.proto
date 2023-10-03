@@ -72,8 +72,12 @@ service ChatService {
     rpc ChatGroup_Delete(ChatGroupDeleteRequest) returns (google.protobuf.Empty) {}
 
     // ******************************* Messages *******************************
-    // Sends a new message to a chat
+    // Sends a new message to a chat/peer
     rpc Message_Send(MessageSendRequest) returns (google.protobuf.Empty) {}
+
+    // Sends a read message for a given peer
+    rpc Message_Read(MessageReadRequest) returns (google.protobuf.Empty) {}
+
 
     // ******************************** Users *********************************
 

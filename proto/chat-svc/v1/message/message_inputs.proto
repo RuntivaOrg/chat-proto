@@ -13,7 +13,7 @@ message MessageSendRequest {
     // format should be a Nanoid string 12-16 characters in length.
     string unique_id = 1;
 
-    // owning container of the message -- channel, topic or chat_group
+    // owning container of the message -- channel, topic, chat_group or chat/user
     runtiva.common.v1.PeerInput input_peer = 3;
 
     // ID of the message being forwarded
@@ -47,6 +47,6 @@ message MessageReadRequest {
     // ID of the message to flag as read
     int64 message_id = 1;
 
-    // owning container of the message -- channel, topic or chat_group
+    // owning container of the message -- channel, topic, chat_group, or chat
     runtiva.common.v1.PeerInput input_peer = 2;
 }
