@@ -45,7 +45,7 @@ message MessageSendRequest {
 // MessageReadRequest is the request message for the Message_Read RPC.
 message MessageReadRequest {
     // ID of the message to flag as read
-    int64 message_id = 1;
+    int64 max_message_id = 1;
 
     // owning container of the message -- channel, topic, chat_group, or chat
     runtiva.common.v1.PeerInput input_peer = 2;
