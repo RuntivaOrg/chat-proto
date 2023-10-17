@@ -24,9 +24,6 @@ service ChatService {
 
 
     // ****************************** Chats ******************************
-    // Creates a new chat 
-    rpc Chat_Create(ChatCreateRequest) returns (Chat) {}
-
     // Deletes a chat 
     rpc Chat_Delete(ChatDeleteRequest) returns (google.protobuf.Empty) {}
 

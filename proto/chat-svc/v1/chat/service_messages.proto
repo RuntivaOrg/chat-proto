@@ -2,14 +2,6 @@ syntax = "proto3";
 
 package runtiva.chat.v1;
 
-// Inputs are the request messages/objects that the client sends to the server as part of the service call requests.
-// Request Message for `Chat_Create` RPC.
-message ChatCreateRequest {
-    int64 initiating_user_id = 2;
-    int64 other_user_id = 3;
-    optional int32 ttl_period = 4;
-}
-
 // Request Message for `Chat_Delete` RPC. 
 message ChatDeleteRequest {
     int64 id = 1;

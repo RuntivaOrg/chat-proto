@@ -10,20 +10,6 @@ import "nats/v1/common.proto";
 // NATS Specific messages that are used internally on the server-side to offboard request processing 
 // from the ChatServer to the backend services. 
 
-// ********** Chat_Create ********** //
-// Backend NATS messaging for `Chat_Create`: Request to create a new chat 
-message NatsChatCreateRequest {
-  repeated MetadataMap headers = 1;
-  runtiva.chat.v1.ChatCreateRequest data = 2;
-}
-
-message NatsChatCreateResponse {
-  oneof msg {
-    runtiva.chat.v1.Chat data = 1;
-    ErrorReply error = 2;
-  }
-}
-
 // ********** Chat_Delete ********** //
 // Backend NATS messaging for `Chat_Delete`: Deletes a chat 
 message NatsChatDeleteRequest {
